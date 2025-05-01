@@ -4,11 +4,12 @@ services:
     ports:
       - "8005:8000"  # Changed from 8000:8000 to 8005:8000
     environment:
-      - CHROMA_DB_IMPL=duckdb+parquet
-      - CHROMA_SERVER_HOST=0.0.0.0
-      - CHROMA_SERVER_HTTP_PORT=8000
-    volumes:
-      - chroma_data:/chroma/chroma
+      - CHROMA_DB_IMPL=postgres
+      - CHROMA_POSTGRES_USER=${PGUSER}
+      - CHROMA_POSTGRES_PASSWORD=${PGPASSWORD}
+      - CHROMA_POSTGRES_DB=${PGDATABASE}
+      - CHROMA_POSTGRES_HOST=${PGHOST}
+      - CHROMA_POSTGRES_PORT=${PGPORT}
   
   backend:
     build:
