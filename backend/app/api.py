@@ -42,7 +42,10 @@ TOP_K = int(os.getenv("TOP_K", "5"))
 
 # System prompt template
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT", 
-                         "You are an expert assistant. Use the following context to answer:\n\n{context}\n\nAnswer conversationally.")
+                         "You are an expert assistant. Use the following context to answer:\n\n{context}\n\nAnswer conversationally. If you don't know the answer based on the provided context, say so.")
+
+# Context memory - how many turns to remember
+CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "5"))
 
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -50,8 +53,8 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # Rate limiter configuration
 limiter = Limiter(key_func=get_remote_address)
 
-# In-memory session history
-session_history: Dict[str, List[Dict[str, str]]] = {}
+# In-memory session history - includes messages and retrieved context
+session_history: Dict[str, Dict[str, Any]] = {}
 
 # Initialize FastAPI
 app = FastAPI(
@@ -147,6 +150,13 @@ async def chat(request: Request, chat_request: ChatRequest):
     logger.info("Chat request", session_id=session_id, query_length=len(query))
     
     try:
+        # Initialize session if needed
+        if session_id not in session_history:
+            session_history[session_id] = {
+                "messages": [],
+                "contexts": []  # Store retrieved contexts for each turn
+            }
+        
         # Get embedding for the query
         query_embedding = get_embeddings([query])[0]
         
@@ -166,23 +176,29 @@ async def chat(request: Request, chat_request: ChatRequest):
         metadatas = results.get("metadatas", [[]])[0]
         
         # Join chunks for context
-        context = "\n\n".join(documents)
+        current_context = "\n\n".join(documents)
         
         # Get sources
         sources = [meta.get("source", "unknown") for meta in metadatas]
         unique_sources = list(set(sources))
         
-        # Initialize session history if needed
-        if session_id not in session_history:
-            session_history[session_id] = []
+        # Add current context to session history
+        session_history[session_id]["contexts"].append(current_context)
+        
+        # Keep only the most recent CONTEXT_MEMORY contexts
+        if len(session_history[session_id]["contexts"]) > CONTEXT_MEMORY:
+            session_history[session_id]["contexts"] = session_history[session_id]["contexts"][-CONTEXT_MEMORY:]
+        
+        # Combine current and previous contexts for better continuity
+        combined_context = "\n\n".join(session_history[session_id]["contexts"])
         
         # Prepare messages for OpenAI
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT.replace("{context}", context)}
+            {"role": "system", "content": SYSTEM_PROMPT.replace("{context}", combined_context)}
         ]
         
         # Add conversation history
-        for msg in session_history[session_id]:
+        for msg in session_history[session_id]["messages"]:
             messages.append(msg)
         
         # Add current query
@@ -203,12 +219,12 @@ async def chat(request: Request, chat_request: ChatRequest):
         answer = response.choices[0].message.content
         
         # Update session history
-        session_history[session_id].append({"role": "user", "content": query})
-        session_history[session_id].append({"role": "assistant", "content": answer})
+        session_history[session_id]["messages"].append({"role": "user", "content": query})
+        session_history[session_id]["messages"].append({"role": "assistant", "content": answer})
         
-        # Limit history length
-        if len(session_history[session_id]) > 10:
-            session_history[session_id] = session_history[session_id][-10:]
+        # Limit history length to prevent token explosion
+        if len(session_history[session_id]["messages"]) > CONTEXT_MEMORY * 2:  # Keep pairs of messages
+            session_history[session_id]["messages"] = session_history[session_id]["messages"][-(CONTEXT_MEMORY * 2):]
         
         # Return response
         return ChatResponse(

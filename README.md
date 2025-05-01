@@ -1,10 +1,10 @@
-# RAG Chatbot Backend
+# RAG Chatbot
 
-This is a FastAPI backend service for a RAG (Retrieval-Augmented Generation) chatbot. It retrieves relevant context from a Chroma vector database and uses OpenAI's models to generate contextually-aware responses.
+A Retrieval-Augmented Generation chatbot system that uses ChromaDB for vector storage and OpenAI for text generation.
 
-## Setup
+## Setup Instructions
 
-1. Copy the environment file:
+1. Copy the sample environment file:
    ```
    cp .env.example .env
    ```
@@ -14,76 +14,54 @@ This is a FastAPI backend service for a RAG (Retrieval-Augmented Generation) cha
    OPENAI_API_KEY=your_actual_openai_api_key
    ```
 
-3. Build the Docker image:
+3. Make the setup script executable:
    ```
-   docker build -t rag-backend .
+   chmod +x setup_volume.sh
    ```
 
-4. Run the container:
+4. Run the setup script to create the required Docker volume and start services:
    ```
-   docker run -d -p 8000:8000 --name rag-backend \
-     --network=rag_default \
-     -v $(pwd)/kb_files:/app/kb_files \
-     -e OPENAI_API_KEY=your_actual_openai_api_key \
-     rag-backend
+   ./setup_volume.sh
    ```
-   
-   Note: This assumes you're running the Chroma DB service from the `/rag/` directory on the same Docker network.
 
-## Usage
+   This will:
+   - Create the required `chroma_data` volume (if it doesn't exist)
+   - Start all services defined in the docker-compose.yml file
 
-### Loading Knowledge Base Files
+## Accessing the Services
+
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:8001](http://localhost:8001)
+- ChromaDB (for development/debugging): [http://localhost:8005](http://localhost:8005)
+
+## Adding Knowledge Base Files
 
 Upload text files to be indexed:
 
 ```bash
-curl -X POST http://localhost:8000/api/kb/load \
+curl -X POST http://localhost:8001/api/kb/load \
   -F "files=@/path/to/your/document1.txt" \
   -F "files=@/path/to/your/document2.md"
 ```
 
-### Querying the Chatbot
+## Troubleshooting
 
-Send a chat query:
+If you encounter issues:
 
-```bash
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "What information can you tell me about this topic?",
-    "session_id": "optional-session-id"
-  }'
-```
+1. Check logs:
+   ```
+   docker-compose logs
+   ```
 
-Response structure:
+2. To stop all services:
+   ```
+   docker-compose down
+   ```
 
-```json
-{
-  "answer": "This is the answer to your question based on the retrieved context...",
-  "sources": ["document1.txt", "document2.md"],
-  "session_id": "session-id-for-continuation"
-}
-```
-
-## API Endpoints
-
-- `GET /`: Health check endpoint
-- `POST /api/kb/load`: Upload and index knowledge base files (accepts .txt and .md)
-- `POST /api/chat`: Query the chatbot with RAG
-
-## Environment Variables
-
-All configuration is managed through environment variables:
-
-- `OPENAI_API_KEY`: Your OpenAI API key
-- `CHROMA_SERVER_URL`: URL of the Chroma vector DB server
-- `COLLECTION_NAME`: Name of the Chroma collection to use
-- `EMBED_MODEL_NAME`: OpenAI embedding model name
-- `MODEL_NAME`: OpenAI chat model name
-- `TEMPERATURE`: Temperature parameter (creativity)
-- `MAX_TOKENS`: Maximum response length
-- `TOP_P`: Top-p parameter for sampling
-- `FREQUENCY_PENALTY`: Repetition penalty
-- `PRESENCE_PENALTY`: Topic repetition penalty
-- `TOP_K`: Number of similar chunks to retrieve
-- `SYSTEM_PROMPT`: Template for the system prompt
+3. To reset the environment completely (⚠️ this will delete all data):
+   ```
+   docker-compose down
+   docker volume rm chroma_data
+   docker volume create chroma_data
+   docker-compose up -d
+   ```
