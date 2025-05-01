@@ -23,8 +23,6 @@ services:
       - COLLECTION_NAME=kb_default
       - EMBED_MODEL_NAME=text-embedding-ada-002
       - MODEL_NAME=gpt-3.5-turbo
-    volumes:
-      - ./kb_files:/app/kb_files
     depends_on:
       - chromadb
 
@@ -36,8 +34,3 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-
-volumes:
-  chroma_data:
-    name: chroma_data
-    external: true  # Mark as external to use existing volume
