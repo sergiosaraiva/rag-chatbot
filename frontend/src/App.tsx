@@ -20,8 +20,8 @@ interface ChatResponse {
   session_id: string;
 }
 
-// Maximum messages per conversation
-const MAX_MESSAGES = 20;
+// Get max messages from environment variable or use default
+const MAX_MESSAGES = parseInt(import.meta.env.VITE_MAX_MESSAGES || '20', 10);
 
 function App() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -136,8 +136,11 @@ function App() {
     setIsLoading(true);
 
     try {
+      // Get API URL from environment or use default
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      
       // Send request to backend
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
