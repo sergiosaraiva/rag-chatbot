@@ -1,0 +1,59 @@
+**Tokens**
+- `[EXPIRATION_DATE]`: Date when the residence permit expired
+- `[BIO_DATE]`: Date when the user completed biometrics
+- `[NOTIFICATION_DATE]`: Date when the criminal record notification was sent
+- `[FAMILY_APPOINTMENT]`: Request for a family reunion appointment
+
+---
+
+### 1. Renewal of Residence Permit
+
+**Base Template**
+**Q:** My residence permit expired on `[EXPIRATION_DATE]`. I would like to schedule an appointment to renew it.
+**A:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This establishes a legally enforceable timeframe of up to 90 working days to secure the renewal appointment. Without judicial intervention, there is no guaranteed deadline.
+
+**Variations**
+1. **Q:** I noticed my residence permit lapsed on `[EXPIRATION_DATE]`. How can I book a renewal appointment?
+   **A:** Hello, I hope you are well. Filing a legal action in court is currently the most effective course. It grants us up to 90 working days to obtain the renewal date. Otherwise, no timeline is enforced.
+
+2. **Q:** My permit expired on `[EXPIRATION_DATE]`, and I need to renew it. What should I do?
+   **A:** Hello, I hope you are well. To ensure a timely appointment, we advise initiating a court application. This secures a maximum of 90 working days for scheduling. Without it, there’s no binding deadline.
+
+3. **Q:** Residence permit expired `[EXPIRATION_DATE]`. Requesting guidance on how to arrange a renewal slot.
+   **A:** Hello, I hope you are well. The best approach is to take legal action. By doing so, we obtain a 90-working‑day window to receive the renewal appointment. In the absence of litigation, no deadline applies.
+
+---
+
+### 2. Family Reunion Appointment
+
+**Base Template**
+**Q:** I need to arrange a `[FAMILY_APPOINTMENT]`.
+**A:** Hello, I hope you are well. The most favorable solution is to file a legal action in court. This establishes a 90-working‑day deadline to obtain the family reunion appointment. Without judicial intervention, there is no enforceable timeframe.
+
+**Variations**
+1. **Q:** I want to bring my family over—how do I get a family reunion appointment?
+   **A:** Hello, I hope you are well. We recommend initiating a court process. It provides up to 90 working days to secure the reunion appointment. Otherwise, no deadline is set.
+
+2. **Q:** Could you help me request a family reunion appointment?
+   **A:** Hello, I hope you are well. Filing a legal action ensures a legally binding 90-working‑day period to receive the family reunion scheduling. Without it, there’s no guaranteed timeline.
+
+3. **Q:** I’m applying for family reunification. What’s the fastest way to get an appointment?
+   **A:** Hello, I hope you are well. The advisable step is to file an injunction in court. This secures a 90-working‑day window for the family reunion appointment. Absent this, no timeframe is enforced.
+
+---
+
+### 3. Pending Biometric and Card Issuance
+
+**Base Template**
+**Q:** I completed my biometrics on `[BIO_DATE]` and have not yet received my card or an email notification.
+**A:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This secures up to 90 working days to obtain the appointment or card. Without judicial action, no deadline applies.
+
+**Variations**
+1. **Q:** Biometric captured on `[BIO_DATE]`, still no card or notification—what can I do?
+   **A:** Hello, I hope you are well. Filing a legal action grants us a 90-working‑day period to compel issuance. Otherwise, there is no enforceable deadline.
+
+2. **Q:** It’s been weeks since my biometrics on `[BIO_DATE]` and I haven’t gotten my residence card or any email. Any advice?
+   **A:** Hello, I hope you are well. We suggest filing an injunction. This establishes a 90-working‑day timeframe to receive the card. Without it, no timeline is guaranteed.
+
+3. **Q:** I sent my criminal record on `[NOTIFICATION_DATE]` after biometrics on `[BIO_DATE]`, still waiting for the card—can you assist?
+   **A:** Hello, I hope you are well. The most effective remedy is a court application. That secures a 90-working‑day deadline to obtain your card. In the absence of litigation, there’s no binding deadline.

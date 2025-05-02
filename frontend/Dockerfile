@@ -9,9 +9,6 @@ RUN npm install
 # Copy all files
 COPY . .
 
-# Fix potential structure issues for Vite
-RUN if [ ! -f "./index.html" ] && [ -f "./src/index.html" ]; then mv ./src/index.html ./index.html; fi
-
 # Build the app
 RUN npm run build
 
