@@ -29,37 +29,48 @@ def get_chroma_client():
         url = CHROMA_SERVER_URL
         print(f"Attempting to connect to ChromaDB using URL: {url}")
         
-        # Handle different URL formats
-        if "://" in url:
-            # URL has a protocol specified
-            if url.startswith("http://"):
-                host = url.replace("http://", "").split(":")[0]
-                port_part = url.split(":")[-1]
-                port = int(port_part) if port_part.isdigit() else 8000
-            elif url.startswith("https://"):
-                host = url.replace("https://", "").split(":")[0]
-                port_part = url.split(":")[-1]
-                port = int(port_part) if port_part.isdigit() else 443
-            else:
-                # Unknown protocol
-                host = url.split("://")[1].split(":")[0]
-                port = 8000
+        # Parse the URL
+        from urllib.parse import urlparse
+        parsed_url = urlparse(url)
+        protocol = parsed_url.scheme or "http"
+        host = parsed_url.netloc
+        if ':' in host:
+            host, port_str = host.split(':')
+            port = int(port_str)
         else:
-            # No protocol specified
-            host = url.split(":")[0]
-            port_part = url.split(":")[-1]
-            port = int(port_part) if port_part.isdigit() else 8000
+            port = 443 if protocol == 'https' else 8000
         
-        print(f"Connecting to ChromaDB at host={host}, port={port}")
+        print(f"Connecting to ChromaDB at {protocol}://{host}:{port}")
         
-        # Create client with increased timeout
-        return chromadb.HttpClient(host=host, port=port, ssl=False)
+        # Get auth token from environment variable - must match the token set in ChromaDB
+        auth_token = os.getenv("CHROMA_AUTH_TOKEN", "test-token")
+        
+        # Include the auth token in the headers
+        headers = {
+            "X_CHROMA_TOKEN": auth_token
+        }
+        
+        # Create client with authentication
+        client = chromadb.HttpClient(
+            host=host, 
+            port=port, 
+            ssl=(protocol == 'https'),
+            headers=headers
+        )
+        
+        # Test the connection
+        try:
+            client.heartbeat()
+            print("Successfully connected to ChromaDB")
+        except Exception as e:
+            print(f"ChromaDB heartbeat failed: {str(e)}")
+            
+        return client
     except Exception as e:
         import traceback
         print(f"ChromaDB connection error: {str(e)}")
         print(f"Stack trace: {traceback.format_exc()}")
         raise
-
 
 def chunk_text(text: str, chunk_size: int = 2000, chunk_overlap: int = 200) -> List[str]:
     """
