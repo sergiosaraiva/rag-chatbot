@@ -12,6 +12,11 @@ export default defineConfig({
       }
     }
   },
+  preview: {
+    port: 3000,
+    host: true,
+    allowedHosts: ['frontend-production-3d98.up.railway.app']
+  },
   build: {
     outDir: 'dist'
   }
