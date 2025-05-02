@@ -20,7 +20,6 @@ COLLECTION_NAME = os.getenv("COLLECTION_NAME", "kb_default")
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Configure Chroma client
 def get_chroma_client():
     """
     Get a connection to the Chroma server
@@ -42,30 +41,8 @@ def get_chroma_client():
         
         print(f"Connecting to ChromaDB at {protocol}://{host}:{port}")
         
-        # Get auth token from environment variable - must match the token set in ChromaDB
-        auth_token = os.getenv("CHROMA_AUTH_TOKEN", "test-token")
-        
-        # Include the auth token in the headers
-        headers = {
-            "X_CHROMA_TOKEN": auth_token
-        }
-        
-        # Create client with authentication
-        client = chromadb.HttpClient(
-            host=host, 
-            port=port, 
-            ssl=(protocol == 'https'),
-            headers=headers
-        )
-        
-        # Test the connection
-        try:
-            client.heartbeat()
-            print("Successfully connected to ChromaDB")
-        except Exception as e:
-            print(f"ChromaDB heartbeat failed: {str(e)}")
-            
-        return client
+        # Create client
+        return chromadb.HttpClient(host=host, port=port, ssl=(protocol == 'https'))
     except Exception as e:
         import traceback
         print(f"ChromaDB connection error: {str(e)}")
