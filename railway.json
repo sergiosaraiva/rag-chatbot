@@ -4,6 +4,7 @@
     "builder": "DOCKERFILE"
   },
   "deploy": {
+    "startCommand": "/bin/sh -c \"exec uvicorn chromadb.app:app --workers 1 --host :: --port $PORT --proxy-headers --log-config chromadb/log_config.yml --timeout-keep-alive 30\"",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
