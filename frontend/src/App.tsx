@@ -21,7 +21,7 @@ interface ChatResponse {
 }
 
 // Get max messages from environment variable or use default
-const MAX_MESSAGES = parseInt(import.meta.env.VITE_MAX_MESSAGES || '20', 10);
+const MAX_MESSAGES = parseInt(process.env.VITE_MAX_MESSAGES || '20', 10);
 
 function App() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
