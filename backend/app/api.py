@@ -238,6 +238,29 @@ async def chat(request: Request, chat_request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/debug/raw-http")
+def debug_raw_http():
+    import requests
+    from urllib.parse import urlparse
+    
+    url = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
+    try:
+        # Try a basic health endpoint
+        response = requests.get(f"{url}/api/v1/heartbeat", timeout=5)
+        return {
+            "status": "success",
+            "url": url,
+            "response_code": response.status_code,
+            "response_text": response.text[:100]
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "url": url,
+            "error": str(e)
+        }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.api:app", host="0.0.0.0", port=8000, reload=True)
