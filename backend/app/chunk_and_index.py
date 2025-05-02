@@ -25,9 +25,40 @@ def get_chroma_client():
     """
     Get a connection to the Chroma server
     """
-    host = CHROMA_SERVER_URL.replace("http://", "").split(":")[0]
-    port = int(CHROMA_SERVER_URL.split(":")[-1])
-    return chromadb.HttpClient(host=host, port=port)
+    try:
+        url = CHROMA_SERVER_URL
+        print(f"Attempting to connect to ChromaDB using URL: {url}")
+        
+        # Handle different URL formats
+        if "://" in url:
+            # URL has a protocol specified
+            if url.startswith("http://"):
+                host = url.replace("http://", "").split(":")[0]
+                port_part = url.split(":")[-1]
+                port = int(port_part) if port_part.isdigit() else 8000
+            elif url.startswith("https://"):
+                host = url.replace("https://", "").split(":")[0]
+                port_part = url.split(":")[-1]
+                port = int(port_part) if port_part.isdigit() else 443
+            else:
+                # Unknown protocol
+                host = url.split("://")[1].split(":")[0]
+                port = 8000
+        else:
+            # No protocol specified
+            host = url.split(":")[0]
+            port_part = url.split(":")[-1]
+            port = int(port_part) if port_part.isdigit() else 8000
+        
+        print(f"Connecting to ChromaDB at host={host}, port={port}")
+        
+        # Create client with increased timeout
+        return chromadb.HttpClient(host=host, port=port, ssl=False)
+    except Exception as e:
+        import traceback
+        print(f"ChromaDB connection error: {str(e)}")
+        print(f"Stack trace: {traceback.format_exc()}")
+        raise
 
 
 def chunk_text(text: str, chunk_size: int = 2000, chunk_overlap: int = 200) -> List[str]:
