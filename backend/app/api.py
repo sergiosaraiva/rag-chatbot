@@ -60,6 +60,7 @@ limiter = Limiter(key_func=get_remote_address)
 session_history: Dict[str, Dict[str, Any]] = {}
 
 port = int(os.getenv("PORT", 8000))
+print(f"Starting on port: {port}")
 
 # Initialize FastAPI
 app = FastAPI(
