@@ -91,6 +91,7 @@ def test_chromadb():
     import requests
     chroma_url = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
     try:
+        logger.info(f"chroma_url: {chroma_url}")
         response = requests.get(f"{chroma_url}/api/v2/heartbeat")
         return {"status": "success", "chromadb_response": response.json()}
     except Exception as e:

@@ -14,7 +14,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "text-embedding-ada-002")
 
 # Chroma configuration
-CHROMA_SERVER_URL = os.getenv("CHROMA_SERVER_URL", "http://chroma:8000")
+CHROMA_SERVER_URL = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "kb_default")
 
 # Configure OpenAI client
