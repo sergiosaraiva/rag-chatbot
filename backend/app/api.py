@@ -14,6 +14,9 @@ from dotenv import load_dotenv
 from app.models import ChatRequest, ChatResponse
 from app.chunk_and_index import index_file, get_chroma_client, get_embeddings
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
 # Load environment variables
 load_dotenv()
 
@@ -273,4 +276,6 @@ def debug_raw_http():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.api:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    logging.info(f"Starting server on port {port}")
+    uvicorn.run("app.api:app", host="0.0.0.0", port=port)
