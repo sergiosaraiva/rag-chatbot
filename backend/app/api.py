@@ -86,6 +86,15 @@ async def root(request: Request):
     """Health check endpoint"""
     return {"status": "ok"}
 
+@app.get("/api/test/chromadb")
+def test_chromadb():
+    import requests
+    chroma_url = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
+    try:
+        response = requests.get(f"{chroma_url}/api/v1/heartbeat")
+        return {"status": "success", "chromadb_response": response.json()}
+    except Exception as e:
+        return {"status": "error", "url": chroma_url, "error": str(e)}
 
 @app.post("/api/kb/load")
 @limiter.limit("5/minute")
