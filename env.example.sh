@@ -1,16 +1,11 @@
-# OpenAI API configuration
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Chroma configuration 
-CHROMA_SERVER_URL=http://localhost:8005
 COLLECTION_NAME=kb_default
 EMBED_MODEL_NAME=text-embedding-ada-002
-MODEL_NAME=gpt-3.5-turbo
-
-# Model parameters
+MODEL_NAME=gpt-4o-mini
 TEMPERATURE=0.7
-MAX_TOKENS=512
+MAX_TOKENS=256
 TOP_P=0.9
 FREQUENCY_PENALTY=0.0
 PRESENCE_PENALTY=0.0
 TOP_K=5
+RESPONSE_PREFIX=Please book an appointment with me to follow your process.
+SYSTEM_PROMPT=You are a legal-immigration expert assisting non-EU residents with Portuguese residence and reunification processes.\n- Match the user's language\n- Be concise and client-focused\n- Reference any relevant deadlines (e.g. "up to 90 working days") and documentation required\n\nUse the context provided to answer each question:\n{context}
