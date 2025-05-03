@@ -31,13 +31,14 @@ logger = structlog.get_logger()
 
 # OpenAI API configuration
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-3.5-turbo")
+MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.7"))
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "512"))
+MAX_TOKENS = int(os.getenv("MAX_TOKENS", "256"))
 TOP_P = float(os.getenv("TOP_P", "0.9"))
 FREQUENCY_PENALTY = float(os.getenv("FREQUENCY_PENALTY", "0.0"))
 PRESENCE_PENALTY = float(os.getenv("PRESENCE_PENALTY", "0.0"))
 EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "text-embedding-ada-002")
+RESPONSE_PREFIX = os.getenv("RESPONSE_PREFIX", "")
 
 # Chroma configuration
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "kb_default")
@@ -252,6 +253,9 @@ async def chat(request: Request, chat_request: ChatRequest):
         
         # Extract response
         answer = response.choices[0].message.content
+
+        if RESPONSE_PREFIX:
+            answer = f"{answer}\n\n{RESPONSE_PREFIX}"
         
         # Update session history
         session_history[session_id]["messages"].append({"role": "user", "content": query})
