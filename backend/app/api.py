@@ -91,7 +91,7 @@ def test_chromadb():
     import requests
     chroma_url = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
     try:
-        response = requests.get(f"{chroma_url}/api/v1/heartbeat")
+        response = requests.get(f"{chroma_url}/api/v2/heartbeat")
         return {"status": "success", "chromadb_response": response.json()}
     except Exception as e:
         return {"status": "error", "url": chroma_url, "error": str(e)}
@@ -255,7 +255,7 @@ def debug_raw_http():
     url = os.getenv("CHROMA_SERVER_URL", "http://chromadb:8000")
     try:
         # Try a basic health endpoint
-        response = requests.get(f"{url}/api/v1/heartbeat", timeout=5)
+        response = requests.get(f"{url}/api/v2/heartbeat", timeout=5)
         return {
             "status": "success",
             "url": url,
