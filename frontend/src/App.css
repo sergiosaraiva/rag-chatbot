@@ -24,7 +24,7 @@ body, #root {
 }
 
 .sidebar {
-  width: 250px;
+  width: 300px;  /* Changed from 250px */
   background-color: var(--terminal-bg);
   border-right: 1px solid var(--terminal-orange);
   padding: 10px;
