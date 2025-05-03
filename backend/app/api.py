@@ -59,6 +59,8 @@ limiter = Limiter(key_func=get_remote_address)
 # In-memory session history - includes messages and retrieved context
 session_history: Dict[str, Dict[str, Any]] = {}
 
+port = int(os.getenv("PORT", 8000))
+
 # Initialize FastAPI
 app = FastAPI(
     title="RAG Chatbot API",
@@ -276,6 +278,4 @@ def debug_raw_http():
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.getenv("PORT", 8000))
-    logging.info(f"Starting server on port {port}")
-    uvicorn.run("app.api:app", host="0.0.0.0", port=port)
+    uvicorn.run("app.api:app", host="0.0.0.0", port=port, reload=False)
