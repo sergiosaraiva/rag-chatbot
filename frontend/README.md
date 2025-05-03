@@ -1,6 +1,6 @@
-# RAG Chatbot Frontend
+# Immigration Chatbot Frontend
 
-A React + TypeScript frontend for the RAG chatbot system.
+A React + TypeScript frontend for the Immigration chatbot system.
 
 ## Setup and Run
 

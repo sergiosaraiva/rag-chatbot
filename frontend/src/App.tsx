@@ -58,9 +58,18 @@ function App() {
 
   const createNewConversation = () => {
     const newId = 'conv_' + Date.now();
+    const timestamp = new Date().toLocaleString('en-US', {
+      year: 'numeric',
+      month: '2-digit', 
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
     const newConversation: Conversation = {
       id: newId,
-      title: `Conversation ${conversations.length + 1}`,
+      title: timestamp,  // Changed from "Conversation ${conversations.length + 1}"
       messages: [],
       sessionId: null
     };
@@ -88,14 +97,20 @@ function App() {
   const updateConversationTitle = (conversation: Conversation, userMessage: string) => {
     // Only update title if this is the first message
     if (conversation.messages.length === 0) {
-      const title = userMessage.length > 25 
-        ? userMessage.substring(0, 25) + '...' 
-        : userMessage;
+      const timestamp = new Date().toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
       
       setConversations(prevConversations => 
         prevConversations.map(conv => 
           conv.id === conversation.id 
-            ? { ...conv, title: title } 
+            ? { ...conv, title: timestamp } 
             : conv
         )
       );
@@ -216,7 +231,6 @@ function App() {
     <div className="app-container">
       <div className="sidebar">
         <div className="sidebar-header">
-          <h2>RAG Terminal</h2>
           <button className="new-chat-btn" onClick={createNewConversation}>New</button>
         </div>
         <div className="conversation-list">
@@ -241,7 +255,7 @@ function App() {
       </div>
       
       <div className="main-content">
-        <h1>RAG Chatbot Terminal</h1>
+        <h1>Immigration Chatbot</h1>
         
         {activeConversation && (
           <div className="message-counter">
