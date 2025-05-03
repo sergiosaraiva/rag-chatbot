@@ -1,59 +1,178 @@
-**Tokens**
-- `[EXPIRATION_DATE]`: Date when the residence permit expired
-- `[BIO_DATE]`: Date when the user completed biometrics
-- `[NOTIFICATION_DATE]`: Date when the criminal record notification was sent
-- `[FAMILY_APPOINTMENT]`: Request for a family reunion appointment
+## 1. Residence Permit Renewal
+
+**Question:** My residence permit expired on `[EXPIRATION_DATE]`. I would like to schedule an appointment to renew it.
+**Answer:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This establishes a legally enforceable timeframe of up to 90 working days to secure the renewal appointment. Without judicial intervention, there is no guaranteed deadline.
+
+**Variations**
+
+1. **Question:** I noticed my residence permit lapsed on `[EXPIRATION_DATE]`. How can I book a renewal appointment?
+   **Answer:** Hello, I hope you are well. Filing a legal action in court is currently the most effective course. It grants up to 90 working days to obtain the renewal date. Otherwise, no timeline is enforced.
+
+2. **Question:** My permit expired on `[EXPIRATION_DATE]` and I need to renew it. What should I do?
+   **Answer:** Hello, I hope you are well. To ensure a timely appointment, we advise initiating a court application. This secures a maximum of 90 working days for scheduling. Without it, there’s no binding deadline.
+
+3. **Question:** Residence permit expired `[EXPIRATION_DATE]`. Requesting guidance on how to arrange a renewal slot.
+   **Answer:** Hello, I hope you are well. The best approach is to take legal action. By doing so, we obtain a 90-working-day window to receive the renewal appointment. In the absence of litigation, no deadline applies.
 
 ---
 
-### 1. Renewal of Residence Permit
+## 2. Family Reunion Appointment
 
-**Base Template**
-**Q:** My residence permit expired on `[EXPIRATION_DATE]`. I would like to schedule an appointment to renew it.
-**A:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This establishes a legally enforceable timeframe of up to 90 working days to secure the renewal appointment. Without judicial intervention, there is no guaranteed deadline.
+**Question:** I need to arrange a `[FAMILY_APPOINTMENT]`.
+**Answer:** Hello, I hope you are well. The most favorable solution is to file a legal action in court. This establishes a 90-working-day deadline to obtain the family reunion appointment. Without judicial intervention, there is no enforceable timeframe.
 
 **Variations**
-1. **Q:** I noticed my residence permit lapsed on `[EXPIRATION_DATE]`. How can I book a renewal appointment?
-   **A:** Hello, I hope you are well. Filing a legal action in court is currently the most effective course. It grants us up to 90 working days to obtain the renewal date. Otherwise, no timeline is enforced.
 
-2. **Q:** My permit expired on `[EXPIRATION_DATE]`, and I need to renew it. What should I do?
-   **A:** Hello, I hope you are well. To ensure a timely appointment, we advise initiating a court application. This secures a maximum of 90 working days for scheduling. Without it, there’s no binding deadline.
+1. **Question:** I want to bring my family over—how do I get a family reunion appointment?
+   **Answer:** Hello, I hope you are well. We recommend initiating a court process. It provides up to 90 working days to secure the reunion appointment. Otherwise, no deadline is set.
 
-3. **Q:** Residence permit expired `[EXPIRATION_DATE]`. Requesting guidance on how to arrange a renewal slot.
-   **A:** Hello, I hope you are well. The best approach is to take legal action. By doing so, we obtain a 90-working‑day window to receive the renewal appointment. In the absence of litigation, no deadline applies.
+2. **Question:** Could you help me request a family reunion appointment?
+   **Answer:** Hello, I hope you are well. Filing a legal action ensures a legally binding 90-working-day period to receive the family reunion scheduling. Without it, there’s no guaranteed timeline.
+
+3. **Question:** I’m applying for family reunification. What’s the fastest way to get an appointment?
+   **Answer:** Hello, I hope you are well. The advisable step is to file an injunction in court. This secures a 90-working-day window for the family reunion appointment. Absent this, no timeframe is enforced.
 
 ---
 
-### 2. Family Reunion Appointment
+## 3. Biometric & Card Issuance
 
-**Base Template**
-**Q:** I need to arrange a `[FAMILY_APPOINTMENT]`.
-**A:** Hello, I hope you are well. The most favorable solution is to file a legal action in court. This establishes a 90-working‑day deadline to obtain the family reunion appointment. Without judicial intervention, there is no enforceable timeframe.
+**Question:** I completed my biometrics on `[BIO_DATE]` and have not yet received my card or an email notification.
+**Answer:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This secures up to 90 working days to obtain the appointment or card. Without judicial action, no deadline applies.
 
 **Variations**
-1. **Q:** I want to bring my family over—how do I get a family reunion appointment?
-   **A:** Hello, I hope you are well. We recommend initiating a court process. It provides up to 90 working days to secure the reunion appointment. Otherwise, no deadline is set.
 
-2. **Q:** Could you help me request a family reunion appointment?
-   **A:** Hello, I hope you are well. Filing a legal action ensures a legally binding 90-working‑day period to receive the family reunion scheduling. Without it, there’s no guaranteed timeline.
+1. **Question:** Biometric captured on `[BIO_DATE]`, still no card or notification—what can I do?
+   **Answer:** Hello, I hope you are well. Filing a legal action grants us a 90-working-day period to compel issuance. Otherwise, there is no enforceable deadline.
 
-3. **Q:** I’m applying for family reunification. What’s the fastest way to get an appointment?
-   **A:** Hello, I hope you are well. The advisable step is to file an injunction in court. This secures a 90-working‑day window for the family reunion appointment. Absent this, no timeframe is enforced.
+2. **Question:** It’s been weeks since my biometrics on `[BIO_DATE]` and I haven’t gotten my residence card or any email. Any advice?
+   **Answer:** Hello, I hope you are well. We suggest filing an injunction. This establishes a 90-working-day timeframe to receive the card. Without it, no timeline is guaranteed.
+
+3. **Question:** I sent my criminal record on `[NOTIFICATION_DATE]` after biometrics on `[BIO_DATE]`, still waiting for the card—can you assist?
+   **Answer:** Hello, I hope you are well. The most effective remedy is a court application. That secures a 90-working-day deadline to obtain your card. In the absence of litigation, there’s no binding deadline.
 
 ---
 
-### 3. Pending Biometric and Card Issuance
+## 4. AIMA Notifications (Falta & PCC)
 
-**Base Template**
-**Q:** I completed my biometrics on `[BIO_DATE]` and have not yet received my card or an email notification.
-**A:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This secures up to 90 working days to obtain the appointment or card. Without judicial action, no deadline applies.
+**Q\&A A – “Falta” Notices**
+**Question:** I received a falta notice.
+**Answer:** Hello, I hope you are well. Please send us the falta notification you received from AIMA so we can review it.
 
 **Variations**
-1. **Q:** Biometric captured on `[BIO_DATE]`, still no card or notification—what can I do?
-   **A:** Hello, I hope you are well. Filing a legal action grants us a 90-working‑day period to compel issuance. Otherwise, there is no enforceable deadline.
 
-2. **Q:** It’s been weeks since my biometrics on `[BIO_DATE]` and I haven’t gotten my residence card or any email. Any advice?
-   **A:** Hello, I hope you are well. We suggest filing an injunction. This establishes a 90-working‑day timeframe to receive the card. Without it, no timeline is guaranteed.
+1. **Question:** I got a falta notification—what now?
+   **Answer:** Hello, I hope you are well. Kindly forward the AIMA falta notice you received so we can advise you further.
 
-3. **Q:** I sent my criminal record on `[NOTIFICATION_DATE]` after biometrics on `[BIO_DATE]`, still waiting for the card—can you assist?
-   **A:** Hello, I hope you are well. The most effective remedy is a court application. That secures a 90-working‑day deadline to obtain your card. In the absence of litigation, there’s no binding deadline.
+2. **Question:** They sent me a falta. How can I share it?
+   **Answer:** Hello, I hope you are well. Please provide the original falta notification from AIMA so we can proceed.
+
+3. **Question:** What should I do with my falta from AIMA?
+   **Answer:** Hello, I hope you are well. Send us the AIMA falta notification document, and we’ll guide you on the next steps.
+
+---
+
+**Q\&A B – Criminal Record (“PCC”)**
+**Question:** My PCC (criminal record).
+**Answer:** Hello, I hope you are well. Do you have the PCC notification from AIMA? Please send it to us.
+
+**Variations**
+
+1. **Question:** What about my criminal record status?
+   **Answer:** Hello, I hope you are well. If you have the AIMA PCC notification, please forward it so we can assist you.
+
+2. **Question:** I need help with my PCC.
+   **Answer:** Hello, I hope you are well. Please share any PCC notice issued by AIMA, and we’ll review it.
+
+3. **Question:** How do I provide my PCC details?
+   **Answer:** Hello, I hope you are well. Send the AIMA criminal record notification, and we’ll take it from there.
+
+---
+
+## 5. Process Updates
+
+**Question:** Update please, madam.
+**Answer:** Hello, I hope you are well. I will send you any available information on your process as soon as possible.
+
+**Variations**
+
+1. **Question:** Could you update me on my case status?
+   **Answer:** Hello, I hope you are well. I’ll share any updates on your file as soon as they arrive.
+
+2. **Question:** Please let me know if there are any news.
+   **Answer:** Hello, I hope you are well. I’ll inform you immediately when I have new details on your process.
+
+3. **Question:** Any progress to report?
+   **Answer:** Hello, I hope you are well. I’ll notify you right away once there’s news on your application.
+
+---
+
+## 6. Payment Details
+
+**Question:** Please send bank details.
+**Answer:** Hello, I hope you are well. Our payment information is:
+
+```
+IBAN: PT50 0035 0673 00067614800 82  
+Beneficiary: SOFIA TORRADO FERREIRA  
+Bank: CAIXA GERAL DE DEPÓSITOS  
+MB WAY: 920706013
+```
+
+**Variations**
+
+1. **Question:** Can I have your bank account for payment?
+   **Answer:** Hello, I hope you are well. Please use:
+
+   ```
+   IBAN: PT50 0035 0673 00067614800 82  
+   Name: SOFIA TORRADO FERREIRA  
+   Bank: CAIXA GERAL DE DEPÓSITOS  
+   MB WAY: 920706013
+   ```
+
+2. **Question:** I need your banking info.
+   **Answer:** Hello, I hope you are well. Our details are:
+
+   ```
+   IBAN: PT50 0035 0673 00067614800 82  
+   Holder: SOFIA TORRADO FERREIRA  
+   Bank: CAIXA GERAL DE DEPÓSITOS  
+   MB WAY: 920706013
+   ```
+
+3. **Question:** How can I transfer the fee?
+   **Answer:** Hello, I hope you are well. Please transfer to:
+
+   ```
+   IBAN: PT50 0035 0673 00067614800 82  
+   Beneficiary: SOFIA TORRADO FERREIRA  
+   Bank: CAIXA GERAL DE DEPÓSITOS  
+   MB WAY: 920706013
+   ```
+
+---
+
+## 7. Documents for Legal Action (Court Appointment)
+
+**Question:** Please tell me which documents I need for legal action by court normal appointment.
+**Answer:** Hello, I hope you are well. You will need:
+
+* NIF (Tax ID)
+* NISS (Social Security Number)
+* Health Card (if available)
+* Last 3 payslips
+* Employment contract or proof of activity
+* Certificate from the Parish Council (“Junta”)
+* Entry visa or legal entry document (if any)
+* Expression of interest or proof of ≥12 months of contributions
+
+**Variations**
+
+1. **Question:** What paperwork is required to file a court request for a standard appointment?
+   **Answer:** Hello, I hope you are well. Please prepare: NIF, NISS, health card (if any), three most recent payslips, employment proof, parish certificate, visa/entry documents, and either an expression of interest or 12 months of contribution records.
+
+2. **Question:** Which docs do I submit for a renewal injunction?
+   **Answer:** Hello, I hope you are well. You’ll need your NIF, NISS, utente number (if you have it), last three payslips, job contract or activity proof, Junta certificate, any visa or legal entry docs, plus either an expression of interest or evidence of one year of contributions.
+
+3. **Question:** Can you list the documents needed for court action to book an appointment?
+   **Answer:** Hello, I hope you are well. Gather: taxpayer ID (NIF), social security (NISS), health user ID (if any), last three salary slips, employer contract or activity proof, parish certificate, legal entry/visa documents, and proof of interest or 12 months contributions.

@@ -147,6 +147,25 @@ async def upload_knowledge_base(request: Request, files: List[UploadFile] = File
     return results
 
 
+@app.delete("/api/kb/delete/{filename}")
+async def delete_from_knowledge_base(filename: str):
+    try:
+        chroma_client = get_chroma_client()
+        collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        # Delete all documents with this filename as source
+        collection.delete(where={"source": filename})
+        
+        # Optionally delete the physical file
+        file_path = os.path.join("kb_files", filename)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            
+        return {"status": "success", "message": f"Deleted {filename} from knowledge base"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 @limiter.limit("30/minute")
 async def chat(request: Request, chat_request: ChatRequest):
