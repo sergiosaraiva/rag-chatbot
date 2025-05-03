@@ -94,7 +94,7 @@ function App() {
     }
   };
 
-  const updateConversationTitle = (conversation: Conversation, userMessage: string) => {
+  const updateConversationTitle = (conversation: Conversation) => {
     // Only update title if this is the first message
     if (conversation.messages.length === 0) {
       const timestamp = new Date().toLocaleString('en-US', {
@@ -128,7 +128,7 @@ function App() {
     }
 
     // Update the conversation title if this is the first message
-    updateConversationTitle(activeConversation, input);
+    updateConversationTitle(activeConversation);
 
     // Add user message to chat
     const userMessage: Message = {
