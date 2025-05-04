@@ -381,6 +381,84 @@ async def get_file_info(filename: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.delete("/api/kb/delete/{filename}")
+async def delete_from_knowledge_base(filename: str):
+    try:
+        chroma_client = get_chroma_client()
+        collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        # Delete all documents with this filename as source
+        collection.delete(where={"source": filename})
+        
+        # Optionally delete the physical file
+        file_path = os.path.join("kb_files", filename)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            
+        return {"status": "success", "message": f"Deleted {filename} from knowledge base"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.get("/api/kb/list-documents")
+async def list_chromadb_documents():
+    """List all unique source documents in ChromaDB"""
+    try:
+        chroma_client = get_chroma_client()
+        collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        # Get all documents
+        results = collection.get()
+        
+        # Extract unique sources
+        sources = set()
+        for metadata in results['metadatas']:
+            if metadata and 'source' in metadata:
+                sources.add(metadata['source'])
+        
+        return {"sources": list(sources)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.delete("/api/kb/clear-chromadb")
+async def clear_chromadb():
+    """Clear all documents from ChromaDB collection"""
+    try:
+        chroma_client = get_chroma_client()
+        try:
+            chroma_client.delete_collection(name=COLLECTION_NAME)
+            # Recreate empty collection
+            chroma_client.create_collection(name=COLLECTION_NAME)
+            return {"status": "success", "message": "ChromaDB collection cleared"}
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/kb/stats")
+async def get_chromadb_stats():
+    """Get statistics about the ChromaDB collection"""
+    try:
+        chroma_client = get_chroma_client()
+        collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        # Get all documents
+        results = collection.get()
+        
+        # Count documents and unique sources
+        total_documents = len(results['ids'])
+        sources = set()
+        for metadata in results['metadatas']:
+            if metadata and 'source' in metadata:
+                sources.add(metadata['source'])
+        
+        return {
+            "total_documents": total_documents,
+            "unique_sources": len(sources),
+            "sources": list(sources)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn
