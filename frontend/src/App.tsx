@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import './App.css';
 
 // Get project name from environment variable with fallback
