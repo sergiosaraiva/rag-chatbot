@@ -1,6 +1,9 @@
 import { useState, useEffect, FormEvent } from 'react';
 import './App.css';
 
+// Get project name from environment variable with fallback
+const PROJECT_NAME = import.meta.env.VITE_PROJECT_NAME || 'RAG';
+
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -69,7 +72,7 @@ function App() {
     });
     const newConversation: Conversation = {
       id: newId,
-      title: timestamp,  // Changed from "Conversation ${conversations.length + 1}"
+      title: timestamp,
       messages: [],
       sessionId: null
     };
@@ -227,6 +230,16 @@ function App() {
     }
   };
 
+  // Function to render message content with preserved formatting
+  const renderMessageContent = (content: string) => {
+    return content.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        {index < content.split('\n').length - 1 && <br />}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className="app-container">
       <div className="sidebar">
@@ -255,7 +268,7 @@ function App() {
       </div>
       
       <div className="main-content">
-        <h1>Immigration Chatbot</h1>
+        <h1>{PROJECT_NAME} Chatbot</h1>
         
         {activeConversation && (
           <div className="message-counter">
@@ -276,7 +289,7 @@ function App() {
               >
                 <div className="message-content">
                   <div className="message-role">{message.role === 'user' ? '>' : '$'}</div>
-                  <div className="message-text">{message.content}</div>
+                  <div className="message-text">{renderMessageContent(message.content)}</div>
                   {message.sources && message.sources.length > 0 && (
                     <div className="message-sources">
                       <p className="sources-label">Sources:</p>
