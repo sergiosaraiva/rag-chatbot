@@ -299,6 +299,88 @@ def debug_raw_http():
             "error": str(e)
         }
 
+@app.get("/api/kb/list")
+async def list_knowledge_base_files():
+    """List all files in the knowledge base"""
+    try:
+        files = []
+        kb_dir = "kb_files"
+        
+        if os.path.exists(kb_dir):
+            for filename in os.listdir(kb_dir):
+                if filename.endswith(('.txt', '.md')):
+                    file_path = os.path.join(kb_dir, filename)
+                    file_stat = os.stat(file_path)
+                    files.append({
+                        "filename": filename,
+                        "size": file_stat.st_size,
+                        "modified": file_stat.st_mtime
+                    })
+        
+        return {"files": files}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.delete("/api/kb/delete-all")
+async def delete_all_from_knowledge_base():
+    """Delete all files from the knowledge base"""
+    try:
+        # Connect to ChromaDB and delete the entire collection
+        chroma_client = get_chroma_client()
+        try:
+            chroma_client.delete_collection(name=COLLECTION_NAME)
+        except:
+            pass  # Collection might not exist
+        
+        # Delete all physical files
+        kb_dir = "kb_files"
+        deleted_files = []
+        
+        if os.path.exists(kb_dir):
+            for filename in os.listdir(kb_dir):
+                if filename.endswith(('.txt', '.md')):
+                    file_path = os.path.join(kb_dir, filename)
+                    os.remove(file_path)
+                    deleted_files.append(filename)
+        
+        return {
+            "status": "success", 
+            "message": "Deleted all files from knowledge base",
+            "deleted_files": deleted_files
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+
+@app.get("/api/kb/info/{filename}")
+async def get_file_info(filename: str):
+    """Get information about a specific file in the knowledge base"""
+    try:
+        file_path = os.path.join("kb_files", filename)
+        
+        if not os.path.exists(file_path):
+            raise HTTPException(status_code=404, detail="File not found")
+        
+        # Get file stats
+        file_stat = os.stat(file_path)
+        
+        # Get chunk count from ChromaDB
+        chroma_client = get_chroma_client()
+        collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        results = collection.get(where={"source": filename})
+        chunk_count = len(results['ids']) if results['ids'] else 0
+        
+        return {
+            "filename": filename,
+            "size": file_stat.st_size,
+            "modified": file_stat.st_mtime,
+            "chunk_count": chunk_count
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn
