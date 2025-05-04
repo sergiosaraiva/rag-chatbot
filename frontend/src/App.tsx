@@ -2,7 +2,7 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import './App.css';
 
 // Get project name from environment variable with fallback
-const PROJECT_NAME = import.meta.env.VITE_PROJECT_NAME || 'RAG';
+const PROJECT_NAME = import.meta.env.VITE_PROJECT_NAME || '';
 
 interface Message {
   role: 'user' | 'assistant';
