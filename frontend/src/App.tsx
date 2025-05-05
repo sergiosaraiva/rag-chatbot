@@ -381,7 +381,7 @@ function App() {
         <div className="chat-container">
           {!activeConversation || activeConversation.messages.length === 0 ? (
             <div className="empty-chat">
-              <p>$ Ask me anything about the KB! <span className="blinking-cursor"></span></p>
+              <p>$ Ask {CHATBOT_USER ? `${CHATBOT_USER}` : 'me'} about {CHATBOT_NAME ? `${CHATBOT_NAME}` : ' my knowledge base'}! <span className="blinking-cursor"></span></p>
             </div>
           ) : (
             activeConversation.messages.map((message, index) => (
