@@ -5,6 +5,11 @@ import './App.css';
 const CHATBOT_NAME = import.meta.env.VITE_CHATBOT_NAME || '';
 const CHATBOT_USER = import.meta.env.VITE_CHATBOT_USER || '';
 
+console.log("Env vars:", {
+  name: import.meta.env.VITE_CHATBOT_NAME,
+  user: import.meta.env.VITE_CHATBOT_USER
+});
+
 interface Message {
   role: 'user' | 'assistant';
   content: string;
