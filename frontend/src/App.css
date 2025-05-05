@@ -1,8 +1,9 @@
 :root {
   --terminal-orange: #FF8E00;
-  --terminal-bg: #000000;
   --terminal-orange-dim: #994400;
   --terminal-orange-bright: #FFAA33;
+  --terminal-bg: #000000;
+  --placeholder-color: #994400;
 }
 
 body, #root {
@@ -24,7 +25,7 @@ body, #root {
 }
 
 .sidebar {
-  width: 300px;  /* Changed from 250px */
+  width: 300px;
   background-color: var(--terminal-bg);
   border-right: 1px solid var(--terminal-orange);
   padding: 10px;
@@ -81,9 +82,26 @@ body, #root {
   border: 1px solid var(--terminal-orange);
 }
 
+.conversation-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title-edit-input {
+  width: 100%;
+  background-color: var(--terminal-bg);
+  color: var(--terminal-orange);
+  border: 1px solid var(--terminal-orange);
+  padding: 2px 5px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+}
+
 .delete-convo-btn {
   background-color: transparent;
-  color: var(--terminal-orange);  /* Changed from red to orange */
+  color: var(--terminal-orange);
   border: none;
   cursor: pointer;
   font-size: 18px;
@@ -113,7 +131,7 @@ h1 {
   border: 1px solid var(--terminal-orange);
   border-radius: 4px;
   margin-bottom: 20px;
-  background-color: var(--terminal-bg);  /* Changed from dark-gray to black */
+  background-color: var(--terminal-bg);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -191,14 +209,30 @@ h1 {
   color: var(--terminal-orange-bright);
 }
 
+.sources-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sources-toggle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
 .sources-label {
   font-weight: bold;
-  margin-bottom: 3px;
+  margin: 0;
 }
 
 .message-sources ul {
-  margin: 0;
-  padding-left: 20px;
+  margin: 5px 0 0 0;
+  padding-left: 25px;
 }
 
 .input-form {
@@ -216,6 +250,11 @@ input {
   background-color: var(--terminal-bg);
   color: var(--terminal-orange);
   font-family: 'Courier New', monospace;
+}
+
+.chat-input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
 }
 
 input:focus {
@@ -240,13 +279,13 @@ button:hover {
 }
 
 button:disabled {
-  background-color: var(--terminal-orange-dim);  /* Changed from grey to dimmed orange */
+  background-color: var(--terminal-orange-dim);
   color: var(--terminal-bg);
   cursor: not-allowed;
 }
 
 .clear-button {
-  background-color: var(--terminal-orange);  /* Changed from red to orange */
+  background-color: var(--terminal-orange);
 }
 
 .clear-button:hover {

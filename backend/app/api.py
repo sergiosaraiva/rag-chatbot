@@ -49,7 +49,7 @@ SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT",
                          "You are an expert assistant. Use the following context to answer:\n\n{context}\n\nAnswer conversationally. If you don't know the answer based on the provided context, say so.")
 
 # Context memory - how many turns to remember
-CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "5"))
+CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "20"))
 
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)

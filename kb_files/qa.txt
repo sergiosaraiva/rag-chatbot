@@ -1,115 +1,152 @@
 ## 1. Residence Permit Renewal
 
+**Legal summary:**
+
+* **Art. 78, nº 1–2, 4–7 of Law 23/2007**: request renewal up to 30 days before expiry; decision within 30 days (silence = deferment); receipt valid as permit for 60 days (renewable); conditions include proof of subsistence (Portaria 1563/2007), accommodation, tax/social-security compliance, no criminal convictions > 1 year; refusal only for public-order or security reasons ([sites.google.com][1], [pgdlisboa.pt][2]).
+
 **Question:** My residence permit expired on `[EXPIRATION_DATE]`. I would like to schedule an appointment to renew it.
-**Answer:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This establishes a legally enforceable timeframe of up to 90 working days to secure the renewal appointment. Without judicial intervention, there is no guaranteed deadline.
+**Answer:** The recommended solution is to file a legal action in court. This secures a legally binding 90-working-day deadline for the renewal appointment; without judicial intervention, no deadline applies.
 
 **Variations**
 
 1. **Question:** I noticed my residence permit lapsed on `[EXPIRATION_DATE]`. How can I book a renewal appointment?
-   **Answer:** Hello, I hope you are well. Filing a legal action in court is currently the most effective course. It grants up to 90 working days to obtain the renewal date. Otherwise, no timeline is enforced.
+   **Answer:** Filing a legal action grants up to 90 working days to obtain the renewal slot; otherwise, no timeframe is enforced.
 
 2. **Question:** My permit expired on `[EXPIRATION_DATE]` and I need to renew it. What should I do?
-   **Answer:** Hello, I hope you are well. To ensure a timely appointment, we advise initiating a court application. This secures a maximum of 90 working days for scheduling. Without it, there’s no binding deadline.
+   **Answer:** Initiate a court application to secure a maximum of 90 working days for scheduling; absent it, there’s no binding deadline.
 
 3. **Question:** Residence permit expired `[EXPIRATION_DATE]`. Requesting guidance on how to arrange a renewal slot.
-   **Answer:** Hello, I hope you are well. The best approach is to take legal action. By doing so, we obtain a 90-working-day window to receive the renewal appointment. In the absence of litigation, no deadline applies.
+   **Answer:** Taking legal action establishes a 90-working-day window to receive the renewal appointment; without litigation, no deadline applies.
 
 ---
 
 ## 2. Family Reunion Appointment
 
-**Question:** I need to arrange a `[FAMILY_APPOINTMENT]`.
-**Answer:** Hello, I hope you are well. The most favorable solution is to file a legal action in court. This establishes a 90-working-day deadline to obtain the family reunion appointment. Without judicial intervention, there is no enforceable timeframe.
+**Legal summary:**
+
+* **Arts. 98–99 & 103 of Law 23/2007** grant the right to reunify spouse, minor or dependent children, and dependent parents ([pgdlisboa.pt][3], [files.dre.pt][4]).
+* **Art. 106** allows refusal only if conditions aren’t met or there’s a threat to public order, security or health; decisions on residence-visa requests (including reunification) must be issued within 60 days ([pgdlisboa.pt][5], [sites.google.com][6]).
+
+**Question:** I need to arrange a family reunion appointment.
+**Answer:** File a legal action in court to establish a 90-working-day deadline for the family-reunion appointment; otherwise, no enforceable timeframe exists.
 
 **Variations**
 
 1. **Question:** I want to bring my family over—how do I get a family reunion appointment?
-   **Answer:** Hello, I hope you are well. We recommend initiating a court process. It provides up to 90 working days to secure the reunion appointment. Otherwise, no deadline is set.
+   **Answer:** Initiate a court process to secure up to 90 working days for scheduling; absent it, no deadline applies.
 
 2. **Question:** Could you help me request a family reunion appointment?
-   **Answer:** Hello, I hope you are well. Filing a legal action ensures a legally binding 90-working-day period to receive the family reunion scheduling. Without it, there’s no guaranteed timeline.
+   **Answer:** Filing a legal action guarantees a legally binding 90-working-day period for the appointment; no guaranteed timeline without it.
 
-3. **Question:** I’m applying for family reunification. What’s the fastest way to get an appointment?
-   **Answer:** Hello, I hope you are well. The advisable step is to file an injunction in court. This secures a 90-working-day window for the family reunion appointment. Absent this, no timeframe is enforced.
+3. **Question:** I’m applying for family reunification. What’s the fastest way to get a family reunion appointment?
+   **Answer:** File an injunction in court to obtain a 90-working-day window for the appointment; without litigation, no deadline is enforced.
 
 ---
 
 ## 3. Biometric & Card Issuance
 
+**Legal summary:**
+
+* **Art. 78, nº 7 of Law 23/2007**: the receipt of the renewal application or related request produces the same effect as a valid residence permit for 60 days (renewable) ([sites.google.com][1]).
+* If no decision is issued within legal deadlines, silence can be used to argue automatic deferment.
+
 **Question:** I completed my biometrics on `[BIO_DATE]` and have not yet received my card or an email notification.
-**Answer:** Hello, I hope you are well. The recommended solution is to file a legal action in court. This secures up to 90 working days to obtain the appointment or card. Without judicial action, no deadline applies.
+**Answer:** File a legal action in court to compel issuance within a 90-working-day deadline; without judicial intervention, there’s no enforceable timeframe.
 
 **Variations**
 
 1. **Question:** Biometric captured on `[BIO_DATE]`, still no card or notification—what can I do?
-   **Answer:** Hello, I hope you are well. Filing a legal action grants us a 90-working-day period to compel issuance. Otherwise, there is no enforceable deadline.
+   **Answer:** A court application secures a 90-working-day period to compel issuance; otherwise, no deadline applies.
 
 2. **Question:** It’s been weeks since my biometrics on `[BIO_DATE]` and I haven’t gotten my residence card or any email. Any advice?
-   **Answer:** Hello, I hope you are well. We suggest filing an injunction. This establishes a 90-working-day timeframe to receive the card. Without it, no timeline is guaranteed.
+   **Answer:** File for an injunction to establish a 90-working-day timeframe for card delivery; without it, no timeline is guaranteed.
 
 3. **Question:** I sent my criminal record on `[NOTIFICATION_DATE]` after biometrics on `[BIO_DATE]`, still waiting for the card—can you assist?
-   **Answer:** Hello, I hope you are well. The most effective remedy is a court application. That secures a 90-working-day deadline to obtain your card. In the absence of litigation, there’s no binding deadline.
+   **Answer:** A court application is the most effective remedy, securing a 90-working-day deadline for card issuance; in the absence of litigation, no binding deadline exists.
 
 ---
 
 ## 4. AIMA Notifications (Falta & PCC)
 
-**Q\&A A – “Falta” Notices**
+### A. “Falta” Notices
+
+**Legal note:** any administrative notification from AIMA must be reviewed promptly; no specific statutory deadline for response but forwarding the notice is essential.
+
 **Question:** I received a falta notice.
-**Answer:** Hello, I hope you are well. Please send us the falta notification you received from AIMA so we can review it.
+**Answer:** Please send the falta notification from AIMA for review.
 
 **Variations**
 
 1. **Question:** I got a falta notification—what now?
-   **Answer:** Hello, I hope you are well. Kindly forward the AIMA falta notice you received so we can advise you further.
+   **Answer:** Forward the AIMA falta notice so we can advise you further.
 
 2. **Question:** They sent me a falta. How can I share it?
-   **Answer:** Hello, I hope you are well. Please provide the original falta notification from AIMA so we can proceed.
+   **Answer:** Provide the original AIMA falta notification to proceed.
 
 3. **Question:** What should I do with my falta from AIMA?
-   **Answer:** Hello, I hope you are well. Send us the AIMA falta notification document, and we’ll guide you on the next steps.
+   **Answer:** Send the AIMA falta document, and we’ll guide you on next steps.
 
----
+### B. Criminal Record (“PCC”)
 
-**Q\&A B – Criminal Record (“PCC”)**
+**Legal note:** PCC notices from AIMA must be submitted to trigger the procedural deadlines.
+
 **Question:** My PCC (criminal record).
-**Answer:** Hello, I hope you are well. Do you have the PCC notification from AIMA? Please send it to us.
+**Answer:** Do you have the PCC notification from AIMA? Please send it.
 
 **Variations**
 
 1. **Question:** What about my criminal record status?
-   **Answer:** Hello, I hope you are well. If you have the AIMA PCC notification, please forward it so we can assist you.
+   **Answer:** If you have the AIMA PCC notice, forward it for our review.
 
 2. **Question:** I need help with my PCC.
-   **Answer:** Hello, I hope you are well. Please share any PCC notice issued by AIMA, and we’ll review it.
+   **Answer:** Share any PCC notification issued by AIMA, and we’ll examine it.
 
 3. **Question:** How do I provide my PCC details?
-   **Answer:** Hello, I hope you are well. Send the AIMA criminal record notification, and we’ll take it from there.
+   **Answer:** Send the AIMA criminal-record notification, and we’ll take it from there.
+
+4. **Question:** Do you have the notification from AIMA?
+   **Answer:** We request the court to expedite, as over 90 business days have passed. Once decided, the card will be delivered to your address.
+   **Documents needed:**
+
+   * NIF
+   * NISS
+   * Utente (if any)
+   * Expression of interest
+   * Visa or legal-entry document
+   * Last 3 payslips
+   * Junta certificate
+   * Criminal record
+   * Job contract or activity proof
+     **Cost:** €500 total (court fees & legal costs), split into €300 advance + €200 on completion.
 
 ---
 
 ## 5. Process Updates
 
+*No statutory deadlines beyond general duty of information. Updates sent as they become available.*
+
 **Question:** Update please, madam.
-**Answer:** Hello, I hope you are well. I will send you any available information on your process as soon as possible.
+**Answer:** I will send any available information on your process as soon as it arrives.
 
 **Variations**
 
 1. **Question:** Could you update me on my case status?
-   **Answer:** Hello, I hope you are well. I’ll share any updates on your file as soon as they arrive.
+   **Answer:** I’ll share any updates on your file immediately upon receipt.
 
 2. **Question:** Please let me know if there are any news.
-   **Answer:** Hello, I hope you are well. I’ll inform you immediately when I have new details on your process.
+   **Answer:** I’ll notify you as soon as new details emerge.
 
 3. **Question:** Any progress to report?
-   **Answer:** Hello, I hope you are well. I’ll notify you right away once there’s news on your application.
+   **Answer:** I’ll inform you right away when there’s news on your application.
 
 ---
 
 ## 6. Payment Details
 
+*No legal references required.*
+
 **Question:** Please send bank details.
-**Answer:** Hello, I hope you are well. Our payment information is:
+**Answer:**
 
 ```
 IBAN: PT50 0035 0673 00067614800 82  
@@ -121,7 +158,7 @@ MB WAY: 920706013
 **Variations**
 
 1. **Question:** Can I have your bank account for payment?
-   **Answer:** Hello, I hope you are well. Please use:
+   **Answer:**
 
    ```
    IBAN: PT50 0035 0673 00067614800 82  
@@ -131,7 +168,7 @@ MB WAY: 920706013
    ```
 
 2. **Question:** I need your banking info.
-   **Answer:** Hello, I hope you are well. Our details are:
+   **Answer:**
 
    ```
    IBAN: PT50 0035 0673 00067614800 82  
@@ -141,7 +178,7 @@ MB WAY: 920706013
    ```
 
 3. **Question:** How can I transfer the fee?
-   **Answer:** Hello, I hope you are well. Please transfer to:
+   **Answer:**
 
    ```
    IBAN: PT50 0035 0673 00067614800 82  
@@ -154,25 +191,27 @@ MB WAY: 920706013
 
 ## 7. Documents for Legal Action (Court Appointment)
 
+**Legal basis:** per **Art. 63 of DL 84/2007** (implementing Law 23/2007), renewal actions and initial permits require similar documentation: passport, proof of subsistence, accommodation, tax/social-security compliance, plus activity proof ([sites.google.com][1]).
+
 **Question:** Please tell me which documents I need for legal action by court normal appointment.
-**Answer:** Hello, I hope you are well. You will need:
+**Answer:** You will need:
 
 * NIF (Tax ID)
 * NISS (Social Security Number)
-* Health Card (if available)
+* Utente (Health-card number) if available
 * Last 3 payslips
 * Employment contract or proof of activity
-* Certificate from the Parish Council (“Junta”)
-* Entry visa or legal entry document (if any)
-* Expression of interest or proof of ≥12 months of contributions
+* Parish-council certificate (“Junta”)
+* Visa or legal-entry document (if any)
+* Expression of interest or proof of ≥ 12 months’ contributions
 
 **Variations**
 
 1. **Question:** What paperwork is required to file a court request for a standard appointment?
-   **Answer:** Hello, I hope you are well. Please prepare: NIF, NISS, health card (if any), three most recent payslips, employment proof, parish certificate, visa/entry documents, and either an expression of interest or 12 months of contribution records.
+   **Answer:** Prepare NIF, NISS, health-card (if any), three recent payslips, employment proof, parish certificate, visa/entry docs, and either an expression of interest or 12 months of contribution records.
 
 2. **Question:** Which docs do I submit for a renewal injunction?
-   **Answer:** Hello, I hope you are well. You’ll need your NIF, NISS, utente number (if you have it), last three payslips, job contract or activity proof, Junta certificate, any visa or legal entry docs, plus either an expression of interest or evidence of one year of contributions.
+   **Answer:** Provide NIF, NISS, utente (if any), last three payslips, job contract or activity proof, Junta certificate, visa/entry docs, and either expression of interest or evidence of one year of contributions.
 
 3. **Question:** Can you list the documents needed for court action to book an appointment?
-   **Answer:** Hello, I hope you are well. Gather: taxpayer ID (NIF), social security (NISS), health user ID (if any), last three salary slips, employer contract or activity proof, parish certificate, legal entry/visa documents, and proof of interest or 12 months contributions.
+   **Answer:** Gather: NIF, NISS, utente (if available), last three payslips, employer contract/activity proof, parish certificate, legal-entry/visa docs, and proof of interest or 12 months contributions.

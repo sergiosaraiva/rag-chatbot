@@ -1,13 +1,15 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, useRef } from 'react';
 import './App.css';
 
-// Get project name from environment variable with fallback
-const PROJECT_NAME = import.meta.env.VITE_PROJECT_NAME || '';
+// Get project name and user name from environment variables with fallbacks
+const CHATBOT_NAME = import.meta.env.VITE_CHATBOT_NAME || '';
+const CHATBOT_USER = import.meta.env.VITE_CHATBOT_USER || '';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
   sources?: string[];
+  username?: string;
 }
 
 interface Conversation {
@@ -15,6 +17,7 @@ interface Conversation {
   title: string;
   messages: Message[];
   sessionId: string | null;
+  isEditingTitle: boolean;
 }
 
 interface ChatResponse {
@@ -23,25 +26,37 @@ interface ChatResponse {
   session_id: string;
 }
 
-// Maximum messages per conversation
-const MAX_MESSAGES = 20;
+// Get maximum messages per conversation from environment variable with fallback
+const MAX_MESSAGES = parseInt(import.meta.env.VITE_MAX_MESSAGES || '20', 10);
 
 function App() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeConversationId, setActiveConversationId] = useState<string | null>(null);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [expandedSources, setExpandedSources] = useState<{[messageIndex: number]: boolean}>({});
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   // Load conversations from localStorage
   useEffect(() => {
     const storedConversations = localStorage.getItem('chatConversations');
     if (storedConversations) {
-      const parsedConversations = JSON.parse(storedConversations);
-      setConversations(parsedConversations);
-      
-      // Set active conversation to the last one if available
-      if (parsedConversations.length > 0) {
-        setActiveConversationId(parsedConversations[0].id);
+      try {
+        const parsedConversations = JSON.parse(storedConversations);
+        // Add isEditingTitle flag if it doesn't exist
+        const updatedConversations = parsedConversations.map((conv: any) => ({
+          ...conv,
+          isEditingTitle: false
+        }));
+        setConversations(updatedConversations);
+        
+        // Set active conversation to the last one if available
+        if (updatedConversations.length > 0) {
+          setActiveConversationId(updatedConversations[0].id);
+        }
+      } catch (error) {
+        console.error("Error parsing conversations:", error);
+        createNewConversation();
       }
     } else {
       // Create a default conversation if none exists
@@ -55,6 +70,13 @@ function App() {
       localStorage.setItem('chatConversations', JSON.stringify(conversations));
     }
   }, [conversations]);
+
+  // Auto-focus on title input when editing starts
+  useEffect(() => {
+    if (titleInputRef.current) {
+      titleInputRef.current.focus();
+    }
+  }, [conversations.find(conv => conv.isEditingTitle)]);
 
   // Get active conversation
   const activeConversation = conversations.find(conv => conv.id === activeConversationId) || null;
@@ -74,7 +96,8 @@ function App() {
       id: newId,
       title: timestamp,
       messages: [],
-      sessionId: null
+      sessionId: null,
+      isEditingTitle: false
     };
     
     setConversations([newConversation, ...conversations]);
@@ -94,6 +117,45 @@ function App() {
     // If no conversations left, create a new one
     if (updatedConversations.length === 0) {
       createNewConversation();
+    }
+  };
+
+  const startEditingTitle = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setConversations(prevConversations => 
+      prevConversations.map(conv => ({
+        ...conv,
+        isEditingTitle: conv.id === id
+      }))
+    );
+  };
+
+  const handleTitleChange = (id: string, newTitle: string) => {
+    setConversations(prevConversations => 
+      prevConversations.map(conv => {
+        if (conv.id === id) {
+          return {
+            ...conv,
+            title: newTitle
+          };
+        }
+        return conv;
+      })
+    );
+  };
+
+  const finishEditingTitle = (id: string) => {
+    setConversations(prevConversations => 
+      prevConversations.map(conv => ({
+        ...conv,
+        isEditingTitle: conv.id === id ? false : conv.isEditingTitle
+      }))
+    );
+  };
+
+  const handleTitleKeyDown = (id: string, e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      finishEditingTitle(id);
     }
   };
 
@@ -120,6 +182,13 @@ function App() {
     }
   };
 
+  const toggleSources = (index: number) => {
+    setExpandedSources(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim() || !activeConversation) return;
@@ -136,7 +205,16 @@ function App() {
     // Add user message to chat
     const userMessage: Message = {
       role: 'user',
-      content: input
+      content: input,
+      username: activeConversation.title !== new Date(parseInt(activeConversation.id.split('_')[1])).toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit', 
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }) ? activeConversation.title : undefined
     };
     
     const updatedConversations = conversations.map(conv => {
@@ -176,7 +254,8 @@ function App() {
       const assistantMessage: Message = {
         role: 'assistant',
         content: data.answer,
-        sources: data.sources
+        sources: data.sources,
+        username: CHATBOT_USER || undefined
       };
       
       setConversations(prevConversations => 
@@ -201,7 +280,11 @@ function App() {
               ...conv,
               messages: [
                 ...conv.messages, 
-                { role: 'assistant', content: 'Sorry, an error occurred. Please try again.' }
+                { 
+                  role: 'assistant', 
+                  content: 'Sorry, an error occurred. Please try again.',
+                  username: CHATBOT_USER || undefined
+                }
               ]
             };
           }
@@ -254,7 +337,21 @@ function App() {
               onClick={() => setActiveConversationId(conversation.id)}
             >
               <div className="conversation-title">
-                {conversation.title}
+                {conversation.isEditingTitle ? (
+                  <input
+                    ref={titleInputRef}
+                    value={conversation.title}
+                    onChange={(e) => handleTitleChange(conversation.id, e.target.value)}
+                    onBlur={() => finishEditingTitle(conversation.id)}
+                    onKeyDown={(e) => handleTitleKeyDown(conversation.id, e)}
+                    onClick={(e) => e.stopPropagation()}
+                    className="title-edit-input"
+                  />
+                ) : (
+                  <span onClick={(e) => startEditingTitle(conversation.id, e)}>
+                    {conversation.title}
+                  </span>
+                )}
               </div>
               <button 
                 className="delete-convo-btn"
@@ -268,7 +365,7 @@ function App() {
       </div>
       
       <div className="main-content">
-        <h1>{PROJECT_NAME} Chatbot</h1>
+        <h1>{CHATBOT_NAME ? `${CHATBOT_NAME} Chatbot` : 'Chatbot'}</h1>
         
         {activeConversation && (
           <div className="message-counter">
@@ -288,16 +385,27 @@ function App() {
                 className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
               >
                 <div className="message-content">
-                  <div className="message-role">{message.role === 'user' ? '>' : '$'}</div>
+                  <div className="message-role">
+                    {message.role === 'user' ? 
+                      (message.username ? `${message.username} >` : '>') : 
+                      (message.username ? `${message.username} $` : '$')}
+                  </div>
                   <div className="message-text">{renderMessageContent(message.content)}</div>
                   {message.sources && message.sources.length > 0 && (
                     <div className="message-sources">
-                      <p className="sources-label">Sources:</p>
-                      <ul>
-                        {message.sources.map((source, idx) => (
-                          <li key={idx}>{source}</li>
-                        ))}
-                      </ul>
+                      <div className="sources-header" onClick={() => toggleSources(index)}>
+                        <span className="sources-toggle">
+                          {expandedSources[index] ? '−' : '+'}
+                        </span>
+                        <p className="sources-label">Sources</p>
+                      </div>
+                      {expandedSources[index] && (
+                        <ul>
+                          {message.sources.map((source, idx) => (
+                            <li key={idx}>{source}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   )}
                 </div>
@@ -316,8 +424,9 @@ function App() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your query..."
+            placeholder={`Ask your question${CHATBOT_USER ? ` to ${CHATBOT_USER}` : ''}...`}
             disabled={isLoading || !activeConversation || activeConversation.messages.length >= MAX_MESSAGES}
+            className="chat-input"
           />
           <button 
             type="submit" 

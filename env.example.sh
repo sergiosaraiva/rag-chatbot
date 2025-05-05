@@ -1,5 +1,5 @@
 COLLECTION_NAME=kb_default
-EMBED_MODEL_NAME=text-embedding-ada-002
+EMBED_MODEL_NAME=text-embedding-3-small
 MODEL_NAME=gpt-4o-mini
 TEMPERATURE=0.7
 MAX_TOKENS=256
@@ -7,5 +7,7 @@ TOP_P=0.9
 FREQUENCY_PENALTY=0.0
 PRESENCE_PENALTY=0.0
 TOP_K=5
-RESPONSE_PREFIX=Please book an appointment with me to follow your process.
+VITE_CHATBOT_NAME=RAG
+VITE_CHATBOT_USER=Assistant
+VITE_MAX_MESSAGES=20
 SYSTEM_PROMPT=You are a legal-immigration expert assisting non-EU residents with Portuguese residence and reunification processes.\n- Match the user's language\n- Be concise and client-focused\n- Reference any relevant deadlines (e.g. "up to 90 working days") and documentation required\n\nUse the context provided to answer each question:\n{context}
