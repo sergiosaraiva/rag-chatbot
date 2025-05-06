@@ -12,7 +12,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.BACKEND_URL || 'http://backend:8000',
+        target: process.env.BACKEND_URL || 'http://localhost:8000',
         changeOrigin: true,
       }
     }
@@ -20,7 +20,7 @@ export default defineConfig({
   preview: {
     port: 3000,
     host: true,
-    allowedHosts: ['frontend-production-3d98.up.railway.app']
+    allowedHosts: ['dra-sofia.up.railway.app']
   },
   build: {
     outDir: 'dist'
