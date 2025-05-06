@@ -311,3 +311,35 @@ button:disabled {
   margin-bottom: 10px;
   text-align: right;
 }
+
+.loading-sidebar {
+  padding: 15px;
+  color: var(--terminal-orange-dim);
+  text-align: center;
+}
+
+.no-conversations {
+  padding: 15px;
+  color: var(--terminal-orange-dim);
+  text-align: center;
+}
+
+.refresh-btn {
+  background-color: var(--terminal-orange);
+  color: var(--terminal-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.refresh-btn:hover {
+  background-color: var(--terminal-orange-bright);
+}
+
+.refresh-btn:disabled {
+  background-color: var(--terminal-orange-dim);
+  cursor: not-allowed;
+}

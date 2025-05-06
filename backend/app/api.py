@@ -11,6 +11,12 @@ from slowapi.errors import RateLimitExceeded
 from openai import OpenAI
 from dotenv import load_dotenv
 
+from sqlalchemy.orm import Session
+from fastapi import Depends
+import json
+from datetime import datetime
+from app.database import get_db, Conversation, Message
+
 from app.models import ChatRequest, ChatResponse
 from app.chunk_and_index import index_file, get_chroma_client, get_embeddings
 
@@ -58,7 +64,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 limiter = Limiter(key_func=get_remote_address)
 
 # In-memory session history - includes messages and retrieved context
-session_history: Dict[str, Dict[str, Any]] = {}
+#session_history: Dict[str, Dict[str, Any]] = {}
 
 port = int(os.getenv("PORT", 8000))
 print(f"Starting on port: {port}")
@@ -169,13 +175,18 @@ async def delete_from_knowledge_base(filename: str):
 
 @app.post("/api/chat", response_model=ChatResponse)
 @limiter.limit("30/minute")
-async def chat(request: Request, chat_request: ChatRequest):
+async def chat(
+    request: Request, 
+    chat_request: ChatRequest,
+    db: Session = Depends(get_db)
+):
     """
     Chat endpoint
     
     Args:
         request: FastAPI Request object
         chat_request: ChatRequest object with query and optional session_id
+        db: Database session
         
     Returns:
         ChatResponse with answer, sources and session_id
@@ -186,12 +197,13 @@ async def chat(request: Request, chat_request: ChatRequest):
     logger.info("Chat request", session_id=session_id, query_length=len(query))
     
     try:
-        # Initialize session if needed
-        if session_id not in session_history:
-            session_history[session_id] = {
-                "messages": [],
-                "contexts": []  # Store retrieved contexts for each turn
-            }
+        # Get or create conversation in database
+        conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
+        if not conversation:
+            conversation = Conversation(session_id=session_id)
+            db.add(conversation)
+            db.commit()
+            db.refresh(conversation)
         
         # Get embedding for the query
         query_embedding = get_embeddings([query])[0]
@@ -218,32 +230,32 @@ async def chat(request: Request, chat_request: ChatRequest):
         sources = [meta.get("source", "unknown") for meta in metadatas]
         unique_sources = list(set(sources))
         
-        # Add current context to session history
-        session_history[session_id]["contexts"].append(current_context)
-        
-        # Keep only the most recent CONTEXT_MEMORY contexts
-        if len(session_history[session_id]["contexts"]) > CONTEXT_MEMORY:
-            session_history[session_id]["contexts"] = session_history[session_id]["contexts"][-CONTEXT_MEMORY:]
-        
-        # Combine current and previous contexts for better continuity
-        combined_context = "\n\n".join(session_history[session_id]["contexts"])
+        # Get conversation history from database, limited to last CONTEXT_MEMORY messages
+        messages_history = (
+            db.query(Message)
+            .filter(Message.conversation_id == conversation.id)
+            .order_by(Message.timestamp.desc())
+            .limit(CONTEXT_MEMORY * 2)  # Get pairs of messages
+            .all()
+        )
+        messages_history.reverse()  # Reverse to get chronological order
         
         # Prepare messages for OpenAI
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT.replace("{context}", combined_context)}
+        openai_messages = [
+            {"role": "system", "content": SYSTEM_PROMPT.replace("{context}", current_context)}
         ]
         
         # Add conversation history
-        for msg in session_history[session_id]["messages"]:
-            messages.append(msg)
+        for msg in messages_history:
+            openai_messages.append({"role": msg.role, "content": msg.content})
         
         # Add current query
-        messages.append({"role": "user", "content": query})
+        openai_messages.append({"role": "user", "content": query})
         
         # Call OpenAI chat completion
         response = client.chat.completions.create(
             model=MODEL_NAME,
-            messages=messages,
+            messages=openai_messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
             top_p=TOP_P,
@@ -257,13 +269,27 @@ async def chat(request: Request, chat_request: ChatRequest):
         if RESPONSE_PREFIX:
             answer = f"{answer}\n\n{RESPONSE_PREFIX}"
         
-        # Update session history
-        session_history[session_id]["messages"].append({"role": "user", "content": query})
-        session_history[session_id]["messages"].append({"role": "assistant", "content": answer})
+        # Save user message to database
+        user_message = Message(
+            conversation_id=conversation.id,
+            role="user",
+            content=query,
+            sources=None
+        )
+        db.add(user_message)
         
-        # Limit history length to prevent token explosion
-        if len(session_history[session_id]["messages"]) > CONTEXT_MEMORY * 2:  # Keep pairs of messages
-            session_history[session_id]["messages"] = session_history[session_id]["messages"][-(CONTEXT_MEMORY * 2):]
+        # Save assistant message to database
+        assistant_message = Message(
+            conversation_id=conversation.id,
+            role="assistant",
+            content=answer,
+            sources=json.dumps(unique_sources) if unique_sources else None
+        )
+        db.add(assistant_message)
+        
+        # Update conversation timestamp
+        conversation.updated_at = datetime.utcnow()
+        db.commit()
         
         # Return response
         return ChatResponse(
@@ -276,6 +302,65 @@ async def chat(request: Request, chat_request: ChatRequest):
         logger.error("Error in chat endpoint", error=str(e), session_id=session_id)
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/conversations/{session_id}")
+async def get_conversation(session_id: str, db: Session = Depends(get_db)):
+    """
+    Get conversation history by session ID
+    
+    Args:
+        session_id: Session ID of the conversation
+        db: Database session
+        
+    Returns:
+        Conversation history
+    """
+    try:
+        conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
+        if not conversation:
+            raise HTTPException(status_code=404, detail="Conversation not found")
+        
+        messages = db.query(Message).filter(Message.conversation_id == conversation.id).order_by(Message.timestamp).all()
+        
+        return {
+            "session_id": conversation.session_id,
+            "created_at": conversation.created_at.isoformat(),
+            "updated_at": conversation.updated_at.isoformat(),
+            "messages": [msg.to_dict() for msg in messages]
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error("Error retrieving conversation", error=str(e), session_id=session_id)
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Add an endpoint to list all conversations
+@app.get("/api/conversations")
+async def list_conversations(db: Session = Depends(get_db)):
+    """
+    List all conversations
+    
+    Args:
+        db: Database session
+        
+    Returns:
+        List of conversations
+    """
+    try:
+        conversations = db.query(Conversation).order_by(Conversation.updated_at.desc()).all()
+        return {
+            "conversations": [
+                {
+                    "session_id": conv.session_id,
+                    "created_at": conv.created_at.isoformat(),
+                    "updated_at": conv.updated_at.isoformat(),
+                    "message_count": len(conv.messages)
+                }
+                for conv in conversations
+            ]
+        }
+    except Exception as e:
+        logger.error("Error listing conversations", error=str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/debug/raw-http")
 def debug_raw_http():

@@ -5,11 +5,6 @@ import './App.css';
 const CHATBOT_NAME = import.meta.env.VITE_CHATBOT_NAME || '';
 const CHATBOT_USER = import.meta.env.VITE_CHATBOT_USER || '';
 
-console.log("Env vars:", {
-  name: import.meta.env.VITE_CHATBOT_NAME,
-  user: import.meta.env.VITE_CHATBOT_USER
-});
-
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -31,6 +26,32 @@ interface ChatResponse {
   session_id: string;
 }
 
+interface ServerConversation {
+  session_id: string;
+  created_at: string;
+  updated_at: string;
+  messages: ServerMessage[];
+}
+
+interface ServerListResponse {
+  conversations: ServerConversationSummary[];
+}
+
+interface ServerConversationSummary {
+  session_id: string;
+  created_at: string;
+  updated_at: string;
+  message_count: number;
+}
+
+interface ServerMessage {
+  id: number;
+  role: 'user' | 'assistant';
+  content: string;
+  sources: string[] | null;
+  timestamp: string;
+}
+
 // Get maximum messages per conversation from environment variable with fallback
 const MAX_MESSAGES = parseInt(import.meta.env.VITE_MAX_MESSAGES || '20', 10);
 
@@ -39,35 +60,211 @@ function App() {
   const [activeConversationId, setActiveConversationId] = useState<string | null>(null);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [expandedSources, setExpandedSources] = useState<{[messageIndex: number]: boolean}>({});
   const titleInputRef = useRef<HTMLInputElement>(null);
-
-  // Load conversations from localStorage
+  
+  // Load conversations from server and localStorage
   useEffect(() => {
-    const storedConversations = localStorage.getItem('chatConversations');
-    if (storedConversations) {
+    const fetchAndLoadConversations = async () => {
+      setIsInitialLoading(true);
+      
+      // First load from local storage as a fallback
+      const storedConversations = localStorage.getItem('chatConversations');
+      let localConversations: Conversation[] = [];
+      
+      if (storedConversations) {
+        try {
+          const parsedConversations = JSON.parse(storedConversations);
+          // Add isEditingTitle flag if it doesn't exist
+          localConversations = parsedConversations.map((conv: any) => ({
+            ...conv,
+            isEditingTitle: false
+          }));
+          
+          // Set conversations from localStorage first for a faster initial load
+          setConversations(localConversations);
+          
+          // Set active conversation to the first one if available
+          if (localConversations.length > 0) {
+            setActiveConversationId(localConversations[0].id);
+          }
+        } catch (error) {
+          console.error("Error parsing conversations:", error);
+          localConversations = [];
+        }
+      }
+      
+      // Then fetch all conversations from server
       try {
-        const parsedConversations = JSON.parse(storedConversations);
-        // Add isEditingTitle flag if it doesn't exist
-        const updatedConversations = parsedConversations.map((conv: any) => ({
-          ...conv,
-          isEditingTitle: false
-        }));
-        setConversations(updatedConversations);
-        
-        // Set active conversation to the last one if available
-        if (updatedConversations.length > 0) {
-          setActiveConversationId(updatedConversations[0].id);
+        const allServerConversations = await fetchAllServerConversations();
+        if (allServerConversations && allServerConversations.length > 0) {
+          // Process server conversations
+          const processedConversations = await processServerConversations(
+            allServerConversations, 
+            localConversations
+          );
+          
+          if (processedConversations.length > 0) {
+            setConversations(processedConversations);
+            
+            // Set active conversation if none is active
+            if (!activeConversationId && processedConversations.length > 0) {
+              setActiveConversationId(processedConversations[0].id);
+            }
+          } else if (localConversations.length === 0) {
+            // If no conversations from server or localStorage, create a new one
+            createNewConversation();
+          }
+        } else if (localConversations.length === 0) {
+          // If no server conversations and no localStorage conversations, create a new one
+          createNewConversation();
         }
       } catch (error) {
-        console.error("Error parsing conversations:", error);
-        createNewConversation();
+        console.error("Error fetching server conversations:", error);
+        
+        // If we have no local conversations either, create a new one
+        if (localConversations.length === 0) {
+          createNewConversation();
+        }
+      } finally {
+        setIsInitialLoading(false);
       }
-    } else {
-      // Create a default conversation if none exists
-      createNewConversation();
-    }
+    };
+    
+    fetchAndLoadConversations();
   }, []);
+  
+  // Process server conversations and merge with local ones
+  const processServerConversations = async (
+    serverSummaries: ServerConversationSummary[],
+    localConversations: Conversation[]
+  ): Promise<Conversation[]> => {
+    const result: Conversation[] = [];
+    const processedSessionIds = new Set<string>();
+    
+    // Sort server conversations by update date (newest first)
+    serverSummaries.sort((a, b) => 
+      new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+    );
+    
+    // Process each server conversation
+    for (const summary of serverSummaries) {
+      try {
+        const serverConv = await fetchServerConversation(summary.session_id);
+        if (!serverConv) continue;
+        
+        // Check if this session ID is already in a local conversation
+        const existingLocalConv = localConversations.find(
+          c => c.sessionId === summary.session_id
+        );
+        
+        if (existingLocalConv) {
+          // Update existing conversation with server data
+          const messages: Message[] = serverConv.messages.map(msg => ({
+            role: msg.role,
+            content: msg.content,
+            sources: msg.sources || undefined,
+            username: msg.role === 'user' ? undefined : CHATBOT_USER || undefined
+          }));
+          
+          result.push({
+            ...existingLocalConv,
+            messages,
+            sessionId: serverConv.session_id,
+            isEditingTitle: false
+          });
+        } else {
+          // Create new conversation from server data
+          const newId = 'conv_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+          const timestamp = new Date(serverConv.updated_at).toLocaleString('en-US', {
+            year: 'numeric',
+            month: '2-digit', 
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          });
+          
+          const messages: Message[] = serverConv.messages.map(msg => ({
+            role: msg.role,
+            content: msg.content,
+            sources: msg.sources || undefined,
+            username: msg.role === 'user' ? undefined : CHATBOT_USER || undefined
+          }));
+          
+          result.push({
+            id: newId,
+            title: timestamp,
+            messages,
+            sessionId: serverConv.session_id,
+            isEditingTitle: false
+          });
+        }
+        
+        processedSessionIds.add(summary.session_id);
+      } catch (error) {
+        console.error(`Error processing server conversation ${summary.session_id}:`, error);
+      }
+    }
+    
+    // Add local conversations that aren't on the server
+    for (const localConv of localConversations) {
+      if (!localConv.sessionId || !processedSessionIds.has(localConv.sessionId)) {
+        result.push({
+          ...localConv,
+          isEditingTitle: false
+        });
+      }
+    }
+    
+    // Sort by most recent first (based on ID which includes timestamp)
+    result.sort((a, b) => {
+      // Extract timestamp from ID or use current timestamp if not available
+      const getTimestamp = (id: string) => {
+        const match = id.match(/conv_(\d+)/);
+        return match ? parseInt(match[1]) : Date.now();
+      };
+      
+      return getTimestamp(b.id) - getTimestamp(a.id);
+    });
+    
+    return result;
+  };
+  
+  // Fetch all conversations from server
+  const fetchAllServerConversations = async (): Promise<ServerConversationSummary[]> => {
+    try {
+      const response = await fetch('/api/conversations');
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+      }
+      
+      const data: ServerListResponse = await response.json();
+      return data.conversations;
+    } catch (error) {
+      console.error("Error fetching all conversations:", error);
+      return [];
+    }
+  };
+  
+  // Fetch conversation from server
+  const fetchServerConversation = async (sessionId: string): Promise<ServerConversation | null> => {
+    try {
+      const response = await fetch(`/api/conversations/${sessionId}`);
+      if (!response.ok) {
+        if (response.status === 404) {
+          return null; // Conversation not found on server
+        }
+        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(`Error fetching conversation ${sessionId}:`, error);
+      return null;
+    }
+  };
 
   // Save conversations to localStorage
   useEffect(() => {
@@ -275,6 +472,38 @@ function App() {
           return conv;
         })
       );
+      
+      // Now fetch the complete conversation from server to ensure sync
+      if (data.session_id) {
+        try {
+          const serverConv = await fetchServerConversation(data.session_id);
+          if (serverConv && activeConversationId) {
+            setConversations(prevConversations => 
+              prevConversations.map(conv => {
+                if (conv.id === activeConversationId) {
+                  // Convert server messages to local format
+                  const messages: Message[] = serverConv.messages.map(msg => ({
+                    role: msg.role,
+                    content: msg.content,
+                    sources: msg.sources || undefined,
+                    username: msg.role === 'user' ? undefined : CHATBOT_USER || undefined
+                  }));
+                  
+                  return {
+                    ...conv,
+                    messages,
+                    sessionId: serverConv.session_id,
+                  };
+                }
+                return conv;
+              })
+            );
+          }
+        } catch (syncError) {
+          console.error("Error syncing after message:", syncError);
+          // Continue with local data if server sync fails
+        }
+      }
     } catch (error) {
       console.error('Error:', error);
       // Add error message
@@ -328,44 +557,76 @@ function App() {
     ));
   };
 
+  // Function to refresh conversations from server
+  const refreshConversations = async () => {
+    setIsLoading(true);
+    try {
+      const allServerConversations = await fetchAllServerConversations();
+      if (allServerConversations && allServerConversations.length > 0) {
+        const processedConversations = await processServerConversations(
+          allServerConversations, 
+          conversations
+        );
+        
+        if (processedConversations.length > 0) {
+          setConversations(processedConversations);
+        }
+      }
+    } catch (error) {
+      console.error("Error refreshing conversations:", error);
+      alert("Failed to refresh conversations from server.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="app-container">
       <div className="sidebar">
         <div className="sidebar-header">
-          <button className="new-chat-btn" onClick={createNewConversation}>New</button>
+          <button className="new-chat-btn" onClick={createNewConversation}>New Chat</button>
+          <button className="refresh-btn" onClick={refreshConversations} disabled={isLoading}>
+            Refresh
+          </button>
         </div>
         <div className="conversation-list">
-          {conversations.map((conversation) => (
-            <div 
-              key={conversation.id}
-              className={`conversation-item ${conversation.id === activeConversationId ? 'active' : ''}`}
-              onClick={() => setActiveConversationId(conversation.id)}
-            >
-              <div className="conversation-title">
-                {conversation.isEditingTitle ? (
-                  <input
-                    ref={titleInputRef}
-                    value={conversation.title}
-                    onChange={(e) => handleTitleChange(conversation.id, e.target.value)}
-                    onBlur={() => finishEditingTitle(conversation.id)}
-                    onKeyDown={(e) => handleTitleKeyDown(conversation.id, e)}
-                    onClick={(e) => e.stopPropagation()}
-                    className="title-edit-input"
-                  />
-                ) : (
-                  <span onClick={(e) => startEditingTitle(conversation.id, e)}>
-                    {conversation.title}
-                  </span>
-                )}
-              </div>
-              <button 
-                className="delete-convo-btn"
-                onClick={(e) => deleteConversation(conversation.id, e)}
+          {isInitialLoading ? (
+            <div className="loading-sidebar">Loading conversations...</div>
+          ) : conversations.length === 0 ? (
+            <div className="no-conversations">No conversations found</div>
+          ) : (
+            conversations.map((conversation) => (
+              <div 
+                key={conversation.id}
+                className={`conversation-item ${conversation.id === activeConversationId ? 'active' : ''}`}
+                onClick={() => setActiveConversationId(conversation.id)}
               >
-                ×
-              </button>
-            </div>
-          ))}
+                <div className="conversation-title">
+                  {conversation.isEditingTitle ? (
+                    <input
+                      ref={titleInputRef}
+                      value={conversation.title}
+                      onChange={(e) => handleTitleChange(conversation.id, e.target.value)}
+                      onBlur={() => finishEditingTitle(conversation.id)}
+                      onKeyDown={(e) => handleTitleKeyDown(conversation.id, e)}
+                      onClick={(e) => e.stopPropagation()}
+                      className="title-edit-input"
+                    />
+                  ) : (
+                    <span onClick={(e) => startEditingTitle(conversation.id, e)}>
+                      {conversation.title}
+                    </span>
+                  )}
+                </div>
+                <button 
+                  className="delete-convo-btn"
+                  onClick={(e) => deleteConversation(conversation.id, e)}
+                >
+                  ×
+                </button>
+              </div>
+            ))
+          )}
         </div>
       </div>
       
@@ -379,7 +640,11 @@ function App() {
         )}
         
         <div className="chat-container">
-          {!activeConversation || activeConversation.messages.length === 0 ? (
+          {isInitialLoading ? (
+            <div className="loading-indicator">
+              <p>Loading conversations...</p>
+            </div>
+          ) : !activeConversation || activeConversation.messages.length === 0 ? (
             <div className="empty-chat">
               <p>$ Ask {CHATBOT_USER ? `${CHATBOT_USER}` : 'me'} about {CHATBOT_NAME ? `${CHATBOT_NAME}` : ' my knowledge base'}! <span className="blinking-cursor"></span></p>
             </div>
@@ -417,7 +682,7 @@ function App() {
               </div>
             ))
           )}
-          {isLoading && (
+          {isLoading && !isInitialLoading && (
             <div className="loading-indicator">
               <p>Processing...</p>
             </div>

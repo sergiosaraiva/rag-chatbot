@@ -6,3 +6,4 @@ slowapi
 structlog
 python-dotenv
 python-multipart
+sqlalchemy
