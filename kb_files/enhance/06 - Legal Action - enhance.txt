@@ -1,0 +1,34 @@
+Glossary:
+* Judicial action: A legal proceeding initiated in the Administrative and Tax Court to challenge administrative inaction and compel SEF to schedule an immigration appointment.
+* Tax Identification Number (NIF): A unique number assigned by Portuguese tax authorities to individuals and entities for tax purposes.
+* Social Security Identification Number (NISS): A number assigned by the Portuguese social security system to track contributions and access benefits.
+* National Health Service user number (SNS user number): An identifier issued by the Serviço Nacional de Saúde to access public health services.
+* Payslip: A document issued by an employer detailing salary, deductions, and net pay for a specific pay period.
+* Job contract: A written agreement outlining the terms and conditions of employment between an employee and employer.
+* Proof of self-employment: Documentation demonstrating that an individual is engaged in a self-employed activity, such as invoices or registration.
+* Certificate of residence: An official document from the local Parish Council (Junta de Freguesia) confirming an individual’s place of residence.
+* Parish Council (Junta de Freguesia): The lowest-level administrative division in Portugal responsible for local civil documentation, including residence certificates.
+* Legal entry visa: A visa granted by Portuguese consular authorities permitting lawful entry into Portugal.
+* Residence permit: An authorization issued by SEF allowing a foreign national to reside legally in Portugal.
+* Expression of Interest (EOI): A declaration submitted to the immigration service indicating intent to reside, often accompanied by proof of at least 12 months of social security contributions.
+* Social security contributions: Payments made to the Portuguese social security system, reflecting an individual’s participation in employment or self-employment schemes.
+
+Acronyms:
+* Tax Identification Number (NIF): The taxpayer ID number used by Portuguese authorities to identify individuals and entities for taxation.
+* Social Security Identification Number (NISS): The registration number used by the Portuguese social security system to record contributions and access benefits.
+* National Health Service user number (SNS): The unique number used by the Portuguese National Health Service to register and manage patient records.
+* Expression of Interest (EOI): A formal notification to the immigration service expressing intent to reside and evidence of sufficient social security contributions.
+
+Summary: Scheduling a service at the Immigration and Borders Service (SEF) is free of charge and can be done online or by phone via SEF’s contact center; however, the administrative processing of residence permit applications can take up to 90 days for initial permits and 60 days for renewals, and appointment slots may be unavailable. When administrative channels fail, applicants may file a judicial action before the Administrative and Tax Court to compel SEF to schedule a normal appointment, and courts have ordered SEF to grant such appointments within 10 business days from notification. Judicial actions incur court fees (custas judiciais), corresponding to the price of judicial services and payable through a Documento Único de Cobrança (DUC).
+Topic: Required Documentation for Judicial Action to Obtain a SEF Appointment
+Keywords: judicial action, SEF appointment, NIF, NISS, SNS user number
+Question: What documents are required to file a judicial action before the Administrative Court to secure a standard immigration appointment with SEF?
+Answer: To initiate a judicial action compelling SEF to grant a regular appointment, submit the following documents to your attorney:
+* Tax Identification Number (NIF)
+* Social Security Identification Number (NISS)
+* National Health Service user number (SNS user number), if available
+* Most recent three payslips
+* Employment contract or proof of self-employment activity
+* Certificate of residence from the Parish Council (Junta de Freguesia)
+* Legal entry visa or current residence permit, if available
+* Expression of Interest (EOI) or proof of at least 12 months of social security contributions

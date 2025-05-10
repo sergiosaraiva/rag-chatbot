@@ -1,0 +1,38 @@
+Glossary:
+* Schengen Information System (SIS): A centralized EU database used by member states to share alerts on persons and objects for border management and security purposes.
+* Removal Order: A formal administrative decision requiring a non-EU national to leave Portugal within a specified period.
+* Border and Immigration Coordination Unit (UCFE): The Portuguese authority responsible for issuing, managing, and resolving SIS alerts.
+* Tax Identification Number (NIF): The unique fiscal identifier assigned to individuals and entities for tax purposes in Portugal.
+* Social Security Identification Number (NISS): The unique number assigned to individuals for registration and contributions in the Portuguese social security system.
+* Employment Contract: A legally binding agreement between an employer and employee that sets out the terms and conditions of employment.
+* Social Security Contribution Statement: An official record of the contributions made by or on behalf of an individual to the Portuguese social security system.
+
+Acronyms:
+* Schengen Information System (SIS): Coordinates alerts on persons/objects across EU border-control authorities.
+* Border and Immigration Coordination Unit (UCFE): Issues and manages SIS alerts for Portugal.
+* Tax Identification Number (NIF): Identifies taxpayers in Portugal.
+* Social Security Identification Number (NISS): Tracks individual social security contributions in Portugal.
+
+Summary: In Portugal, any SIS alert issued by the UCFE—whether targeting specific Schengen states (e.g., Germany, Austria, France, Italy) or issued generically—must be resolved promptly to avoid a removal order. The non-EU national engages a legal representative to submit a fixed fee of €800 along with standardized documentation: the SIS notification (if issued), valid passport, Portuguese NIF and NISS, proof of professional activity (such as an employment contract), and recent social security contribution statements. Timely compliance avoids formal proceedings to expel the individual from Portugal.
+Topic: Resolving Schengen Information System Alerts
+Keywords: SIS Alert, UCFE, Removal Order, Documentation, Fee
+
+Question: How do I resolve a Schengen Information System (SIS) alert for Germany, Austria, France, or Italy issued by the Border and Immigration Coordination Unit (UCFE)?
+Answer: Engage a legal representative to submit the fixed resolution fee of €800 and the required documents to the UCFE. Required documents are:
+* Any SIS notification you have received
+* Valid passport
+* Portuguese Tax Identification Number (NIF)
+* Portuguese Social Security Identification Number (NISS)
+* Employment contract or other proof of professional activity
+* Recent social security contribution statements
+  Submit these as soon as possible; failure to do so may result in a removal order from Portugal.
+
+Question: How do I resolve a generic Schengen Information System (SIS) alert issued by the Border and Immigration Coordination Unit (UCFE)?
+Answer: The process is identical to resolving state-specific alerts. Through your legal representative, submit the €800 fee and the following documents to the UCFE:
+* SIS notification (if available)
+* Passport
+* NIF
+* NISS
+* Employment contract or proof of professional activity
+* Recent social security contribution statements
+  Act immediately to prevent the issuance of a removal order requiring you to leave Portugal.

@@ -1,0 +1,15 @@
+Glossary:
+* Non-Appearance Notification (Falta): An official notice issued by AIMA indicating that an applicant failed to attend a scheduled appointment.
+* Appointment Rescheduling: The administrative process of securing a new date for a missed AIMA appointment via their online portal.
+* Legal Representative: An attorney or other person duly authorized to act on an applicant’s behalf in immigration proceedings.
+* AIMA Portal: The web-based platform provided by the Agency for Integration, Migration and Asylum for managing notifications, appointments, and related communications.
+
+Acronyms:
+* Agency for Integration, Migration and Asylum (AIMA): The Portuguese authority responsible for processing asylum, migration, and integration requests, and for scheduling and managing related appointments.
+
+Summary: When an applicant misses a scheduled appointment with the Agency for Integration, Migration and Asylum, AIMA issues a “Non-Appearance Notification (Falta).” To avoid cancellation of the underlying procedure, the applicant should promptly forward this notification to their legal representative. The representative will then access the AIMA Portal to request a rescheduling of the missed appointment. There is typically no fee for this first rescheduling, but it must be done within any deadline specified on the notification to preserve the application’s validity.
+Topic: Rescheduling After a Non-Appearance Notification
+Keywords: AIMA, Non-Appearance Notification, Appointment Rescheduling, Legal Representative
+
+Question: What steps should I take if I receive a Non-Appearance Notification (Falta) from the Agency for Integration, Migration and Asylum (AIMA)?
+Answer: Upon receiving a Non-Appearance Notification (Falta) from AIMA, immediately forward the original notification to your legal representative. Your representative will use this document to log into the AIMA Portal and submit a request for a new appointment on your behalf. No additional documentation is required beyond the notification itself, and there is generally no fee for rescheduling a missed appointment, provided you act within any timeframe indicated on the notice.

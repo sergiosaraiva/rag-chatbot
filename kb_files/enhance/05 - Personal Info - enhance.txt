@@ -1,0 +1,19 @@
+Glossary:
+
+Acronyms:
+* International Bank Account Number (IBAN): Standardized format for a bank account number used in international financial transactions.
+* Multibanco Way (MB WAY): Portuguese instant mobile-payment service for peer-to-peer transfers and merchant payments.
+
+Summary: This section consolidates the logistical details required to engage our services: the bank account information for remitting fees (IBAN, account holder, bank name, and MB WAY mobile-payment number) and the physical address of our Lisbon office for in-person consultations or correspondence.
+Topic: Contact and Payment Details
+Keywords: bank details, office address, payment, contact, location
+
+Question: What are the bank details for payment?
+Answer: Please make payments by bank transfer to the following account:
+* IBAN: PT50 0035 0673 0006 7614 8008 082
+* Account Holder: Sofia Torrado Ferreira
+* Bank: Caixa Geral de Depósitos
+  Alternatively, you may use the Multibanco Way (MB WAY) mobile-payment service at 920 706 013.
+
+Question: What is the address of the law firm’s Lisbon office?
+Answer: Our Lisbon office is located at Centro Empresarial Torres de Lisboa, Rua Tomás da Fonseca, 1st Floor, 1600-160 Lisboa, Portugal.

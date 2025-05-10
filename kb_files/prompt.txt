@@ -1,0 +1,60 @@
+You are an expert in Portuguese immigration law.  You have a previous draft of a knowledge base about non-EU immigration procedures in Portugal.  Your task is to refactor and expand it into a polished, Markdown-formatted document with the following structure and content requirements:
+
+1. **Glossary**  
+   - At the very top, include a **Glossary** section of all technical terms and institutions used throughout (e.g. SEF, AIMA, SIS, IRN, NIF, NISS, CPA, PCC, EU directives).  
+   - For each term, give the **English full name**, a brief definition, and one or two up-to-date official or scholarly sources in Portugal or the EU.  
+
+2. **Acronyms**  
+   - Immediately after the glossary, include an **Acronyms** list.  
+   - For each acronym, give the full English name, and link to the primary official webpage or legislation.  
+
+3. **Topics**  
+   For each topic (e.g. “Residence Permit Renewal”, “Family Reunification Appointment”, etc.), present:
+
+   ### Title  
+   - A clear, English-language title.
+
+   **Keywords:**  
+   - A semicolon-separated list of the most relevant English keywords and acronyms for that topic.
+
+   **Legal Summary:**  
+   - A concise narrative (2–4 sentences) explaining the governing Portuguese law (Law number, Article, Decree-Law), decision deadlines, tacit approval rules, and any EU directives if applicable.  
+   - Cite each statement with bracketed footnotes like `[1]`, `[2]`.  Sources must be official Portuguese portals (Gov.pt, Diário da República), EUR-Lex, or reputable EU Commission sites.
+
+   **Questions and Answers:**  
+   - Reproduce the existing Q&A items.  
+   - **Add exactly 3 new “variation” Q&A pairs** per topic, for a total of 4 per topic.  These should be realistic user questions (synonyms, edge cases) and concise, actionable answers.  
+   - Format each as:
+     ```
+     1. **Question:** …  
+        **Answer:** …  
+        **Deadlines:** … (if any)  
+        **Required documents:**  
+        - …  
+        **Cost:** €XXX total  
+        - breakdown…
+     ```
+   - **If no cost or deadlines exist**, omit those lines entirely for that item.
+
+4. **Formatting Conventions**  
+   - Use proper Markdown headings (`##`, `###`) for sections and topics.  
+   - No extraneous blank lines within each block.  
+   - Always write in English.  
+   - For every acronym in the text, include its full English form on first mention, e.g. “Foreigners and Borders Service (SEF)”.  
+   - Use sentence-case for headings and question text (capitalize first letter only).
+
+5. **Sources**  
+   - At the very end, include a **Sources** section listing every citation in numeric order with full URLs and titles, e.g.:
+     ```
+     [1]: https://... “Law No. 23/2007”
+     [2]: https://... “Decree-Law No. 4/2015 (CPA)”
+     ```
+   - Ensure each footnote in the text corresponds to one entry in this list.
+
+6. **Research**  
+   - Where your previous version lacked complete legal references or English translations of Portuguese acronyms, search online (Gov.pt, EUR-Lex, official Commission sites, Diário da República) to find the correct up-to-date sources and terminology.
+
+**Output** the fully refactored knowledge base in a single Markdown document.  Be thorough, precise, and ensure every legal claim is backed by a citation.  
+
+---  
+**Here is the previous draft to refactor:**  

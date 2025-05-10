@@ -1,0 +1,35 @@
+Glossary:
+* Residence Permit: An official document authorizing a non-EU national to live in Portugal for a specified period.
+* Criminal Record Certificate: A formal document issued by a national authority showing any criminal convictions (also known as a Police Clearance Certificate).
+* Statutory Deadline: The legally prescribed time limit within which an administrative or judicial decision must be issued—in this case, 90 working days.
+* Non-Appearance/Delay Notification: A formal notice filed by the applicant with AIMA when the residence card has not been issued within the statutory deadline.
+* Expression of Interest (EOI): A declaration, often submitted to the immigration service, evidencing intent to work and residence, sometimes used as proof of social security contributions when under 12 months.
+
+Acronyms:
+* Agency for Integration, Migration and Asylum (AIMA): The Portuguese authority responsible for processing immigration, asylum, and integration matters.
+* Police Clearance Certificate (PCC): A certificate demonstrating a person’s criminal record status.
+* Tax Identification Number (NIF): The unique number assigned by the Portuguese tax authorities to identify taxpayers.
+* Social Security Identification Number (NISS): The unique number used by the Portuguese social security system to track contributions.
+* National Health Service User Number (SNS): The personal identifier required to access Portugal’s public healthcare services.
+* Expression of Interest (EOI): A formal submission showing 12 months of social security contributions or intent to reside and work.
+
+Summary: Under Portuguese immigration law, applicants who have submitted a Criminal Record Certificate (Police Clearance Certificate, PCC) but have not received their residence permit within 90 working days may file a non-appearance or delay notification with the Agency for Integration, Migration and Asylum (AIMA). This triggers an expedited judicial review to enforce the statutory deadline. Applicants must pay a total judicial fee of €500 (split into a €300 advance and €200 upon completion) and submit supporting documentation—including identification numbers (NIF, NISS, SNS), legal status proof, employment evidence or an Expression of Interest (EOI), recent payslips, proof of residence, job contract or self-employment documents, and the PCC itself—to secure issuance of their residence card.
+Topic: Expedited Judicial Review for Delayed Residence Card Issuance
+Keywords: residence card delay, judicial review, criminal record certificate, AIMA, fees
+
+Question: What documents and fees are required to expedite my residence permit issuance if I submitted my Criminal Record Certificate (Police Clearance Certificate, PCC) over 90 working days ago?
+Answer: To trigger an expedited judicial review after a delay of more than 90 working days, you must file a non-appearance or delay notification with the Agency for Integration, Migration and Asylum (AIMA). Once the court accepts the notification, it will enforce the 90 working-day statutory deadline, and your residence permit will be sent to your address upon issuance. Alongside that notification, provide the following:
+Required Documents
+* Tax Identification Number (NIF)
+* Social Security Identification Number (NISS)
+* National Health Service user number (SNS), if available
+* Expression of Interest (EOI) or proof of at least 12 months of social security contributions
+* Valid entry visa or current residence permit
+* Last three payslips
+* Certificate of residence from the Parish Council (Junta de Freguesia)
+* Employment contract or proof of self-employment
+* Criminal Record Certificate (Police Clearance Certificate, PCC)
+Fees
+* Total: €500
+  * €300 payable in advance
+  * €200 upon completion of the expedited process

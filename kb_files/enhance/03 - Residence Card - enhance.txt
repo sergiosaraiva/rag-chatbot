@@ -1,0 +1,51 @@
+Glossary:
+* Temporary Residence Card: A government-issued document authorizing a non-EU national to reside legally in Portugal for a limited period.
+* Judicial Enforcement Action: A court-filed proceeding to compel an administrative authority to fulfill its legal deadlines or obligations.
+* Biometric Registration: The process of submitting fingerprints, a photograph, and a signature to immigration authorities as part of a residence permit application.
+* Schengen Information System: An EU-wide database for sharing security and immigration data among member states.
+* Criminal Record Certificate: An official document issued by judicial or police authorities certifying whether an individual has any criminal convictions.
+* Student Residence Permit: A category of Temporary Residence Card granted to non-EU nationals enrolled in a recognized Portuguese educational institution.
+* Expression of Interest: A formal declaration indicating a non-EU national’s intent to regularize their immigration status by demonstrating social or economic ties to Portugal.
+
+Acronyms:
+* Temporary Residence Card (TRC): The official card permitting non-EU nationals to reside temporarily in Portugal.
+* Schengen Information System (SIS): The shared EU database used to exchange information on persons and objects of interest to border and law-enforcement authorities.
+* Portuguese Immigration and Borders Service (SEF): The national agency responsible for border control and immigration matters in Portugal.
+* Tax Identification Number (NIF): The unique fiscal number assigned to individuals and entities for tax purposes in Portugal.
+* Social Security Identification Number (NISS): The unique number assigned to individuals for social security registration and contribution tracking.
+* Expression of Interest (EOI): A non-binding declaration used to demonstrate ongoing ties to Portugal when applying for a residence permit.
+
+Summary: This section describes how non-EU nationals may obtain or enforce issuance of a Temporary Residence Card (TRC) in Portugal—either by filing a judicial enforcement action against SEF to compel issuance and scheduling of collection within the statutory 90-working-day deadline or by regularizing status under the student regime. The general legal-action route takes approximately two to three months, with fees ranging from €500 to €800 depending on the stage and remedy, and requires supporting documents such as a signed power of attorney, passport copy, proof of TRC application or expired permit, and a court-signed declaration via the SIS. Applicants must also provide specific identification numbers (NIF, NISS) and, where applicable, proof of social security contributions or an Expression of Interest. Alternatively, those without prior status may enroll in a recognized Portuguese educational institution and submit a SEF application for a student residence permit.
+Topic: Judicial Enforcement of TRC Issuance & Student Regime Regularization
+Keywords: TRC, Judicial Enforcement, Biometric Registration, Fees, Documentation
+
+Question: What is the timeline, cost, and required documentation for obtaining a Temporary Residence Card (TRC) through judicial action?
+Answer: The judicial action process typically takes 2–3 months from filing to card receipt. You must file an enforcement petition with the Administrative Court and request a court-signed declaration via the Schengen Information System (SIS) to notify your country of origin. Fees total €800, payable in two installments (€400 on filing and €400 on card issuance). Required documents include:
+* A signed power of attorney
+* A copy of your valid passport
+* Proof of a prior TRC application or an expired permit
+* The court-signed declaration obtained via SIS
+
+Question: What legal remedy can I pursue if I completed biometric registration but have not received my residence card or any notification?
+Answer: You may file a judicial enforcement action before the Administrative Court to compel the Serviço de Estrangeiros e Fronteiras (SEF) to schedule your TRC collection appointment within the statutory 90-working-day deadline from the date of biometric registration. Without this action, there is no enforceable administrative deadline.
+
+Question: What can I do if I have completed my biometric registration but still have not received my residence card?
+Answer: You may initiate a judicial enforcement action in the Administrative Court to enforce the 90-working-day deadline for issuing and scheduling collection of your card. This requires submitting proof of biometric registration and payer of the applicable court fees.
+
+Question: I submitted my criminal record certificate on \[DATE] following biometric notification but have not received my residence card; what legal remedy is available?
+Answer: File a judicial enforcement action against SEF to enforce the 90-working-day deadline measured from the date you submitted all required documents—including your criminal record certificate—to compel issuance and collection scheduling of your TRC.
+
+Question: How can I regularize my status in Portugal if I live there without any immigration documents?
+Answer: Enroll in a recognized Portuguese educational institution and apply to SEF for a student residence permit. Upon acceptance, submit your application through SEF with proof of enrollment and supporting documentation to obtain a TRC under the student regime.
+
+Question: What legal action can I take if I have completed biometric registration but have not received my Temporary Residence Card (TRC)?
+Answer: You can file a judicial enforcement action before the Administrative Court to compel SEF to issue and make available for collection your TRC within 90 working days of biometric registration.
+Fees:
+* €500 total: €300 upon filing; €200 upon card issuance
+Required Documentation:
+* Tax Identification Number (NIF)
+* Social Security Identification Number (NISS)
+* Proof of employment or self-employment (contract or activity declaration)
+* Last three payslips
+* Parish council residence certificate (Junta de Freguesia)
+* An Expression of Interest (EOI) or evidence of 12 months of social security contributions

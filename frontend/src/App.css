@@ -343,3 +343,88 @@ button:disabled {
   background-color: var(--terminal-orange-dim);
   cursor: not-allowed;
 }
+
+/* Add these styles to your existing App.css */
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 15px 0;
+  border-top: 1px solid var(--terminal-orange);
+}
+
+.kb-manager-btn {
+  width: 100%;
+  background-color: var(--terminal-orange);
+  color: var(--terminal-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.kb-manager-btn:hover {
+  background-color: var(--terminal-orange-bright);
+}
+
+.knowledge-manager-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+.knowledge-manager-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.knowledge-manager-header h1 {
+  margin: 0;
+}
+
+.back-to-chat-btn {
+  background-color: var(--terminal-orange);
+  color: var(--terminal-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.back-to-chat-btn:hover {
+  background-color: var(--terminal-orange-bright);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+  
+  .main-content {
+    height: auto;
+  }
+  
+  .knowledge-manager-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .knowledge-manager-container {
+    padding: 0 10px;
+  }
+}

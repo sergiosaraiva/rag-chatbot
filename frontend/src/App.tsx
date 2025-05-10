@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent, useRef } from 'react';
 import './App.css';
+import KnowledgeManager from './KnowledgeManager';
 
 // Get project name and user name from environment variables with fallbacks
 const CHATBOT_NAME = import.meta.env.VITE_CHATBOT_NAME || '';
@@ -62,6 +63,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [expandedSources, setExpandedSources] = useState<{[messageIndex: number]: boolean}>({});
+  const [showKnowledgeManager, setShowKnowledgeManager] = useState(false);
   const titleInputRef = useRef<HTMLInputElement>(null);
   
   // Load conversations from server and localStorage
@@ -580,146 +582,170 @@ function App() {
     }
   };
 
+  // Toggle knowledge manager visibility
+  const toggleKnowledgeManager = () => {
+    setShowKnowledgeManager(!showKnowledgeManager);
+  };
+
   return (
     <div className="app-container">
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <button className="new-chat-btn" onClick={createNewConversation}>New Chat</button>
-          <button className="refresh-btn" onClick={refreshConversations} disabled={isLoading}>
-            Refresh
-          </button>
-        </div>
-        <div className="conversation-list">
-          {isInitialLoading ? (
-            <div className="loading-sidebar">Loading conversations...</div>
-          ) : conversations.length === 0 ? (
-            <div className="no-conversations">No conversations found</div>
-          ) : (
-            conversations.map((conversation) => (
-              <div 
-                key={conversation.id}
-                className={`conversation-item ${conversation.id === activeConversationId ? 'active' : ''}`}
-                onClick={() => setActiveConversationId(conversation.id)}
-              >
-                <div className="conversation-title">
-                  {conversation.isEditingTitle ? (
-                    <input
-                      ref={titleInputRef}
-                      value={conversation.title}
-                      onChange={(e) => handleTitleChange(conversation.id, e.target.value)}
-                      onBlur={() => finishEditingTitle(conversation.id)}
-                      onKeyDown={(e) => handleTitleKeyDown(conversation.id, e)}
-                      onClick={(e) => e.stopPropagation()}
-                      className="title-edit-input"
-                    />
-                  ) : (
-                    <span onClick={(e) => startEditingTitle(conversation.id, e)}>
-                      {conversation.title}
-                    </span>
-                  )}
-                </div>
-                <button 
-                  className="delete-convo-btn"
-                  onClick={(e) => deleteConversation(conversation.id, e)}
-                >
-                  ×
-                </button>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-      
-      <div className="main-content">
-        <h1>{CHATBOT_NAME ? `${CHATBOT_NAME} Chatbot` : 'Chatbot'}</h1>
-        
-        {activeConversation && (
-          <div className="message-counter">
-            {activeConversation.messages.length} / {MAX_MESSAGES} messages
+      {showKnowledgeManager ? (
+        <div className="knowledge-manager-container">
+          <div className="knowledge-manager-header">
+            <h1>{CHATBOT_NAME ? `${CHATBOT_NAME} Knowledge Manager` : 'Knowledge Manager'}</h1>
+            <button className="back-to-chat-btn" onClick={toggleKnowledgeManager}>
+              Back to Chat
+            </button>
           </div>
-        )}
-        
-        <div className="chat-container">
-          {isInitialLoading ? (
-            <div className="loading-indicator">
-              <p>Loading conversations...</p>
+          <KnowledgeManager />
+        </div>
+      ) : (
+        <>
+          <div className="sidebar">
+            <div className="sidebar-header">
+              <button className="new-chat-btn" onClick={createNewConversation}>New Chat</button>
+              <button className="refresh-btn" onClick={refreshConversations} disabled={isLoading}>
+                Refresh
+              </button>
             </div>
-          ) : !activeConversation || activeConversation.messages.length === 0 ? (
-            <div className="empty-chat">
-              <p>$ Ask {CHATBOT_USER ? `${CHATBOT_USER}` : 'me'} about {CHATBOT_NAME ? `${CHATBOT_NAME}` : ' my knowledge base'}! <span className="blinking-cursor"></span></p>
-            </div>
-          ) : (
-            activeConversation.messages.map((message, index) => (
-              <div 
-                key={index} 
-                className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
-              >
-                <div className="message-content">
-                  <div className="message-role">
-                    {message.role === 'user' ? 
-                      (message.username ? `${message.username} >` : '>') : 
-                      (message.username ? `${message.username} $` : '$')}
-                  </div>
-                  <div className="message-text">{renderMessageContent(message.content)}</div>
-                  {message.sources && message.sources.length > 0 && (
-                    <div className="message-sources">
-                      <div className="sources-header" onClick={() => toggleSources(index)}>
-                        <span className="sources-toggle">
-                          {expandedSources[index] ? '−' : '+'}
+            <div className="conversation-list">
+              {isInitialLoading ? (
+                <div className="loading-sidebar">Loading conversations...</div>
+              ) : conversations.length === 0 ? (
+                <div className="no-conversations">No conversations found</div>
+              ) : (
+                conversations.map((conversation) => (
+                  <div 
+                    key={conversation.id}
+                    className={`conversation-item ${conversation.id === activeConversationId ? 'active' : ''}`}
+                    onClick={() => setActiveConversationId(conversation.id)}
+                  >
+                    <div className="conversation-title">
+                      {conversation.isEditingTitle ? (
+                        <input
+                          ref={titleInputRef}
+                          value={conversation.title}
+                          onChange={(e) => handleTitleChange(conversation.id, e.target.value)}
+                          onBlur={() => finishEditingTitle(conversation.id)}
+                          onKeyDown={(e) => handleTitleKeyDown(conversation.id, e)}
+                          onClick={(e) => e.stopPropagation()}
+                          className="title-edit-input"
+                        />
+                      ) : (
+                        <span onClick={(e) => startEditingTitle(conversation.id, e)}>
+                          {conversation.title}
                         </span>
-                        <p className="sources-label">Sources</p>
-                      </div>
-                      {expandedSources[index] && (
-                        <ul>
-                          {message.sources.map((source, idx) => (
-                            <li key={idx}>{source}</li>
-                          ))}
-                        </ul>
                       )}
                     </div>
-                  )}
-                </div>
-              </div>
-            ))
-          )}
-          {isLoading && !isInitialLoading && (
-            <div className="loading-indicator">
-              <p>Processing...</p>
+                    <button 
+                      className="delete-convo-btn"
+                      onClick={(e) => deleteConversation(conversation.id, e)}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
-          )}
-        </div>
-        
-        <form onSubmit={handleSubmit} className="input-form">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={`Ask your question${CHATBOT_USER ? ` to ${CHATBOT_USER}` : ''}...`}
-            disabled={isLoading || !activeConversation || activeConversation.messages.length >= MAX_MESSAGES}
-            className="chat-input"
-          />
-          <button 
-            type="submit" 
-            disabled={isLoading || !input.trim() || !activeConversation || activeConversation.messages.length >= MAX_MESSAGES}
-          >
-            Send
-          </button>
-          <button 
-            type="button" 
-            onClick={handleClearChat} 
-            className="clear-button"
-            disabled={isLoading || !activeConversation || activeConversation.messages.length === 0}
-          >
-            Clear
-          </button>
-        </form>
-        
-        {activeConversation && activeConversation.sessionId && (
-          <div className="session-info">
-            <p>Session ID: {activeConversation.sessionId}</p>
+            <div className="sidebar-footer">
+              <button className="kb-manager-btn" onClick={toggleKnowledgeManager}>
+                Manage Knowledge Base
+              </button>
+            </div>
           </div>
-        )}
-      </div>
+          
+          <div className="main-content">
+            <h1>{CHATBOT_NAME ? `${CHATBOT_NAME} Chatbot` : 'Chatbot'}</h1>
+            
+            {activeConversation && (
+              <div className="message-counter">
+                {activeConversation.messages.length} / {MAX_MESSAGES} messages
+              </div>
+            )}
+            
+            <div className="chat-container">
+              {isInitialLoading ? (
+                <div className="loading-indicator">
+                  <p>Loading conversations...</p>
+                </div>
+              ) : !activeConversation || activeConversation.messages.length === 0 ? (
+                <div className="empty-chat">
+                  <p>$ Ask {CHATBOT_USER ? `${CHATBOT_USER}` : 'me'} about {CHATBOT_NAME ? `${CHATBOT_NAME}` : ' my knowledge base'}! <span className="blinking-cursor"></span></p>
+                </div>
+              ) : (
+                activeConversation.messages.map((message, index) => (
+                  <div 
+                    key={index} 
+                    className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
+                  >
+                    <div className="message-content">
+                      <div className="message-role">
+                        {message.role === 'user' ? 
+                          (message.username ? `${message.username} >` : '>') : 
+                          (message.username ? `${message.username} $` : '$')}
+                      </div>
+                      <div className="message-text">{renderMessageContent(message.content)}</div>
+                      {message.sources && message.sources.length > 0 && (
+                        <div className="message-sources">
+                          <div className="sources-header" onClick={() => toggleSources(index)}>
+                            <span className="sources-toggle">
+                              {expandedSources[index] ? '−' : '+'}
+                            </span>
+                            <p className="sources-label">Sources</p>
+                          </div>
+                          {expandedSources[index] && (
+                            <ul>
+                              {message.sources.map((source, idx) => (
+                                <li key={idx}>{source}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
+              {isLoading && !isInitialLoading && (
+                <div className="loading-indicator">
+                  <p>Processing...</p>
+                </div>
+              )}
+            </div>
+            
+            <form onSubmit={handleSubmit} className="input-form">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={`Ask your question${CHATBOT_USER ? ` to ${CHATBOT_USER}` : ''}...`}
+                disabled={isLoading || !activeConversation || activeConversation.messages.length >= MAX_MESSAGES}
+                className="chat-input"
+              />
+              <button 
+                type="submit" 
+                disabled={isLoading || !input.trim() || !activeConversation || activeConversation.messages.length >= MAX_MESSAGES}
+              >
+                Send
+              </button>
+              <button 
+                type="button" 
+                onClick={handleClearChat} 
+                className="clear-button"
+                disabled={isLoading || !activeConversation || activeConversation.messages.length === 0}
+              >
+                Clear
+              </button>
+            </form>
+            
+            {activeConversation && activeConversation.sessionId && (
+              <div className="session-info">
+                <p>Session ID: {activeConversation.sessionId}</p>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

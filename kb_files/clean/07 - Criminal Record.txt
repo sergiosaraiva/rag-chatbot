@@ -1,0 +1,21 @@
+Keywords: Criminal Record Certificate (PCC), Police Clearance Certificate, Judicial Action
+Question: What documents and fees are required to expedite my residence card issuance if I submitted my Criminal Record Certificate (Police Clearance Certificate, PCC) over 90 working days ago?
+Answer: Provide the non-appearance or delay notification issued by the Agency for Integration, Migration and Asylum (AIMA). Once filed, the court will expedite the process under the statutory 90 working-day deadline, and your residence card will be delivered to your address upon completion.
+* Required Documents
+   * Tax Identification Number (NIF)
+   * Social Security Identification Number (NISS)
+   * National Health Service user number (SNS user number), if available
+   * Expression of Interest (EOI) or proof of 12 months of social security contributions
+   * Legal entry visa or current residence permit
+   * Last three payslips
+   * Certificate of residence from the Parish Council (Junta de Freguesia)
+   * Job contract or proof of self-employment activity
+   * Criminal Record Certificate (Police Clearance Certificate, PCC)
+* Fees
+   * Total: €500
+     * €300 advance payment
+     * €200 upon completion of the process
+
+Keywords: Criminal Record Certificate (PCC), Biometric Notification, Residence Card
+Question: I submitted my criminal record certificate on [DATE] following biometric notification but have not received my residence card; what legal remedy is available?
+Answer: File a judicial action in court to enforce a 90 working-day deadline for scheduling the appointment to collect your residence card. Without this action, no deadline is enforced.

@@ -38,12 +38,12 @@ logger = structlog.get_logger()
 # OpenAI API configuration
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
-TEMPERATURE = float(os.getenv("TEMPERATURE", "0.7"))
+TEMPERATURE = float(os.getenv("TEMPERATURE", "0.5"))
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "256"))
-TOP_P = float(os.getenv("TOP_P", "0.9"))
+TOP_P = float(os.getenv("TOP_P", "0.7"))
 FREQUENCY_PENALTY = float(os.getenv("FREQUENCY_PENALTY", "0.0"))
 PRESENCE_PENALTY = float(os.getenv("PRESENCE_PENALTY", "0.0"))
-EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "text-embedding-ada-002")
+EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "text-embedding-3-small")
 RESPONSE_PREFIX = os.getenv("RESPONSE_PREFIX", "")
 
 # Chroma configuration
@@ -414,29 +414,15 @@ async def delete_all_from_knowledge_base():
         chroma_client = get_chroma_client()
         try:
             chroma_client.delete_collection(name=COLLECTION_NAME)
+            # Recreate empty collection
+            chroma_client.create_collection(name=COLLECTION_NAME)
         except:
             pass  # Collection might not exist
         
-        # Delete all physical files
-        kb_dir = "kb_files"
-        deleted_files = []
-        
-        if os.path.exists(kb_dir):
-            for filename in os.listdir(kb_dir):
-                if filename.endswith(('.txt', '.md')):
-                    file_path = os.path.join(kb_dir, filename)
-                    os.remove(file_path)
-                    deleted_files.append(filename)
-        
-        return {
-            "status": "success", 
-            "message": "Deleted all files from knowledge base",
-            "deleted_files": deleted_files
-        }
+        return {"status": "success", "message": "Knowledge base cleared successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-
 @app.get("/api/kb/info/{filename}")
 async def get_file_info(filename: str):
     """Get information about a specific file in the knowledge base"""
@@ -505,25 +491,11 @@ async def list_chromadb_documents():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.delete("/api/kb/clear-chromadb")
-async def clear_chromadb():
-    """Clear all documents from ChromaDB collection"""
+@app.get("/api/kb/status")
+async def get_kb_status():
+    """Get knowledge base status"""
     try:
-        chroma_client = get_chroma_client()
-        try:
-            chroma_client.delete_collection(name=COLLECTION_NAME)
-            # Recreate empty collection
-            chroma_client.create_collection(name=COLLECTION_NAME)
-            return {"status": "success", "message": "ChromaDB collection cleared"}
-        except Exception as e:
-            return {"status": "error", "message": str(e)}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/kb/stats")
-async def get_chromadb_stats():
-    """Get statistics about the ChromaDB collection"""
-    try:
+        # Get ChromaDB stats
         chroma_client = get_chroma_client()
         collection = chroma_client.get_or_create_collection(name=COLLECTION_NAME)
         
@@ -531,16 +503,17 @@ async def get_chromadb_stats():
         results = collection.get()
         
         # Count documents and unique sources
-        total_documents = len(results['ids'])
+        total_documents = len(results['ids']) if 'ids' in results else 0
         sources = set()
-        for metadata in results['metadatas']:
-            if metadata and 'source' in metadata:
-                sources.add(metadata['source'])
+        if 'metadatas' in results and results['metadatas']:
+            for metadata in results['metadatas']:
+                if metadata and 'source' in metadata:
+                    sources.add(metadata['source'])
         
         return {
-            "total_documents": total_documents,
-            "unique_sources": len(sources),
-            "sources": list(sources)
+            "total_chunks": total_documents,
+            "unique_files": len(sources),
+            "files": list(sources)
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

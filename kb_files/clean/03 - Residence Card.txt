@@ -1,0 +1,41 @@
+Keywords: Temporary Residence Card (TRC), TRC, Legal Action, Schengen Information System, SIS
+Question: What is the timeline, cost, and required documentation for obtaining a Temporary Residence Card (TRC) through legal action?
+Answer:
+* Timeline: Approximately 2 to 3 months to obtain a Temporary Residence Card (TRC) .
+* Process: File a judicial action and contact the competent authority in your country of origin through the Schengen Information System (SIS)  to secure a court-signed declaration.
+* Fees: Total €800, broken down as:
+  * €400 to initiate the process
+  * €400 upon receipt of the card
+* Required Documentation:
+  * Signed power of attorney
+  * Copy of your passport
+  * Proof of prior TRC application or expired permit
+  * Court-signed declaration obtained via the Schengen Information System (SIS)
+
+Keywords: Temporary Residence Card (TRC), Biometric Registration, Residence Card
+Question: What legal remedy can I take if I completed biometric registration on [DATE] but have not received my residence card or any notification?
+Answer: File a judicial action in court to enforce a 90 working-day deadline for scheduling the appointment to collect your residence card. Without this action, no deadline is enforced.
+
+Keywords: Temporary Residence Card (TRC), Biometric Registration, Residence Card, Legal Action
+Question: What can I do if I have completed my biometric registration but still have not received my residence card?
+Answer: File a judicial action in court to enforce a 90 working-day deadline for scheduling the appointment to collect your residence card. Without this action, no deadline is enforced.
+
+Keywords: Temporary Residence Card (TRC), Student Residence Permit, Study Regime
+Question: How can I regularize my status in Portugal if I live there without any immigration documents?
+Answer: Apply for a Temporary Residence Card (TRC) under the student regime by enrolling in a recognized Portuguese educational institution and filing an application.
+
+Keywords: Temporary Residence Card (TRC), Biometric Registration, Legal Action
+Question: What legal action can I take if I have completed biometric registration but have not received my Temporary Residence Card (TRC)?
+Answer: File a judicial action in court to enforce a 90 working-day deadline for issuance and collection of your TRC.
+Fees:
+* €500 total
+  * €300 advance payment
+  * €200 upon card issuance
+Required Documentation:
+* Tax Identification Number (NIF)
+* Social Security Identification Number (NISS)
+* Proof of employment or self-employment (contract or activity declaration)
+* Last three payslips
+* Parish Council residence certificate (Junta de Freguesia)
+* Expression of Interest (EOI) or 12 months of social security contributions
+* Date of biometric registration notification

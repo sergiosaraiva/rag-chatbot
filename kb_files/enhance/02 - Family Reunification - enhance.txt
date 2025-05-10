@@ -1,0 +1,31 @@
+Glossary:
+* Family Reunification Procedure: The administrative process under Portuguese immigration law by which a non-EU national resident in Portugal may sponsor eligible family members to join them.
+* Judicial Enforcement Action: A court proceeding (ação de execução de prazo) before the Administrative and Tax Court to compel a public authority to comply with statutory time limits.
+* Statutory Deadline: A time frame established by law—in this case, 90 working days—within which SEF must schedule a family reunification appointment once a complete application is filed.
+* Working Day: Any calendar day from Monday through Friday, excluding public holidays, used in calculating legal deadlines.
+* Administrative and Tax Court: The specialized Portuguese court (Tribunal Administrativo e Fiscal) empowered to hear disputes between individuals and public authorities, including enforcement of administrative time limits.
+
+Acronyms:
+* Service of Foreigners and Borders (SEF): The Portuguese government agency responsible for immigration control, visa issuance, and residency permits; it schedules and conducts family reunification appointments.
+
+Summary: Under Portuguese law, SEF is required to schedule family reunification appointments within 90 working days of a complete application, but in practice that deadline is not automatically enforced. To secure an appointment, applicants must bring a judicial enforcement action before the Administrative and Tax Court, requesting an order compelling SEF to comply with the statutory timeframe. This remedy typically takes two to three months to resolve. Court fees for initiating enforcement amount to approximately €500, generally paid in two installments (€300 on filing and €200 upon confirmation of the appointment).
+Topic: Judicial Enforcement of Family Reunification Appointment Scheduling
+Keywords: family reunification, judicial action, appointment scheduling, SEF, statutory deadline
+
+Question: What legal remedy can I use to secure a family reunification appointment when SEF does not schedule one within the statutory deadline?
+Answer: You must file a judicial enforcement action (ação de execução de prazo) before the Administrative and Tax Court, seeking an order to compel SEF to schedule your appointment within the 90 working-day deadline. Without this action, SEF is not bound by any specific timeframe.
+
+Question: How do I schedule a family reunification appointment through legal channels when SEF slots are unavailable?
+Answer: If SEF fails to offer any appointment slots, initiate a judicial enforcement action in the Administrative and Tax Court to enforce the 90 working-day deadline. The court can order SEF to set a date for your family reunification interview.
+
+Question: What steps must I follow to bring my family to Portugal under the reunification procedure when no appointment is set?
+Answer: First, file your complete family reunification application with SEF. If no appointment is scheduled within 90 working days, petition the Administrative and Tax Court via a judicial enforcement action to compel SEF to comply with that statutory deadline.
+
+Question: What are the legal steps to obtain a family reunification appointment if no appointment is scheduled?
+Answer: After submitting a full application, wait 90 working days; if SEF has not scheduled your appointment by then, file a judicial enforcement action before the Administrative and Tax Court to obligate SEF to issue you a date.
+
+Question: How can I apply for family reunification in Portugal when SEF is not offering any appointment slots?
+Answer: Apply as normal, then—as soon as 90 working days elapse without an appointment—bring a judicial enforcement action in the Administrative and Tax Court to force SEF to schedule the reunification appointment.
+
+Question: How can I obtain a family reunification appointment when no slots are available, and what fees apply?
+Answer: File a judicial enforcement action before the Administrative and Tax Court to enforce the 90 working-day scheduling deadline. Court fees for this action are approximately €500, typically paid as €300 upon filing and €200 when your appointment date is confirmed.

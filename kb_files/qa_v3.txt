@@ -1,0 +1,463 @@
+## Glossary
+
+* Foreigners and Borders Service (SEF): The former Portuguese police service under the Ministry of Internal Administration responsible for enforcing immigration and asylum policy, border control, and issuing residence permits; dissolved in October 2023 and its functions transferred to the Police and Gendarmerie \[1].
+* Agency for Integration, Migration and Asylum (AIMA): The public agency created on 29 October 2023 to replace the SEF and the High Commission for Migrations (ACM), responsible for reception, integration and asylum of migrants \[2].
+* Schengen Information System (SIS): An EU-wide database supporting external border control and law-enforcement cooperation, including return alerts for illegally staying third-country nationals \[3]\[4].
+* Institute of Registries and Notaries (IRN): Public institution under the Ministry of Justice handling civil registry, notarial services, land and commercial registers, nationality and, since 2023, some former SEF duties including residence-permit renewals \[5].
+* Tax Identification Number (NIF): A unique nine-digit number issued by the Portuguese Tax and Customs Authority for tax purposes; necessary for contracts, banking and official transactions \[6].
+* Social Security Identification Number (NISS): An 11-digit identifier issued by the Portuguese Social Security system for accessing social benefits and contributions; assigned automatically to Citizen-Card holders or requested by others \[7].
+* Code of Administrative Procedure (CPA): Portuguese legislation (Decree-Law No. 4/2015 of 7 January) laying down general rules for administrative procedures, including decision deadlines and tacit approval by silence \[8].
+* Deficiency notification (falta): Official notice issued by AIMA under Articles 102 and 110 of the CPA requiring applicants to remedy missing documentation; failure to comply results in procedural preclusion \[8].
+* Portuguese Criminal Record Certificate (PCC): Official certificate issued by the Directorate-General for Justice Administration indicating an individual’s criminal-record status; valid for 90 days \[9].
+* Directive on the Right to Family Reunification (Council Directive 2003/86/EC): EU directive establishing common rules for third-country nationals lawfully residing in the EU to reunify with close family members \[10].
+* Directive on Entry and Residence for Studies (Directive (EU) 2016/801): EU directive setting conditions for non-EU nationals’ entry and residence for research, studies, training, pupil exchange, voluntary service or au pair schemes \[11].
+
+---
+
+## Acronyms
+
+* SEF: Foreigners and Borders Service \[1]
+* AIMA: Agency for Integration, Migration and Asylum \[2]
+* SIS: Schengen Information System \[3]\[4]
+* IRN: Institute of Registries and Notaries \[5]
+* NIF: Tax Identification Number \[6]
+* NISS: Social Security Identification Number \[7]
+* CPA: Code of Administrative Procedure \[8]
+* PCC: Portuguese Criminal Record Certificate \[9]
+* EU: European Union
+
+---
+
+## Residence Permit Renewal
+
+Keywords: residence permit renewal; SEF; AIMA; provisional receipt; tacit approval; Article 78, Law No. 23/2007; CPA
+
+Legal Summary:
+Under Article 78(1) of Law No. 23/2007 (4 July), third-country nationals must apply to renew a temporary residence permit up to 30 days before expiry. Decree-Law No. 4/2015 (CPA) requires the authority to decide within 60 days and provides tacit approval if no decision is issued. The provisional receipt issued at application serves as a valid permit for 60 days, renewable until final decision \[8].
+
+### Questions and Answers
+
+1. Question: My residence permit expired on \[EXPIRATION\_DATE]. I would like to schedule an appointment to renew it.
+   Answer: Initiate judicial proceedings in court to obtain an order requiring SEF to schedule a renewal appointment within 90 working days.
+   Deadlines: 90 working days (judicial)
+   Required documents:
+   * NIF
+   * NISS
+   * Utente number (if any)
+   * Last three payslips
+   * Proof of at least 12 months’ social-security contributions
+   Cost: €500 total
+   * Court fees and advance legal representation: €300
+   * Completion of legal representation: €200
+
+2. Question: How can I compel SEF to process my renewal request after it expired?
+   Answer: File a judicial application for enforcement of administrative silence, obliging SEF to set a renewal appointment within 90 working days.
+   Deadlines: 90 working days (judicial)
+   Required documents:
+   * NIF
+   * NISS
+   * Utente number (if any)
+   * Last three payslips
+   * Proof of at least 12 months’ social-security contributions
+   Cost: €500 total
+   * Court fees and advance legal representation: €300
+   * Completion of legal representation: €200
+
+3. Question: What if I missed the 30-day renewal deadline—how do I enforce scheduling?
+   Answer: Submit an urgent motion to suspend the administrative deadline and compel SEF to grant a renewal appointment within 90 working days.
+   Deadlines: 90 working days (judicial)
+   Required documents:
+   * NIF
+   * NISS
+   * Utente number (if any)
+   * Last three payslips
+   * Proof of at least 12 months’ social-security contributions
+   Cost: €500 total
+   * Court fees and advance legal representation: €300
+   * Completion of legal representation: €200
+
+4. Question: How do I initiate legal action to enforce issuance of a new permit after expiry?
+   Answer: File a petition for judicial enforcement of tacit approval, requesting the court order SEF to schedule your renewal appointment within 90 working days.
+   Deadlines: 90 working days (judicial)
+   Required documents:
+   * NIF
+   * NISS
+   * Utente number (if any)
+   * Last three payslips
+   * Proof of at least 12 months’ social-security contributions
+   Cost: €500 total
+   * Court fees and advance legal representation: €300
+   * Completion of legal representation: €200
+
+---
+
+## Family Reunification Appointment
+
+Keywords: family reunification; third-country national; spouse; minor children; dependent ascendants; SEF; AIMA; Article 98, Law No. 23/2007; CPA
+
+Legal Summary:
+Article 98 of Law No. 23/2007 grants third-country nationals with valid residence permits the right to reunify with spouse, minor or dependent children, and dependent ascendants. Article 80(5) requires decision within 90 days (60 days for students/researchers) and issues a provisional receipt valid for 60 days; silence constitutes tacit approval. Article 106 allows refusal only for public-policy, security or health reasons \[10].
+
+### Questions and Answers
+
+1. Question: I need to arrange a family reunification appointment.
+   Answer: Submit a family-reunification application to AIMA via the digital portal or in person at any AIMA store; you will receive a provisional receipt valid for 60 days.
+   Deadlines: Decision within 90 days; provisional receipt valid for 60 days
+   Required documents:
+   * Apostilled or legalized and translated marriage or birth certificates
+   * Proof of family relationship
+   * Evidence of means of subsistence
+   * Valid health insurance
+   * Valid passport or travel document
+   * Proof of accommodation
+   Cost: €500 total
+   * Application fee (court and legal costs)
+   * €300 advance
+   * €200 on completion
+
+2. Question: Can I apply for family reunification online, and what’s the timeline?
+   Answer: Yes — use the AIMA portal; you’ll get a provisional receipt valid for 60 days and a decision within 90 days.
+   Deadlines: Decision within 90 days; provisional receipt valid for 60 days
+   Required documents:
+   * Apostilled or legalized and translated marriage or birth certificates
+   * Proof of family relationship
+   * Evidence of means of subsistence
+   * Valid health insurance
+   * Valid passport or travel document
+   * Proof of accommodation
+   Cost: €500 total
+   * Application fee (court and legal costs)
+   * €300 advance
+   * €200 on completion
+
+3. Question: What if my provisional receipt expires before the final decision?
+   Answer: Request an extension of the provisional receipt at any AIMA store, maintaining a valid permit until decision.
+   Deadlines: Extension valid until decision
+   Required documents:
+   * Original provisional receipt
+   * Proof of ongoing eligibility
+   Cost: €500 total
+   * Application fee (court and legal costs)
+   * €300 advance
+   * €200 on completion
+
+4. Question: How do I contest a refusal based on public-policy grounds?
+   Answer: Appeal to the administrative court within 30 days of refusal to challenge the decision and request judicial review.
+   Deadlines: Appeal within 30 days
+   Required documents:
+   * Refusal notification
+   * Original application documents
+   * Legal memorandum
+   Cost: €500 total
+   * Application fee (court and legal costs)
+   * €300 advance
+   * €200 on completion
+
+---
+
+## Biometric Enrollment and Residence Card Issuance
+
+Keywords: biometric enrollment; residence card issuance; provisional receipt; tacit approval; SEF; AIMA; Article 78(7), Law No. 23/2007; CPA
+
+Legal Summary:
+Article 78(7) of Law No. 23/2007 grants the provisional receipt issued at application the effect of a valid permit for 60 days. The CPA requires decision on residence titles within 60 days, with tacit approval if no decision is issued \[8].
+
+### Questions and Answers
+
+1. Question: I completed my biometric enrollment on \[BIO\_DATE] and have not yet received my card or an email notification.
+   Answer: Contact AIMA or initiate judicial proceedings to enforce tacit approval and compel issuance of the residence card.
+   Deadlines: No statutory deadline; judicial enforcement may establish 90 working-day deadline
+   Required documents:
+   * Biometric enrollment receipt
+   * Valid passport or travel document
+   * Provisional receipt
+   Cost: €500 total
+   * Court fees and advance legal representation: €300
+   * Completion of legal representation: €200
+
+2. Question: How long after biometrics should I expect my card?
+   Answer: No statutory deadline exists; practice suggests issuance within 60 days—consider judicial enforcement if overdue.
+   Deadlines: Implicit 60 days; judicial enforcement: 90 working days
+   Required documents:
+   * Biometric enrollment receipt
+   * Valid passport or travel document
+   * Provisional receipt
+
+3. Question: Can I use my provisional receipt to travel while waiting for the card?
+   Answer: Yes — it functions as a valid residence title for 60 days, renewable until decision.
+   Deadlines: Provisional receipt validity: 60 days
+   Required documents:
+   * Provisional receipt
+
+4. Question: Who do I contact if AIMA’s system shows my card is “in process”?
+   Answer: Submit an inquiry through the AIMA contact center or via your legal representative, citing tacit-approval deadlines.
+   Deadlines: No statutory deadline; judicial enforcement: 90 working days
+   Required documents:
+   * Enrollment receipt
+   * Appointment reference number
+
+---
+
+## AIMA Notifications
+
+Keywords: deficiency notification; procedural preclusion; PCC; CPA; Articles 102–110; validity period
+
+Legal Summary:
+Under the CPA, AIMA may issue deficiency notifications under Articles 102 and 110, setting deadlines to remedy missing documentation; failure to comply results in procedural preclusion. The PCC is valid for 90 days \[8]\[9].
+
+### Questions and Answers
+
+1. Question: I received a deficiency notification (falta) from AIMA.
+   Answer: Submit the missing documents or evidence by the deadline specified in the notification to avoid procedural preclusion.
+   Deadlines: As specified in the notification
+   Required documents:
+   * Original deficiency notification
+   * All requested documents or evidence
+
+2. Question: The notification deadline passed—what are my options?
+   Answer: Appeal judicially within 30 days to reinstate your procedural rights and request acceptance of late submissions.
+   Deadlines: Appeal within 30 days of notification expiration
+   Required documents:
+   * Copy of the deficiency notification
+   * Evidence of reasons for delay
+
+3. Question: Can I challenge an AIMA decision that precludes my application?
+   Answer: File an administrative appeal to the Ministry of Internal Administration within 15 days, then proceed to judicial review if needed.
+   Deadlines: Appeal within 15 days of preclusion
+   Required documents:
+   * Decision notice
+   * Grounds of appeal
+
+4. Question: I received a request for a Portuguese Criminal Record Certificate. How do I comply?
+   Answer: Provide a valid PCC issued within 90 days before the notification deadline to AIMA.
+   Deadlines: PCC valid within 90 days at submission
+   Required documents:
+   * Portuguese Criminal Record Certificate (PCC)
+   * Original notification
+   Cost: €10 total
+   * Certificate issuance fee: €10
+
+---
+
+## AIMA Store Addresses
+
+Keywords: in-person service; AIMA store locations; walk-in service
+
+Legal Summary:
+AIMA offers in-person services at 34 stores nationwide without prior appointment, subject to daily capacity; addresses and schedules are on the official portal.
+
+### Questions and Answers
+
+1. Question: Can you send me the address of the office?
+   Answer: Lisbon: Avenida António Augusto de Aguiar, 20, 1069-119 Lisbon. Full list at the AIMA website.
+
+2. Question: Is there a store near Faro where I can submit documents?
+   Answer: Yes — Faro store at Rua Conselheiro Bivar, 20, 8000-123 Faro; check hours online.
+
+3. Question: Do I need an appointment to visit the Porto store?
+   Answer: No — services are first-come, first-served within daily capacity.
+
+4. Question: What are the opening hours of the Braga store?
+   Answer: Praça Conde Agrolongo, 2, open Mon–Fri 8:30 am–4:30 pm; verify on the portal.
+
+---
+
+## Schengen Information System (SIS) Alerts
+
+Keywords: SIS; return alerts; Regulation (EU) 2018/1860; Regulation (EU) 2018/1861; Law No. 23/2007; removal regime
+
+Legal Summary:
+Regulation (EU) 2018/1860 requires immediate entry of return alerts into SIS after a return decision. Regulations (EU) 2018/1860 and 2018/1861 govern entry and deletion of alerts. The removal regime under Law No. 23/2007 (Chapters V–VI) sets grounds and procedures for expulsion; Article 143 prohibits removal to persecution-risk states \[4]\[9].
+
+### Questions and Answers
+
+1. Question: SIS ALERT – I have a Schengen alert issued in Germany, Austria, France, or Italy.
+   Answer: Resolve immediately by submitting proof of legal stay and requesting deletion via AIMA or legal counsel.
+   Deadlines: Immediate resolution recommended
+   Required documents:
+   * SIS alert notice
+   * Valid passport or travel document
+   * Valid Portuguese residence permit
+   Cost: €800 total
+   * Legal representation fees: €500
+   * Administrative processing fees: €300
+
+2. Question: How do I confirm if I have a SIS alert against me?
+   Answer: Request access to your SIS record via AIMA or a judicial data-access request, then submit a deletion request.
+   Deadlines: Immediate action recommended
+   Required documents:
+   * ID document
+   * Formal data-access request
+
+3. Question: What procedure allows me to remove a mistaken SIS alert?
+   Answer: Submit an administrative deletion request to AIMA with proof of legal stay; if denied, file judicial proceedings to compel deletion.
+   Deadlines: No statutory deadline; act immediately
+   Required documents:
+   * Proof of residence permit
+   * Official alert notice
+
+4. Question: Can I travel to other Schengen states with a pending SIS alert?
+   Answer: No — pending alerts block travel; you must resolve and delete the alert first.
+   Deadlines: Immediate resolution recommended
+   Required documents:
+   * Confirmation of alert deletion
+   * Valid travel documents
+
+---
+
+## Nationality by Naturalization Process
+
+Keywords: naturalization; Portuguese nationality; IRN; Law No. 37/81; Organic Law No. 2/2018; Article 6; language proficiency; criminal-record clearance
+
+Legal Summary:
+Article 6 of Law No. 37/81, as amended by Organic Law No. 2/2018, grants Portuguese nationality by naturalization to third-country nationals who are of legal age, have legally resided in Portugal for at least 5 years, possess sufficient knowledge of Portuguese, have no final convictions of three years or more, and pose no threat to national security \[5]\[9].
+
+### Questions and Answers
+
+1. Question: How do I apply for Portuguese nationality?
+   Answer: Submit a naturalization application to IRN with proof of five years’ legal residence, Portuguese language proficiency certificate and PCC.
+   Required documents:
+   * Certificate of legal residence (Immigration Portal)
+   * Valid passport or travel document
+   * PCC valid for 90 days
+   * Proof of means of subsistence
+   * Portuguese language proficiency certificate (A2+)
+   Cost: €170 total
+   * Nationality application fee: €150
+   * Language test fee: €20
+
+2. Question: Can I apply before five years if married to a Portuguese citizen?
+   Answer: Yes — spouses may apply after three years’ legal residence; submit marriage certificate and proof of residence.
+   Required documents:
+   * Marriage certificate
+   * Proof of three years’ legal residence
+   * Language and PCC certificates
+
+3. Question: What if my PCC is older than 90 days at submission?
+   Answer: Your application will be incomplete; obtain a new PCC valid within 90 days before resubmitting.
+   Deadlines: PCC valid within 90 days
+   Required documents:
+   * Updated PCC
+
+4. Question: How long does the naturalization decision take?
+   Answer: IRN aims to decide within 180 days of complete submission; judicial review may enforce a 90-working-day deadline if overdue.
+   Deadlines: Target: 180 days; judicial enforcement: 90 working days
+   Required documents:
+   * Submission receipt
+
+---
+
+## Temporary Residence Permit for Study Purposes
+
+Keywords: student residence permit; SEF; AIMA; Law No. 23/2007; Directive (EU) 2016/801; Article 80
+
+Legal Summary:
+Article 80(5) of Law No. 23/2007 requires decision on student-permit applications within 60 days; the provisional receipt is valid for 60 days. Directive (EU) 2016/801 sets conditions for entry and residence for studies and research \[11].
+
+### Questions and Answers
+
+1. Question: I live in Portugal but don’t have any documents. How can I apply for a student permit?
+   Answer: Enroll in an accredited program and submit a student-permit application through AIMA with proof of enrollment and financial means.
+   Deadlines: Decision within 60 days; provisional receipt valid for 60 days
+   Required documents:
+   * Enrollment certificate
+   * Valid passport or travel document
+   * Proof of means of subsistence
+   * Health insurance
+   * Tuition payment receipt
+   * Valid visa or entry authorization
+     Cost: €83 total
+   * Application fee: €80
+   * Card issuance fee: €3
+
+2. Question: Can I work while my study permit is pending?
+   Answer: Yes — the provisional receipt allows up to 20 hours/week during term.
+   Deadlines: Provisional receipt validity: 60 days
+   Required documents:
+   * Provisional receipt
+   * Employment contract
+
+3. Question: What if my school sends an updated enrollment certificate?
+   Answer: Submit the updated certificate to AIMA within the 60-day period to maintain validity until decision.
+   Deadlines: Within 60 days of original submission
+   Required documents:
+   * Updated enrollment certificate
+
+4. Question: How do I renew my student permit before expiry?
+   Answer: Apply at least 30 days before expiry via AIMA, providing proof of academic progress.
+   Deadlines: Apply 30 days before expiry; decision within 60 days
+   Required documents:
+   * Academic transcript
+   * Updated proof of means of subsistence
+
+---
+
+## Process Updates
+
+Keywords: right to information; procedural update; CPA; Article 82
+
+Legal Summary:
+Article 82 of the CPA grants interested parties the right to request information on procedure progress at any time and to receive final decisions \[8].
+
+### Questions and Answers
+
+1. Question: Can you update me on my process?
+   Answer: Request a status update at any time from AIMA or IRN via the digital portal; they must inform you of progress and final decisions.
+
+2. Question: How do I submit a formal information request?
+   Answer: Send a written request citing Article 82 to the procedural officer; they must reply within 10 days.
+   Deadlines: 10 days for reply
+   Required documents:
+   * Written request reference
+
+3. Question: What if I don’t receive a reply to my update request?
+   Answer: File a judicial petition under Article 82 to enforce the right, setting a court-mandated deadline.
+   Deadlines: Judicial enforcement: 30 working days
+   Required documents:
+   * Copy of original request
+
+4. Question: Is there an online tracking system for my case?
+   Answer: Yes — use the AIMA or IRN online portal with your reference number.
+
+---
+
+## Payment Details
+
+Keywords: payment details; IBAN; SEPA; Regulation (EU) No. 260/2012
+
+Legal Summary:
+Under Regulation (EU) No. 260/2012 establishing the Single Euro Payments Area (SEPA), euro credit transfers must use the International Bank Account Number (IBAN) and comply with SEPA technical requirements; the Bank Identifier Code (BIC) may be omitted domestically \[4].
+
+### Questions and Answers
+
+1. Question: Please send me the payment details.
+   Answer:
+   * IBAN: PT50 0035 0673 0006 7614 800 82
+   * Beneficiary: Sofia Torrado Ferreira
+   * Bank: Caixa Geral de Depósitos
+   * MB WAY: 920 706 013
+
+2. Question: Can I pay by MB WAY?
+   Answer: Yes — use MB WAY to 920 706 013; ensure accurate IBAN for transfers.
+
+3. Question: What reference should I include?
+   Answer: Include your case number or client reference in the payment reference field.
+
+4. Question: Are there any bank charges I should expect?
+   Answer: Standard SEPA euro transfers are free within the EU; check with your bank for additional fees.
+
+---
+
+## Sources
+
+\[1]: [https://en.wikipedia.org/wiki/Foreigners\_and\_Borders\_Service](https://en.wikipedia.org/wiki/Foreigners_and_Borders_Service) “Foreigners and Borders Service”
+\[2]: [https://www2.gov.pt/en-GB/entidades/agencia-para-a-integracao-migracoes-e-asilo](https://www2.gov.pt/en-GB/entidades/agencia-para-a-integracao-migracoes-e-asilo) “Agency for Integration, Migration and Asylum (AIMA) – Gov.pt”
+\[3]: [https://home-affairs.ec.europa.eu/policies/schengen/schengen-information-system\_en](https://home-affairs.ec.europa.eu/policies/schengen/schengen-information-system_en) “Schengen Information System – European Commission”
+\[4]: [https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32018R1860](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32018R1860) “Regulation (EU) 2018/1860 on SIS for return of illegally staying third-country nationals”
+\[5]: [https://irn.justica.gov.pt/en-gb/](https://irn.justica.gov.pt/en-gb/) “Institute of Registries and Notaries (IRN)”
+\[6]: [https://www2.gov.pt/en/servicos/pedir-o-numero-de-identificacao-fiscal-para-pessoa-singular](https://www2.gov.pt/en/servicos/pedir-o-numero-de-identificacao-fiscal-para-pessoa-singular) “Apply for Tax Identification Number (NIF) – Gov.pt”
+\[7]: [https://www2.gov.pt/en/servicos/pedir-o-numero-de-identificacao-da-seguranca-social-niss-](https://www2.gov.pt/en/servicos/pedir-o-numero-de-identificacao-da-seguranca-social-niss-) “Apply for Social Security ID (NISS) – Gov.pt”
+\[8]: [https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2015-105602322](https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2015-105602322) “Decree-Law No. 4/2015 (Code of Administrative Procedure) – Diário da República”
+\[9]: [https://dgaj.justica.gov.pt/Registo-criminal/Criminal-record-certificate](https://dgaj.justica.gov.pt/Registo-criminal/Criminal-record-certificate) “Criminal Record Certificate – DGAJ”
+\[10]: [https://eur-lex.europa.eu/eli/dir/2003/86/oj/eng](https://eur-lex.europa.eu/eli/dir/2003/86/oj/eng) “Council Directive 2003/86/EC on Family Reunification – EUR-Lex”
+\[11]: [https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32016L0801](https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32016L0801) “Directive (EU) 2016/801 on Entry and Residence for Studies – EUR-Lex”

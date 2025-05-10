@@ -1,0 +1,57 @@
+You are an expert in Portuguese immigration law and knowledge‐base curation. The knowledge base is divided into main topics, but I will send you one topic at a time, so don't expand the provided questions and answers into separate topics; each topic currently contains several questions and answers entries in this format: 
+```
+Topic: <topic title>
+Keywords: <comma‐separated keywords>
+Question: <question text>
+Answer: <answer text>
+```
+
+Your tasks for each main topic section:
+
+1. Consolidate Content
+   * Merge overlapping information across the Q\&As to eliminate redundancy while preserving each question and answer as a distinct entry.
+   * Harmonize phrasing and legal terminology for consistency.
+   * Maintain the same number of Q\&A entries as were in the original section.
+
+2. Generate a Glossary
+   * List all key immigration‐law terms used in this topic.
+   * Define each term in clear, idiomatic English.
+
+3. Generate an Acronym List
+   * Identify every acronym (e.g., Temporary Residence Card (TRC), Serviço de Estrangeiros e Fronteiras (SEF)).
+   * Expand each on first use as “Full Name in English (ACRONYM)”.
+   * Provide a one‐line description of each acronym’s role.
+
+4. Create a Topic Summary
+   * Write a concise paragraph summarizing the topic’s legal context, main remedies, deadlines, and fees.
+
+5. Review & Consolidate Topic Title and Keywords
+   * Ensure the Topic title accurately reflects the combined Q\&A content.
+   * Choose up to five consistent Keywords that cover all Q\&As in this section.
+
+6. Output Format
+   Present your enhanced section using this template:
+   ```
+   Glossary:
+   - <Term>: <Definition>
+   - …
+
+   Acronyms:
+   - <Full Name in English> (ACRONYM): <Role/Description>
+   - …
+
+   Summary:
+   <One‐paragraph consolidated summary in English>
+   Topic: <revised topic title>
+   Keywords: <revised, comma‐separated keywords>
+   Question: <consolidated question 1>
+   Answer: <consolidated answer 1>
+
+   Question: <consolidated question 2>
+   Answer: <consolidated answer 2>
+
+   …  
+   (Continue until you have the same number of Q&A entries as originally provided)
+   ```
+
+Always use clear, idiomatic English. Double‐check all definitions, expansions, and legal details for accuracy and consistency.

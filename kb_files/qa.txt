@@ -1,217 +1,218 @@
-## 1. Residence Permit Renewal
+1. Residence Permit Renewal
+   Legal summary:
+   • Art. 78 nº 1–2, 4–7 of Law 23/2007: renewal application from 30 days before expiry; decision within 30 days (silence = deferment); receipt valid as permit for 60 days (renewable).
 
-**Legal summary:**
+Question: My residence permit expired on \[EXPIRATION\_DATE]. I would like to schedule an appointment to renew it.
+Answer: File a legal action in court to establish a 90-working-day deadline for the renewal appointment.
+Statutory deadline: 90 working days (judicial)
+Required documents: NIF; NISS; Utente (if any); last 3 payslips; employment contract or proof of activity; junta certificate; visa/legal-entry document; expression of interest or ≥ 12 months’ contributions
+Cost: €500 total (court fees & legal costs; €300 advance + €200 on completion)
 
-* **Art. 78, nº 1–2, 4–7 of Law 23/2007**: request renewal up to 30 days before expiry; decision within 30 days (silence = deferment); receipt valid as permit for 60 days (renewable); conditions include proof of subsistence (Portaria 1563/2007), accommodation, tax/social-security compliance, no criminal convictions > 1 year; refusal only for public-order or security reasons ([sites.google.com][1], [pgdlisboa.pt][2]).
+Variations
 
-**Question:** My residence permit expired on `[EXPIRATION_DATE]`. I would like to schedule an appointment to renew it.
-**Answer:** The recommended solution is to file a legal action in court. This secures a legally binding 90-working-day deadline for the renewal appointment; without judicial intervention, no deadline applies.
+1. Question: I noticed my residence permit lapsed on \[EXPIRATION\_DATE]. How can I book a renewal appointment?
+   Answer: Initiate court proceedings to secure a 90-working-day window for the renewal slot.
 
-**Variations**
+2. Question: My permit expired on \[EXPIRATION\_DATE] and I need to renew it. What should I do?
+   Answer: Submit a legal action to guarantee up to 90 working days for scheduling.
 
-1. **Question:** I noticed my residence permit lapsed on `[EXPIRATION_DATE]`. How can I book a renewal appointment?
-   **Answer:** Filing a legal action grants up to 90 working days to obtain the renewal slot; otherwise, no timeframe is enforced.
+3. Question: Residence permit expired \[EXPIRATION\_DATE]. How do I arrange a renewal slot?
+   Answer: Take legal action to create a 90-working-day deadline to receive the appointment.
 
-2. **Question:** My permit expired on `[EXPIRATION_DATE]` and I need to renew it. What should I do?
-   **Answer:** Initiate a court application to secure a maximum of 90 working days for scheduling; absent it, there’s no binding deadline.
+4. Family Reunion Appointment
+   Legal summary:
+   • Arts. 98–99 & 103 of Law 23/2007: right to reunify spouse, minor/dependent children, and dependent parents; administrative decision within 60 days.
+   • Art. 106: refusal only if conditions unmet or public-order/security/health threat.
 
-3. **Question:** Residence permit expired `[EXPIRATION_DATE]`. Requesting guidance on how to arrange a renewal slot.
-   **Answer:** Taking legal action establishes a 90-working-day window to receive the renewal appointment; without litigation, no deadline applies.
+Question: I need to arrange a family reunion appointment.
+Answer: File a legal action in court to establish a 90-working-day deadline for the family-reunion appointment.
+Statutory deadlines: 60 days (administrative) / 90 working days (judicial)
+Required documents: marriage/birth certificates; proof of family relation; NIF; NISS; last 3 payslips; employment contract or proof of activity; junta certificate; visa/legal-entry document; expression of interest or ≥ 12 months’ contributions
+Cost: €500 total (court fees & legal costs; €300 advance + €200 on completion)
 
----
+Variations
 
-## 2. Family Reunion Appointment
+1. Question: I want to bring my family over—how do I get a family reunion appointment?
+   Answer: Initiate judicial proceedings to secure up to 90 working days for scheduling.
 
-**Legal summary:**
+2. Question: Could you help me request a family reunion appointment?
+   Answer: Filing a court application guarantees a 90-working-day period for the appointment.
 
-* **Arts. 98–99 & 103 of Law 23/2007** grant the right to reunify spouse, minor or dependent children, and dependent parents ([pgdlisboa.pt][3], [files.dre.pt][4]).
-* **Art. 106** allows refusal only if conditions aren’t met or there’s a threat to public order, security or health; decisions on residence-visa requests (including reunification) must be issued within 60 days ([pgdlisboa.pt][5], [sites.google.com][6]).
+3. Question: I’m applying for family reunification. What’s the fastest way to get a family reunion appointment?
+   Answer: File an injunction to obtain a 90-working-day window for the appointment.
 
-**Question:** I need to arrange a family reunion appointment.
-**Answer:** File a legal action in court to establish a 90-working-day deadline for the family-reunion appointment; otherwise, no enforceable timeframe exists.
+4. Biometric & Card Issuance
+   Legal summary:
+   • Art. 78 nº 7 of Law 23/2007: receipt of renewal or related application valid as permit for 60 days (renewable); administrative silence implies deferment.
 
-**Variations**
+Question: I completed my biometrics on \[BIO\_DATE] and have not yet received my card or an email notification.
+Answer: File a legal action in court to compel issuance within a 90-working-day deadline.
+Statutory deadline: 90 working days
+Required documents: biometric receipt; passport; NIF; NISS; Utente (if any); last 3 payslips; employment contract or proof of activity; junta certificate; visa/legal-entry document; expression of interest or ≥ 12 months’ contributions
+Cost: €500 total (court fees & legal costs; €300 advance + €200 on completion)
 
-1. **Question:** I want to bring my family over—how do I get a family reunion appointment?
-   **Answer:** Initiate a court process to secure up to 90 working days for scheduling; absent it, no deadline applies.
+Variations
 
-2. **Question:** Could you help me request a family reunion appointment?
-   **Answer:** Filing a legal action guarantees a legally binding 90-working-day period for the appointment; no guaranteed timeline without it.
+1. Question: Biometric captured on \[BIO\_DATE], still no card or notification—what can I do?
+   Answer: Submit a court application to secure a 90-working-day period for card issuance.
 
-3. **Question:** I’m applying for family reunification. What’s the fastest way to get a family reunion appointment?
-   **Answer:** File an injunction in court to obtain a 90-working-day window for the appointment; without litigation, no deadline is enforced.
+2. Question: It’s been weeks since my biometrics on \[BIO\_DATE] and I haven’t gotten my residence card or any email. Any advice?
+   Answer: File for an injunction to establish a 90-working-day timeframe for delivery.
 
----
+3. Question: I sent my criminal record on \[NOTIFICATION\_DATE] after biometrics on \[BIO\_DATE], still waiting for the card—can you assist?
+   Answer: Pursue judicial action to secure a 90-working-day deadline for issuance.
 
-## 3. Biometric & Card Issuance
+4. AIMA Notifications (Falta & PCC)
+   A. Falta Notices
+   Legal note: administrative notices from AIMA must be forwarded promptly; no statutory response deadline but delay risks procedural loss.
 
-**Legal summary:**
+Question: I received a falta notice.
+Answer: Please send the falta notification from AIMA for review.
+Required documents: original AIMA falta notice
+Cost: none
 
-* **Art. 78, nº 7 of Law 23/2007**: the receipt of the renewal application or related request produces the same effect as a valid residence permit for 60 days (renewable) ([sites.google.com][1]).
-* If no decision is issued within legal deadlines, silence can be used to argue automatic deferment.
+Variations
 
-**Question:** I completed my biometrics on `[BIO_DATE]` and have not yet received my card or an email notification.
-**Answer:** File a legal action in court to compel issuance within a 90-working-day deadline; without judicial intervention, there’s no enforceable timeframe.
+1. Question: I got a falta notification—what now?
+   Answer: Forward the AIMA falta notice so we can advise you further.
+2. Question: They sent me a falta. How can I share it?
+   Answer: Provide the original AIMA falta notification to proceed.
+3. Question: What should I do with my falta from AIMA?
+   Answer: Send the AIMA falta document, and we’ll guide you on next steps.
 
-**Variations**
+B. Criminal Record (PCC)
+Legal note: PCC notices from AIMA trigger procedural deadlines; forwarding begins the 90-day period for judicial remedy.
 
-1. **Question:** Biometric captured on `[BIO_DATE]`, still no card or notification—what can I do?
-   **Answer:** A court application secures a 90-working-day period to compel issuance; otherwise, no deadline applies.
+Question: My PCC (criminal record).
+Answer: Do you have the PCC notification from AIMA? Please send it.
+Required documents: original AIMA PCC notification
+Cost: none
 
-2. **Question:** It’s been weeks since my biometrics on `[BIO_DATE]` and I haven’t gotten my residence card or any email. Any advice?
-   **Answer:** File for an injunction to establish a 90-working-day timeframe for card delivery; without it, no timeline is guaranteed.
+Variations
 
-3. **Question:** I sent my criminal record on `[NOTIFICATION_DATE]` after biometrics on `[BIO_DATE]`, still waiting for the card—can you assist?
-   **Answer:** A court application is the most effective remedy, securing a 90-working-day deadline for card issuance; in the absence of litigation, no binding deadline exists.
+1. Question: What about my criminal record status?
+   Answer: If you have the AIMA PCC notice, forward it for review.
 
----
+2. Question: I need help with my PCC.
+   Answer: Share any PCC notification from AIMA, and we’ll examine it.
 
-## 4. AIMA Notifications (Falta & PCC)
+3. Question: How do I provide my PCC details?
+   Answer: Send the AIMA criminal-record notification, and we’ll take it from there.
 
-### A. “Falta” Notices
+4. Question: Do you have the notification from AIMA?
+   Answer: We request the court to expedite, as over 90 business days have passed. Once decided, the card will be delivered to your address.
+   Statutory deadline: 90 working days
+   Required documents: NIF; NISS; Utente (if any); expression of interest; visa/legal-entry document; last 3 payslips; junta certificate; criminal record; job contract or proof of activity
+   Cost: €500 total (court fees & legal costs; €300 advance + €200 on completion)
 
-**Legal note:** any administrative notification from AIMA must be reviewed promptly; no specific statutory deadline for response but forwarding the notice is essential.
+5. Operational Address
+   Legal summary: SEF on-site services require prior scheduling; locations published on gov.pt.
 
-**Question:** I received a falta notice.
-**Answer:** Please send the falta notification from AIMA for review.
+Question: Can you send me the address of the office?
+Answer: LISBON, Torres de Lisboa — Centro Empresarial Torres de Lisboa, R. Tomás da Fonseca, 1600-160 Lisboa
+Cost: none
 
-**Variations**
+Variations
 
-1. **Question:** I got a falta notification—what now?
-   **Answer:** Forward the AIMA falta notice so we can advise you further.
+1. Question: Could you provide the Lisbon office address?
+   Answer: Centro Empresarial Torres de Lisboa, R. Tomás da Fonseca, 1600-160 Lisboa, Lisbon
 
-2. **Question:** They sent me a falta. How can I share it?
-   **Answer:** Provide the original AIMA falta notification to proceed.
+2. Question: Where is your office located?
+   Answer: Lisbon, Torres de Lisboa — Centro Empresarial Torres de Lisboa, R. Tomás da Fonseca, 1600-160 Lisboa
 
-3. **Question:** What should I do with my falta from AIMA?
-   **Answer:** Send the AIMA falta document, and we’ll guide you on next steps.
+3. Question: Please share the physical address of your office.
+   Answer: Lisbon, Torres de Lisboa; Centro Empresarial Torres de Lisboa; R. Tomás da Fonseca, 1600-160 Lisboa
 
-### B. Criminal Record (“PCC”)
+4. SIS Alerts (Germany, Austria, France, Italy, UCFE)
+   Legal summary: Law 18/2022 & EU Regs 2018/1860–62 govern SIS II alerts; removal procedures per Law 23/2007, Chs V–VI.
 
-**Legal note:** PCC notices from AIMA must be submitted to trigger the procedural deadlines.
+Question: SIS ALERT – GERMANY, AUSTRIA, FRANCE, ITALY, ALERTA SCHENGEN, UCFE
+Answer: To resolve a SIS alert, fee €800.
+Statutory deadline: immediate resolution recommended to avoid removal order
+Required documents: SIS notification (if available); passport; NIF; NISS; employment contract or proof of activity; recent social-security contribution statements
+Cost: €800 total (legal fees €500 + administrative/state fees €300)
 
-**Question:** My PCC (criminal record).
-**Answer:** Do you have the PCC notification from AIMA? Please send it.
+Variations
 
-**Variations**
+1. Question: What steps for a SIS alert from Germany/Austria/France/Italy?
+   Answer: Pay €800 and submit the SIS alert notice, passport, NIF, NISS, proof of work, and recent social-security statements.
 
-1. **Question:** What about my criminal record status?
-   **Answer:** If you have the AIMA PCC notice, forward it for our review.
+2. Question: How to clear an Alerta Schengen (UCFE) issue?
+   Answer: The service costs €800. Provide the SIS alert, passport, NIF, NISS, contract or activity proof, and social-security statements.
 
-2. **Question:** I need help with my PCC.
-   **Answer:** Share any PCC notification issued by AIMA, and we’ll examine it.
+3. Question: SIS alert UCFE in Schengen states—what do I do?
+   Answer: Fee €800; submit the SIS document, passport, NIF, NISS, employment proof, and recent social-security contributions.
 
-3. **Question:** How do I provide my PCC details?
-   **Answer:** Send the AIMA criminal-record notification, and we’ll take it from there.
+4. Nationality Process
+   Legal summary: Law 37/81 Art 6: naturalisation requires ≥ 5 years’ legal residence (continuous/cumulative within 15 years); Law 1/2024 extends exceptions for certain groups.
 
-4. **Question:** Do you have the notification from AIMA?
-   **Answer:** We request the court to expedite, as over 90 business days have passed. Once decided, the card will be delivered to your address.
-   **Documents needed:**
+Question: Nationality process
+Answer: Eligibility based on ≥ 5 years of lawful residence.
+Statutory deadline: 5 years continuous or cumulative residence
+Required documents: residence certificate; passport; criminal-record certificate; proof of subsistence; language certificates (if applicable)
+Cost: €250 total (SEF processing fee €150 + judicial/legal fee €100)
 
-   * NIF
-   * NISS
-   * Utente (if any)
-   * Expression of interest
-   * Visa or legal-entry document
-   * Last 3 payslips
-   * Junta certificate
-   * Criminal record
-   * Job contract or activity proof
-     **Cost:** €500 total (court fees & legal costs), split into €300 advance + €200 on completion.
+Variations
 
----
+1. Question: How does the nationality process work?
+   Answer: Requires ≥ 5 years’ legal residence; submit residence certificate, passport, criminal-record certificate, and proof of subsistence.
 
-## 5. Process Updates
+2. Question: What are the requirements for Portuguese nationality?
+   Answer: Main criterion is ≥ 5 years’ residence; also criminal-record clearance, subsistence proof, and language certificate.
 
-*No statutory deadlines beyond general duty of information. Updates sent as they become available.*
+3. Question: Is naturalisation determined by length of stay?
+   Answer: Yes—5 years’ lawful residence; provide residence document, passport, criminal record, and subsistence proof.
 
-**Question:** Update please, madam.
-**Answer:** I will send any available information on your process as soon as it arrives.
+4. Temporary Residence — Studies Regime
+   Legal summary: Law 23/2007 Arts 77–91 & Dir 2016/801/EU: permits for studies; decision within 30 days; permit valid for course duration.
 
-**Variations**
+Question: I live in Portugal but don’t have any documents.
+Answer: Enroll in an accredited study program and apply for a temporary student residence permit under Art 91 of Law 23/2007.
+Statutory deadline: decision within 30 days of application
+Required documents: enrollment certificate; passport; proof of subsistence; health insurance; tuition-fee receipt; NIF; photos
+Cost: €83 total (SEF visa fee €80 + card issuance fee €3)
 
-1. **Question:** Could you update me on my case status?
-   **Answer:** I’ll share any updates on your file immediately upon receipt.
+Variations
 
-2. **Question:** Please let me know if there are any news.
-   **Answer:** I’ll notify you as soon as new details emerge.
+1. Question: I’m residing here without papers—what can I do?
+   Answer: Register in a recognized study program to obtain a temporary student permit under Art 91.
 
-3. **Question:** Any progress to report?
-   **Answer:** I’ll inform you right away when there’s news on your application.
+2. Question: No documents in Portugal—how to regularize?
+   Answer: Secure a study-based residence card by enrolling at an approved institution per Law 23/2007, Art 91.
 
----
+3. Question: Living undocumented in Portugal—am I eligible for a permit?
+   Answer: Yes; proof of enrollment allows issuance of a temporary student permit (Art 91), decision within 30 days.
 
-## 6. Payment Details
+4. Process Updates
+   Legal summary: No statutory deadlines beyond general duty of information; updates sent as they become available.
 
-*No legal references required.*
+Question: Update please, madam.
+Answer: I will send any available information on your process as soon as it arrives.
+Cost: none
 
-**Question:** Please send bank details.
-**Answer:**
+Variations
 
-```
-IBAN: PT50 0035 0673 00067614800 82  
-Beneficiary: SOFIA TORRADO FERREIRA  
-Bank: CAIXA GERAL DE DEPÓSITOS  
-MB WAY: 920706013
-```
+1. Question: Could you update me on my case status?
+   Answer: I’ll share any updates on your file immediately upon receipt.
 
-**Variations**
+2. Question: Please let me know if there are any news.
+   Answer: I’ll notify you as soon as new details emerge.
 
-1. **Question:** Can I have your bank account for payment?
-   **Answer:**
+3. Question: Any progress to report?
+   Answer: I’ll inform you right away when there’s news on your application.
 
-   ```
-   IBAN: PT50 0035 0673 00067614800 82  
-   Name: SOFIA TORRADO FERREIRA  
-   Bank: CAIXA GERAL DE DEPÓSITOS  
-   MB WAY: 920706013
-   ```
+4. Payment Details
+   Legal summary: Payment details are provided for client transfers; no statutory requirements.
 
-2. **Question:** I need your banking info.
-   **Answer:**
+Question: Please send bank details.
+Answer: IBAN: PT50 0035 0673 00067614800 82; Beneficiary: SOFIA TORRADO FERREIRA; Bank: CAIXA GERAL DE DEPÓSITOS; MB WAY: 920706013
+Cost: none
 
-   ```
-   IBAN: PT50 0035 0673 00067614800 82  
-   Holder: SOFIA TORRADO FERREIRA  
-   Bank: CAIXA GERAL DE DEPÓSITOS  
-   MB WAY: 920706013
-   ```
+Variations
 
-3. **Question:** How can I transfer the fee?
-   **Answer:**
-
-   ```
-   IBAN: PT50 0035 0673 00067614800 82  
-   Beneficiary: SOFIA TORRADO FERREIRA  
-   Bank: CAIXA GERAL DE DEPÓSITOS  
-   MB WAY: 920706013
-   ```
-
----
-
-## 7. Documents for Legal Action (Court Appointment)
-
-**Legal basis:** per **Art. 63 of DL 84/2007** (implementing Law 23/2007), renewal actions and initial permits require similar documentation: passport, proof of subsistence, accommodation, tax/social-security compliance, plus activity proof ([sites.google.com][1]).
-
-**Question:** Please tell me which documents I need for legal action by court normal appointment.
-**Answer:** You will need:
-
-* NIF (Tax ID)
-* NISS (Social Security Number)
-* Utente (Health-card number) if available
-* Last 3 payslips
-* Employment contract or proof of activity
-* Parish-council certificate (“Junta”)
-* Visa or legal-entry document (if any)
-* Expression of interest or proof of ≥ 12 months’ contributions
-
-**Variations**
-
-1. **Question:** What paperwork is required to file a court request for a standard appointment?
-   **Answer:** Prepare NIF, NISS, health-card (if any), three recent payslips, employment proof, parish certificate, visa/entry docs, and either an expression of interest or 12 months of contribution records.
-
-2. **Question:** Which docs do I submit for a renewal injunction?
-   **Answer:** Provide NIF, NISS, utente (if any), last three payslips, job contract or activity proof, Junta certificate, visa/entry docs, and either expression of interest or evidence of one year of contributions.
-
-3. **Question:** Can you list the documents needed for court action to book an appointment?
-   **Answer:** Gather: NIF, NISS, utente (if available), last three payslips, employer contract/activity proof, parish certificate, legal-entry/visa docs, and proof of interest or 12 months contributions.
+1. Question: Can I have your bank account for payment?
+   Answer: IBAN: PT50 0035 0673 00067614800 82; Name: SOFIA TORRADO FERREIRA; Bank: CAIXA GERAL DE DEPÓSITOS; MB WAY: 920706013
+2. Question: I need your banking info.
+   Answer: IBAN: PT50 0035 0673 00067614800 82; Holder: SOFIA TORRADO FERREIRA; Bank: CAIXA GERAL DE DEPÓSITOS; MB WAY: 920706013
+3. Question: How can I transfer the fee?
+   Answer: IBAN: PT50 0035 0673 00067614800 82; Beneficiary: SOFIA TORRADO FERREIRA; Bank: CAIXA GERAL DE DEPÓSITOS; MB WAY: 920706013

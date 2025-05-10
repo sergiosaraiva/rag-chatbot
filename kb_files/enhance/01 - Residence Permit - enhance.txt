@@ -1,0 +1,24 @@
+Glossary:
+* Residence Permit: A legal authorization granted by Portuguese authorities allowing a non-EU national to reside in Portugal for a specified period.
+* Appointment: A scheduled date and time set by the Immigration and Borders Service for processing a residence permit application or renewal.
+* Renewal: The administrative process of extending the validity of an existing residence permit before it expires.
+* Statutory Deadline: A time limit established by law—in this context, 90 working days—within which SEF must schedule an appointment.
+* Working Day: Any day excluding weekends and public holidays in Portugal.
+* Judicial Action: A legal proceeding initiated in court to enforce one’s rights when a public authority fails to act.
+* Administrative Court: The specialized Portuguese court division that adjudicates disputes against public administration, including immigration matters.
+
+Acronyms:
+* Foreigners and Borders Service (SEF): The Portuguese authority responsible for immigration control, issuing and renewing residence permits.
+
+Summary: Under Portuguese law, SEF must schedule both initial and renewal residence permit appointments within 90 working days of an application. Because this deadline is not self-executing, applicants whose appointments are delayed or unavailable must file a judicial action in the administrative court. This remedy compels SEF to comply with the statutory deadline and allocate a slot. Court filing fees and any legal representation costs apply.
+Topic: Enforcing Appointment Scheduling Deadlines for Residence Permits
+Keywords: appointment scheduling, judicial action, statutory deadline, SEF, renewal
+
+Question: What legal remedy is available to enforce the statutory 90-working-day deadline for scheduling my initial residence permit appointment with SEF?
+Answer: You may file a judicial action before the administrative court to compel SEF to schedule your initial residence permit appointment within 90 working days of your application. Absent this legal step, there is no enforceable deadline.
+
+Question: How can I enforce the 90-working-day deadline for scheduling my residence permit renewal appointment if SEF fails to respect it?
+Answer: By initiating a judicial action before the administrative court, you can obtain a court order requiring SEF to schedule your renewal appointment within 90 working days of your renewal application. Without this action, the statutory deadline remains unenforceable.
+
+Question: What recourse do I have if no appointment slots are available for renewing my residence permit within the statutory period?
+Answer: You should file a judicial action in the administrative court to enforce SEF’s obligation to allocate you a renewal appointment within 90 working days of your application, even if no slots were initially available.

@@ -1,0 +1,14 @@
+Keywords: Payment Information, IBAN, MB WAY, Bank Details, Payment
+Question: What are the bank details for payment?
+Answer:
+* IBAN (International Bank Account Number): PT50 0035 0673 0006 7614 8008 082
+* Account Holder: Sofia Torrado Ferreira
+* Bank: Caixa Geral de Depósitos
+* MB WAY: 920 706 013
+
+Keywords: Office Address, Law Firm, Contact
+Question: What is the address of the law firm’s Lisbon office?
+Answer:
+* Address: Centro Empresarial Torres de Lisboa - Torre G - 1st floor
+* Rua Tomás da Fonseca
+* 1600-160 Lisboa
