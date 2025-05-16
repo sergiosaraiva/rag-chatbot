@@ -28,6 +28,9 @@ from sqlalchemy.orm import relationship
 from app.database import Base
 import datetime
 
+from app.database import init_db
+init_db()
+
 # Load environment variables
 load_dotenv()
 
@@ -70,9 +73,6 @@ limiter = Limiter(key_func=get_remote_address)
 
 port = int(os.getenv("PORT", 8000))
 print(f"Starting on port: {port}")
-
-from app.database import init_db
-init_db()
 
 # Initialize FastAPI
 app = FastAPI(

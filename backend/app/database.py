@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get database URL from environment or use a default SQLite URL
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app/data/app.db")
+os.makedirs("./app/data", exist_ok=True)
 
 # Create SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
