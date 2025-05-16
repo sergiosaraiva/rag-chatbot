@@ -82,7 +82,7 @@ class Message(Base):
     content_type = Column(Enum("text", "image", "video", "audio", "document", "location", "contact", "other", name="content_type"), default="text")
     content = Column(Text)
     media_url = Column(String(512), nullable=True)  # For media messages
-    metadata = Column(JSON, nullable=True)  # Additional metadata about the message
+    message_metadata  = Column(JSON, nullable=True)  # Additional metadata about the message
     timestamp = Column(DateTime, index=True)
     processed = Column(Boolean, default=False)
     
