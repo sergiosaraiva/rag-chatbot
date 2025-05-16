@@ -23,6 +23,11 @@ from app.chunk_and_index import index_file, get_chroma_client, get_embeddings
 import logging
 logging.basicConfig(level=logging.INFO)
 
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
+from sqlalchemy.orm import relationship
+from app.database import Base
+import datetime
+
 # Load environment variables
 load_dotenv()
 
@@ -88,6 +93,52 @@ app.add_middleware(
 
 # Ensure kb_files directory exists
 os.makedirs("kb_files", exist_ok=True)
+
+class Conversation(Base):
+    __tablename__ = "conversations"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    session_id = Column(String, unique=True, index=True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    
+    messages = relationship("Message", back_populates="conversation", cascade="all, delete-orphan")
+
+class Message(Base):
+    __tablename__ = "messages"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    conversation_id = Column(Integer, ForeignKey("conversations.id"))
+    role = Column(String, index=True)  # "user" or "assistant"
+    content = Column(Text)
+    sources = Column(Text, nullable=True)  # JSON string of sources
+    timestamp = Column(DateTime, default=datetime.datetime.utcnow)
+    
+    conversation = relationship("Conversation", back_populates="messages")
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "role": self.role,
+            "content": self.content,
+            "sources": json.loads(self.sources) if self.sources else None,
+            "timestamp": self.timestamp.isoformat()
+        }
+
+# Add this endpoint to debug environment variables
+@app.get("/api/debug/env")
+def debug_env():
+    """Debug environment variables"""
+    return {
+        "OPENAI_API_KEY": OPENAI_API_KEY[:3] + "..." if OPENAI_API_KEY else None,
+        "MODEL_NAME": MODEL_NAME,
+        "TEMPERATURE": TEMPERATURE,
+        "MAX_TOKENS": MAX_TOKENS,
+        "EMBED_MODEL_NAME": EMBED_MODEL_NAME,
+        "CHROMA_SERVER_URL": os.getenv("CHROMA_SERVER_URL"),
+        "COLLECTION_NAME": COLLECTION_NAME,
+        "DATABASE_URL": os.getenv("DATABASE_URL")
+    }
 
 @app.get("/")
 @limiter.limit("10/minute")
