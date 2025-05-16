@@ -339,7 +339,7 @@ async def chat(
         db.add(assistant_message)
         
         # Update conversation timestamp
-        conversation.updated_at = datetime.utcnow()
+        conversation.updated_at = datetime.datetime.utcnow()
         db.commit()
         
         # Return response
