@@ -10,10 +10,7 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from openai import OpenAI
 from dotenv import load_dotenv
-
-import asyncio
-from app.whatsapp_api import router as whatsapp_router
-from app.whatsapp_client import WhatsAppClient
+from app.database import get_db
 
 from sqlalchemy.orm import Session
 from fastapi import Depends
@@ -66,9 +63,6 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # Rate limiter configuration
 limiter = Limiter(key_func=get_remote_address)
 
-# In-memory session history - includes messages and retrieved context
-#session_history: Dict[str, Dict[str, Any]] = {}
-
 port = int(os.getenv("PORT", 8000))
 print(f"Starting on port: {port}")
 
@@ -94,7 +88,6 @@ app.add_middleware(
 
 # Ensure kb_files directory exists
 os.makedirs("kb_files", exist_ok=True)
-app.include_router(whatsapp_router)
 
 @app.get("/")
 @limiter.limit("10/minute")
@@ -524,18 +517,3 @@ async def get_kb_status():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.api:app", host="0.0.0.0", port=port, reload=False)
-
-@app.on_event("startup")
-async def startup_event():
-    # Initialize WhatsApp client if enabled
-    if os.getenv("ENABLE_WHATSAPP", "false").lower() == "true":
-        whatsapp_client = WhatsAppClient()
-        asyncio.create_task(whatsapp_client.initialize())
-        logger.info("WhatsApp client initialization scheduled")
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    if os.getenv("ENABLE_WHATSAPP", "false").lower() == "true":
-        whatsapp_client = WhatsAppClient()
-        await whatsapp_client.disconnect()
-        logger.info("WhatsApp client disconnected")
