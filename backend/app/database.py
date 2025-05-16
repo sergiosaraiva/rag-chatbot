@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get database URL from environment or use a default SQLite URL
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app/data/app.db")
-db_path = "./app/data"
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:////app/app/data/app.db")
+db_path = "./app/app/data"
 print(f"Creating directory at {os.path.abspath(db_path)}")
 os.makedirs(db_path, exist_ok=True)
 print(f"Directory exists: {os.path.exists(db_path)}")

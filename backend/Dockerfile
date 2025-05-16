@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
 
 COPY app/ ./app/
 
+RUN mkdir -p /app/app/data && chmod 777 /app/app/data
+
 EXPOSE 8000
 ENV PORT=8000
 CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
