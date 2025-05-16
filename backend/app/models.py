@@ -9,7 +9,6 @@ class ChatRequest(BaseModel):
     session_id: Optional[str] = Field(None, description="Session ID for conversation history")
     query: str = Field(..., description="User query")
 
-
 class ChatResponse(BaseModel):
     """
     Model for chat response
