@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from app.database import get_db
 from app.whatsapp import router as whatsapp_router
 from app.models import Conversation, Message
+from app.database import ENABLE_DATABASE_STORAGE
 
 from sqlalchemy.orm import Session
 from fastapi import Depends
