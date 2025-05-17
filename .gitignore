@@ -146,6 +146,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# my data
+/data
+
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -172,3 +175,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
