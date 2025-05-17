@@ -20,6 +20,8 @@ services:
       - WHATSAPP_APP_SECRET=your_app_secret
       - WHATSAPP_PHONE_ID=your_phone_number_id
       - WHATSAPP_VERSION=v17.0
+      - EXPOSE_CONFIDENCE_SCORE=true
+      - INCLUDE_CONFIDENCE_REASON=true
     depends_on:
       - chromadb
     volumes:

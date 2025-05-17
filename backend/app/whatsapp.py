@@ -169,9 +169,14 @@ async def receive_message(
             # Get response from RAG system
             chat_response = await rag_chat(request, chat_request, db)
             
-            # Send response back to WhatsApp
-            await send_whatsapp_message(from_number, chat_response.answer)
-            logger.info(f"Response sent to {from_number}")
+            conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
+            
+            if conversation.status != ConversationStatus.WAITING_FOR_MANUAL.value:
+                # Send response back to WhatsApp
+                await send_whatsapp_message(from_number, chat_response.answer)
+                logger.info(f"Response sent to {from_number}")
+            else:
+                logger.info(f"Low confidence answer ({chat_response.confidence_score}%) queued for manual review: {from_number}")
         
         return {"status": "success"}
     

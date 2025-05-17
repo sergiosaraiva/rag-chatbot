@@ -4,7 +4,7 @@ from app.database import Base
 import json
 import datetime
 from enum import Enum
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Enum as SQLEnum
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Float, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -61,9 +61,12 @@ class Message(Base):
     message_type = Column(String, default=MessageType.AUTO.value)
     
     conversation = relationship("Conversation", back_populates="messages")
+
+    confidence_score = Column(Float, nullable=True)
+    confidence_reason = Column(Text, nullable=True)
     
     def to_dict(self):
-        return {
+        data = {
             "id": self.id,
             "role": self.role,
             "content": self.content,
@@ -71,3 +74,8 @@ class Message(Base):
             "timestamp": self.timestamp.isoformat(),
             "message_type": self.message_type
         }
+        if self.confidence_score is not None:
+            data["confidence_score"] = self.confidence_score
+        if self.confidence_reason:
+            data["confidence_reason"] = self.confidence_reason
+        return data
