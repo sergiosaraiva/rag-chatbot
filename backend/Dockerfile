@@ -16,6 +16,12 @@ COPY app/ ./app/
 
 RUN mkdir -p /app/app/data && chmod 777 /app/app/data
 
+# WhatsApp environment variables
+ENV WHATSAPP_TOKEN=""
+ENV WHATSAPP_APP_SECRET=""
+ENV WHATSAPP_PHONE_ID=""
+ENV WHATSAPP_VERSION="v17.0"
+
 EXPOSE 8000
 ENV PORT=8000
 CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
