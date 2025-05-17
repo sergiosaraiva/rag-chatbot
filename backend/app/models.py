@@ -58,7 +58,16 @@ class Message(Base):
     content = Column(Text)
     sources = Column(Text, nullable=True)
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
-    # Change this line
     message_type = Column(String, default=MessageType.AUTO.value)
     
     conversation = relationship("Conversation", back_populates="messages")
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "role": self.role,
+            "content": self.content,
+            "sources": json.loads(self.sources) if self.sources else None,
+            "timestamp": self.timestamp.isoformat(),
+            "message_type": self.message_type
+        }
