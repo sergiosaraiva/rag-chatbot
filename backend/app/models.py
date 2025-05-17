@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from app.database import Base
 import json
 import datetime
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -23,6 +23,16 @@ class ChatResponse(BaseModel):
     session_id: str = Field(..., description="Session ID for conversation tracking")
 
 
+class ConversationStatus(str, SQLEnum):
+    WAITING_FOR_MANUAL = "waiting_for_manual"
+    WAITING_FOR_USER = "waiting_for_user"
+    CLOSED = "closed"
+    
+class MessageType(str, SQLEnum):
+    USER = "user"
+    AUTO = "auto"
+    MANUAL = "manual"
+
 class Conversation(Base):
     __tablename__ = "conversations"
     
@@ -30,6 +40,10 @@ class Conversation(Base):
     session_id = Column(String, unique=True, index=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    # New fields
+    status = Column(SQLEnum(ConversationStatus), default=ConversationStatus.WAITING_FOR_USER)
+    user_phone = Column(String, nullable=True)
+    user_name = Column(String, nullable=True)
     
     messages = relationship("Message", back_populates="conversation", cascade="all, delete-orphan")
 
@@ -42,6 +56,8 @@ class Message(Base):
     content = Column(Text)
     sources = Column(Text, nullable=True)  # JSON string of sources
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
+    # New field
+    message_type = Column(SQLEnum(MessageType), default=MessageType.AUTO)
     
     conversation = relationship("Conversation", back_populates="messages")
     
@@ -51,5 +67,6 @@ class Message(Base):
             "role": self.role,
             "content": self.content,
             "sources": json.loads(self.sources) if self.sources else None,
-            "timestamp": self.timestamp.isoformat()
+            "timestamp": self.timestamp.isoformat(),
+            "message_type": self.message_type
         }
