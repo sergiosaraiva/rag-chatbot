@@ -11,6 +11,7 @@ interface Message {
   content: string;
   sources?: string[];
   username?: string;
+  confidence_score?: number;
 }
 
 interface Conversation {
@@ -25,6 +26,7 @@ interface ChatResponse {
   answer: string;
   sources: string[];
   session_id: string;
+  confidence_score?: number;
 }
 
 interface ServerConversation {
@@ -51,6 +53,15 @@ interface ServerMessage {
   content: string;
   sources: string[] | null;
   timestamp: string;
+  confidence_score?: number;
+}
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+  sources?: string[];
+  username?: string;
+  confidence_score?: number;  // Add this line
 }
 
 // Get maximum messages per conversation from environment variable with fallback
@@ -393,144 +404,146 @@ function App() {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || !activeConversation) return;
-    
-    // Check if we've reached the message limit
-    if (activeConversation.messages.length >= MAX_MESSAGES) {
-      alert(`This conversation has reached the limit of ${MAX_MESSAGES} messages. Please start a new one.`);
-      return;
-    }
+const handleSubmit = async (e: FormEvent) => {
+ e.preventDefault();
+ if (!input.trim() || !activeConversation) return;
+ 
+ // Check if we've reached the message limit
+ if (activeConversation.messages.length >= MAX_MESSAGES) {
+   alert(`This conversation has reached the limit of ${MAX_MESSAGES} messages. Please start a new one.`);
+   return;
+ }
 
-    // Update the conversation title if this is the first message
-    updateConversationTitle(activeConversation);
+ // Update the conversation title if this is the first message
+ updateConversationTitle(activeConversation);
 
-    // Add user message to chat
-    const userMessage: Message = {
-      role: 'user',
-      content: input,
-      username: activeConversation.title !== new Date(parseInt(activeConversation.id.split('_')[1])).toLocaleString('en-US', {
-        year: 'numeric',
-        month: '2-digit', 
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      }) ? activeConversation.title : undefined
-    };
-    
-    const updatedConversations = conversations.map(conv => {
-      if (conv.id === activeConversationId) {
-        return {
-          ...conv,
-          messages: [...conv.messages, userMessage]
-        };
-      }
-      return conv;
-    });
-    
-    setConversations(updatedConversations);
-    setInput('');
-    setIsLoading(true);
+ // Add user message to chat
+ const userMessage: Message = {
+   role: 'user',
+   content: input,
+   username: activeConversation.title !== new Date(parseInt(activeConversation.id.split('_')[1])).toLocaleString('en-US', {
+     year: 'numeric',
+     month: '2-digit', 
+     day: '2-digit',
+     hour: '2-digit',
+     minute: '2-digit',
+     second: '2-digit',
+     hour12: false
+   }) ? activeConversation.title : undefined
+ };
+ 
+ const updatedConversations = conversations.map(conv => {
+   if (conv.id === activeConversationId) {
+     return {
+       ...conv,
+       messages: [...conv.messages, userMessage]
+     };
+   }
+   return conv;
+ });
+ 
+ setConversations(updatedConversations);
+ setInput('');
+ setIsLoading(true);
 
-    try {
-      // Send request to backend
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          query: input,
-          session_id: activeConversation.sessionId
-        }),
-      });
+ try {
+   // Send request to backend
+   const response = await fetch('/api/chat', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({
+       query: input,
+       session_id: activeConversation.sessionId
+     }),
+   });
 
-      if (!response.ok) {
-        throw new Error('Error communicating with chatbot');
-      }
+   if (!response.ok) {
+     throw new Error('Error communicating with chatbot');
+   }
 
-      const data: ChatResponse = await response.json();
-      
-      // Add assistant message to chat
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.answer,
-        sources: data.sources,
-        username: CHATBOT_USER || undefined
-      };
-      
-      setConversations(prevConversations => 
-        prevConversations.map(conv => {
-          if (conv.id === activeConversationId) {
-            return {
-              ...conv,
-              messages: [...conv.messages, assistantMessage],
-              sessionId: data.session_id
-            };
-          }
-          return conv;
-        })
-      );
-      
-      // Now fetch the complete conversation from server to ensure sync
-      if (data.session_id) {
-        try {
-          const serverConv = await fetchServerConversation(data.session_id);
-          if (serverConv && activeConversationId) {
-            setConversations(prevConversations => 
-              prevConversations.map(conv => {
-                if (conv.id === activeConversationId) {
-                  // Convert server messages to local format
-                  const messages: Message[] = serverConv.messages.map(msg => ({
-                    role: msg.role,
-                    content: msg.content,
-                    sources: msg.sources || undefined,
-                    username: msg.role === 'user' ? undefined : CHATBOT_USER || undefined
-                  }));
-                  
-                  return {
-                    ...conv,
-                    messages,
-                    sessionId: serverConv.session_id,
-                  };
-                }
-                return conv;
-              })
-            );
-          }
-        } catch (syncError) {
-          console.error("Error syncing after message:", syncError);
-          // Continue with local data if server sync fails
-        }
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      // Add error message
-      setConversations(prevConversations => 
-        prevConversations.map(conv => {
-          if (conv.id === activeConversationId) {
-            return {
-              ...conv,
-              messages: [
-                ...conv.messages, 
-                { 
-                  role: 'assistant', 
-                  content: 'Sorry, an error occurred. Please try again.',
-                  username: CHATBOT_USER || undefined
-                }
-              ]
-            };
-          }
-          return conv;
-        })
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
+   const data: ChatResponse = await response.json();
+   
+   // Add assistant message to chat
+   const assistantMessage: Message = {
+     role: 'assistant',
+     content: data.answer,
+     sources: data.sources,
+     username: CHATBOT_USER || undefined,
+     confidence_score: data.confidence_score
+   };
+   
+   setConversations(prevConversations => 
+     prevConversations.map(conv => {
+       if (conv.id === activeConversationId) {
+         return {
+           ...conv,
+           messages: [...conv.messages, assistantMessage],
+           sessionId: data.session_id
+         };
+       }
+       return conv;
+     })
+   );
+   
+   // Now fetch the complete conversation from server to ensure sync
+   if (data.session_id) {
+     try {
+       const serverConv = await fetchServerConversation(data.session_id);
+       if (serverConv && activeConversationId) {
+         setConversations(prevConversations => 
+           prevConversations.map(conv => {
+             if (conv.id === activeConversationId) {
+               // Convert server messages to local format
+               const messages: Message[] = serverConv.messages.map(msg => ({
+                 role: msg.role,
+                 content: msg.content,
+                 sources: msg.sources || undefined,
+                 username: msg.role === 'user' ? undefined : CHATBOT_USER || undefined,
+                 confidence_score: msg.confidence_score
+               }));
+               
+               return {
+                 ...conv,
+                 messages,
+                 sessionId: serverConv.session_id,
+               };
+             }
+             return conv;
+           })
+         );
+       }
+     } catch (syncError) {
+       console.error("Error syncing after message:", syncError);
+       // Continue with local data if server sync fails
+     }
+   }
+ } catch (error) {
+   console.error('Error:', error);
+   // Add error message
+   setConversations(prevConversations => 
+     prevConversations.map(conv => {
+       if (conv.id === activeConversationId) {
+         return {
+           ...conv,
+           messages: [
+             ...conv.messages, 
+             { 
+               role: 'assistant', 
+               content: 'Sorry, an error occurred. Please try again.',
+               username: CHATBOT_USER || undefined
+             }
+           ]
+         };
+       }
+       return conv;
+     })
+   );
+ } finally {
+   setIsLoading(false);
+ }
+};
 
   const handleClearChat = () => {
     if (activeConversationId) {
@@ -685,6 +698,11 @@ function App() {
                           (message.username ? `${message.username} $` : '$')}
                       </div>
                       <div className="message-text">{renderMessageContent(message.content)}</div>
+                      {message.role === 'assistant' && message.confidence_score !== undefined && (
+                        <div className="confidence-score">
+                          Confidence: {message.confidence_score.toFixed(1)}%
+                        </div>
+                      )}
                       {message.sources && message.sources.length > 0 && (
                         <div className="message-sources">
                           <div className="sources-header" onClick={() => toggleSources(index)}>
@@ -711,8 +729,7 @@ function App() {
                   <p>Processing...</p>
                 </div>
               )}
-            </div>
-            
+            </div>            
             <form onSubmit={handleSubmit} className="input-form">
               <input
                 type="text"

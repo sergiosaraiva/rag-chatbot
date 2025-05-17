@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
+from app.database import ENABLE_DATABASE_STORAGE
 
 # Load environment variables
 load_dotenv()

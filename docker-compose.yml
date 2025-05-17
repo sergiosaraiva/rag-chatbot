@@ -23,6 +23,7 @@ services:
       - EXPOSE_CONFIDENCE_SCORE=true
       - INCLUDE_CONFIDENCE_REASON=true
       - ENABLE_DATABASE_STORAGE=${ENABLE_DATABASE_STORAGE:-true}
+      - CONFIDENCE_THRESHOLD=70.0
     depends_on:
       - chromadb
     volumes:

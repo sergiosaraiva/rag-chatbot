@@ -428,3 +428,9 @@ button:disabled {
     padding: 0 10px;
   }
 }
+
+.confidence-score {
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: var(--terminal-orange-dim);
+}
