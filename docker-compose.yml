@@ -22,6 +22,7 @@ services:
       - WHATSAPP_VERSION=v17.0
       - EXPOSE_CONFIDENCE_SCORE=true
       - INCLUDE_CONFIDENCE_REASON=true
+      - ENABLE_DATABASE_STORAGE=${ENABLE_DATABASE_STORAGE:-true}
     depends_on:
       - chromadb
     volumes:

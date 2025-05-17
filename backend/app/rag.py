@@ -31,6 +31,8 @@ RESPONSE_PREFIX = os.getenv("RESPONSE_PREFIX", "")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "kb_default")
 TOP_K = int(os.getenv("TOP_K", "5"))
 
+CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "20"))
+
 # System prompt template
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT", 
                          "You are an expert assistant. Use the following context to answer:\n\n{context}\n\nAnswer conversationally. If you don't know the answer based on the provided context, say so.")
@@ -46,12 +48,10 @@ Consider these factors:
 
 First explain your reasoning, then output only a number between 0-100 on the final line.
 """)
-
 INCLUDE_CONFIDENCE_REASON = os.getenv("INCLUDE_CONFIDENCE_REASON", "false").lower() == "true"
 EXPOSE_CONFIDENCE_SCORE = os.getenv("EXPOSE_CONFIDENCE_SCORE", "false").lower() == "true"
 
-# Context memory
-CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "20"))
+ENABLE_DATABASE_STORAGE = os.getenv("ENABLE_DATABASE_STORAGE", "true").lower() == "true"
 
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -79,13 +79,15 @@ async def chat(
    logger.info("Chat request", session_id=session_id, query_length=len(query))
    
    try:
-       # Get or create conversation in database
-       conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
-       if not conversation:
-           conversation = Conversation(session_id=session_id)
-           db.add(conversation)
-           db.commit()
-           db.refresh(conversation)
+       # Get or create conversation in database only if database storage is enabled
+       conversation = None
+       if ENABLE_DATABASE_STORAGE:
+           conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
+           if not conversation:
+               conversation = Conversation(session_id=session_id)
+               db.add(conversation)
+               db.commit()
+               db.refresh(conversation)
        
        # Get embedding for the query
        query_embedding = get_embeddings([query])[0]
@@ -112,15 +114,19 @@ async def chat(
        sources = [meta.get("source", "unknown") for meta in metadatas]
        unique_sources = list(set(sources))
        
-       # Get conversation history from database, limited to last CONTEXT_MEMORY messages
-       messages_history = (
-           db.query(Message)
-           .filter(Message.conversation_id == conversation.id)
-           .order_by(Message.timestamp.desc())
-           .limit(CONTEXT_MEMORY * 2)  # Get pairs of messages
-           .all()
-       )
-       messages_history.reverse()  # Reverse to get chronological order
+       # Initialize messages_history as empty
+       messages_history = []
+       
+       # Get conversation history from database only if database storage is enabled
+       if ENABLE_DATABASE_STORAGE and conversation:
+           messages_history = (
+               db.query(Message)
+               .filter(Message.conversation_id == conversation.id)
+               .order_by(Message.timestamp.desc())
+               .limit(CONTEXT_MEMORY * 2)  # Get pairs of messages
+               .all()
+           )
+           messages_history.reverse()  # Reverse to get chronological order
        
        # Prepare messages for OpenAI
        openai_messages = [
@@ -159,35 +165,37 @@ async def chat(
            client=client
        )
        
-       # Save user message to database
-       user_message = Message(
-           conversation_id=conversation.id,
-           role="user",
-           content=query,
-           sources=None
-       )
-       db.add(user_message)
-       
-       # Save assistant message to database
-       assistant_message = Message(
-           conversation_id=conversation.id,
-           role="assistant",
-           content=answer,
-           sources=json.dumps(unique_sources) if unique_sources else None,
-           confidence_score=confidence_score,
-           confidence_reason=confidence_reason if INCLUDE_CONFIDENCE_REASON else None
-       )
-       db.add(assistant_message)
-       
-       # Update conversation status based on confidence threshold
-       if confidence_score < CONFIDENCE_THRESHOLD:
-           conversation.status = "waiting_for_manual"
-       else:
-           conversation.status = "waiting_for_user"
+       # Only save to database if database storage is enabled
+       if ENABLE_DATABASE_STORAGE and conversation:
+           # Save user message to database
+           user_message = Message(
+               conversation_id=conversation.id,
+               role="user",
+               content=query,
+               sources=None
+           )
+           db.add(user_message)
            
-       # Update conversation timestamp
-       conversation.updated_at = datetime.datetime.utcnow()
-       db.commit()
+           # Save assistant message to database
+           assistant_message = Message(
+               conversation_id=conversation.id,
+               role="assistant",
+               content=answer,
+               sources=json.dumps(unique_sources) if unique_sources else None,
+               confidence_score=confidence_score,
+               confidence_reason=confidence_reason if INCLUDE_CONFIDENCE_REASON else None
+           )
+           db.add(assistant_message)
+           
+           # Update conversation status based on confidence threshold
+           if confidence_score < CONFIDENCE_THRESHOLD:
+               conversation.status = "waiting_for_manual"
+           else:
+               conversation.status = "waiting_for_user"
+               
+           # Update conversation timestamp
+           conversation.updated_at = datetime.datetime.utcnow()
+           db.commit()
        
        # Return response with optional confidence score
        response_data = {
@@ -204,6 +212,7 @@ async def chat(
    except Exception as e:
        logger.error("Error in chat endpoint", error=str(e), session_id=session_id)
        raise HTTPException(status_code=500, detail=str(e))
+
     
 async def evaluate_confidence(query: str, context: str, answer: str, client: OpenAI) -> tuple[float, str]:
     """

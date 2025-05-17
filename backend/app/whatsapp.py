@@ -14,6 +14,7 @@ from .database import get_db
 from .models import ChatRequest, ChatResponse
 from .rag import chat as rag_chat
 from pydantic import BaseModel
+from .database import ENABLE_DATABASE_STORAGE
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -169,14 +170,19 @@ async def receive_message(
             # Get response from RAG system
             chat_response = await rag_chat(request, chat_request, db)
             
-            conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
-            
-            if conversation.status != ConversationStatus.WAITING_FOR_MANUAL.value:
-                # Send response back to WhatsApp
+            if ENABLE_DATABASE_STORAGE:
+                conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
+                
+                if conversation and conversation.status != ConversationStatus.WAITING_FOR_MANUAL.value:
+                    # Send response back to WhatsApp
+                    await send_whatsapp_message(from_number, chat_response.answer)
+                    logger.info(f"Response sent to {from_number}")
+                else:
+                    logger.info(f"Low confidence answer queued for manual review: {from_number}")
+            else:
+                # Without database, we always send the response
                 await send_whatsapp_message(from_number, chat_response.answer)
                 logger.info(f"Response sent to {from_number}")
-            else:
-                logger.info(f"Low confidence answer ({chat_response.confidence_score}%) queued for manual review: {from_number}")
         
         return {"status": "success"}
     

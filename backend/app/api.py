@@ -212,6 +212,15 @@ async def get_conversation(session_id: str, db: Session = Depends(get_db)):
     Returns:
         Conversation history
     """
+    # Check if database storage is enabled
+    if not ENABLE_DATABASE_STORAGE:
+        return {
+            "session_id": session_id,
+            "created_at": datetime.datetime.now().isoformat(),
+            "updated_at": datetime.datetime.now().isoformat(),
+            "messages": []
+        }
+        
     try:
         conversation = db.query(Conversation).filter(Conversation.session_id == session_id).first()
         if not conversation:
@@ -231,7 +240,7 @@ async def get_conversation(session_id: str, db: Session = Depends(get_db)):
         logger.error("Error retrieving conversation", error=str(e), session_id=session_id)
         raise HTTPException(status_code=500, detail=str(e))
 
-# Add an endpoint to list all conversations
+# Modify the list_conversations function in api.py
 @app.get("/api/conversations")
 async def list_conversations(db: Session = Depends(get_db)):
     """
@@ -243,6 +252,10 @@ async def list_conversations(db: Session = Depends(get_db)):
     Returns:
         List of conversations
     """
+    # Check if database storage is enabled
+    if not ENABLE_DATABASE_STORAGE:
+        return {"conversations": []}
+        
     try:
         conversations = db.query(Conversation).order_by(Conversation.updated_at.desc()).all()
         return {
