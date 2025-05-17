@@ -25,6 +25,8 @@ services:
       - MODEL_NAME=gpt-3.5-turbo
     depends_on:
       - chromadb
+    volumes:
+    - ./data:/app/app/data
 
   frontend:
     build:

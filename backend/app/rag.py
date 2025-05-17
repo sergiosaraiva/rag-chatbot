@@ -2,7 +2,6 @@
 import os
 import uuid
 import structlog
-from typing import List, Dict, Optional, Any
 from fastapi import Request, Depends, HTTPException
 from sqlalchemy.orm import Session
 from openai import OpenAI
