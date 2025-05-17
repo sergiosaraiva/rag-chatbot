@@ -56,7 +56,6 @@ ENABLE_DATABASE_STORAGE = os.getenv("ENABLE_DATABASE_STORAGE", "true").lower() =
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-
 async def chat(
    request: Request, 
    chat_request: ChatRequest,
@@ -187,6 +186,7 @@ async def chat(
            )
            db.add(assistant_message)
            
+           logger.info(f"Confidence score: {confidence_score}")
            # Update conversation status based on confidence threshold
            if confidence_score < CONFIDENCE_THRESHOLD:
                conversation.status = "waiting_for_manual"
