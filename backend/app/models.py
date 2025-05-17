@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 from app.database import Base
 import json
 import datetime
+from enum import Enum
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 from app.database import Base
@@ -23,16 +24,17 @@ class ChatResponse(BaseModel):
     session_id: str = Field(..., description="Session ID for conversation tracking")
 
 
-class ConversationStatus(str, SQLEnum):
+class ConversationStatus(str, Enum):
     WAITING_FOR_MANUAL = "waiting_for_manual"
     WAITING_FOR_USER = "waiting_for_user"
     CLOSED = "closed"
     
-class MessageType(str, SQLEnum):
+class MessageType(str, Enum):
     USER = "user"
     AUTO = "auto"
     MANUAL = "manual"
 
+# Use them in your models like this:
 class Conversation(Base):
     __tablename__ = "conversations"
     
@@ -40,8 +42,8 @@ class Conversation(Base):
     session_id = Column(String, unique=True, index=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
-    # New fields
-    status = Column(SQLEnum(ConversationStatus), default=ConversationStatus.WAITING_FOR_USER)
+    # Change this line
+    status = Column(String, default=ConversationStatus.WAITING_FOR_USER.value)
     user_phone = Column(String, nullable=True)
     user_name = Column(String, nullable=True)
     
@@ -52,21 +54,11 @@ class Message(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     conversation_id = Column(Integer, ForeignKey("conversations.id"))
-    role = Column(String, index=True)  # "user" or "assistant"
+    role = Column(String, index=True)
     content = Column(Text)
-    sources = Column(Text, nullable=True)  # JSON string of sources
+    sources = Column(Text, nullable=True)
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
-    # New field
-    message_type = Column(SQLEnum(MessageType), default=MessageType.AUTO)
+    # Change this line
+    message_type = Column(String, default=MessageType.AUTO.value)
     
     conversation = relationship("Conversation", back_populates="messages")
-    
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "role": self.role,
-            "content": self.content,
-            "sources": json.loads(self.sources) if self.sources else None,
-            "timestamp": self.timestamp.isoformat(),
-            "message_type": self.message_type
-        }
