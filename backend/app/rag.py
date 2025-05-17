@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from openai import OpenAI
 from .database import get_db
 
+from app.models import Conversation, Message
 from .models import ChatRequest, ChatResponse
 from .chunk_and_index import get_chroma_client, get_embeddings
 import datetime
@@ -41,8 +42,6 @@ CONTEXT_MEMORY = int(os.getenv("CONTEXT_MEMORY", "20"))
 # Configure OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Import database models directly
-from app.api import Conversation, Message
 
 async def chat(
     request: Request, 
