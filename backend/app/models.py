@@ -22,7 +22,7 @@ class ChatResponse(BaseModel):
     answer: str = Field(..., description="Answer to the user query")
     sources: List[str] = Field(default_factory=list, description="Source documents used for the answer")
     session_id: str = Field(..., description="Session ID for conversation tracking")
-
+    confidence_score: Optional[float] = None
 
 class ConversationStatus(str, Enum):
     WAITING_FOR_MANUAL = "waiting_for_manual"
