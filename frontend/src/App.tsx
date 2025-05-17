@@ -267,10 +267,8 @@ function App() {
     try {
       const response = await fetch(`/api/conversations/${sessionId}`);
       if (!response.ok) {
-        if (response.status === 404) {
-          return null; // Conversation not found on server
-        }
-        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+        console.error(`Failed to fetch conversation: ${response.status} ${response.statusText}`);
+        return null; // Clearly return null on any non-OK response
       }
       return await response.json();
     } catch (error) {
