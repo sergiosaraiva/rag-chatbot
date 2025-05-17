@@ -288,7 +288,8 @@ async def test_webhook(
         return {
             "status": "success",
             "would_send_to": from_number,
-            "message": chat_response.answer
+            "message": chat_response.answer,
+            "confidence_score": getattr(chat_response, 'confidence_score', None)
         }
     except Exception as e:
         return {"status": "error", "message": str(e)}
