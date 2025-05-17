@@ -3,13 +3,6 @@ services:
     image: chromadb/chroma:latest
     ports:
       - "8005:8000"  # Changed from 8000:8000 to 8005:8000
-    environment:
-      - CHROMA_DB_IMPL=postgres
-      - CHROMA_POSTGRES_USER=${PGUSER}
-      - CHROMA_POSTGRES_PASSWORD=${PGPASSWORD}
-      - CHROMA_POSTGRES_DB=${PGDATABASE}
-      - CHROMA_POSTGRES_HOST=${PGHOST}
-      - CHROMA_POSTGRES_PORT=${PGPORT}
   
   backend:
     build:
@@ -23,6 +16,10 @@ services:
       - COLLECTION_NAME=kb_default
       - EMBED_MODEL_NAME=text-embedding-ada-002
       - MODEL_NAME=gpt-3.5-turbo
+      - WHATSAPP_TOKEN=your_whatsapp_verify_token
+      - WHATSAPP_APP_SECRET=your_app_secret
+      - WHATSAPP_PHONE_ID=your_phone_number_id
+      - WHATSAPP_VERSION=v17.0
     depends_on:
       - chromadb
     volumes:

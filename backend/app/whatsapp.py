@@ -5,6 +5,7 @@ import hmac
 import hashlib
 import requests
 import logging
+import fnmatch
 from typing import Dict, Any, Optional
 from fastapi import APIRouter, Request, HTTPException, Depends, Header, Response
 from pydantic import BaseModel
@@ -12,6 +13,7 @@ from sqlalchemy.orm import Session
 from .database import get_db
 from .models import ChatRequest, ChatResponse
 from .rag import chat as rag_chat
+from pydantic import BaseModel
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -21,6 +23,7 @@ WHATSAPP_TOKEN = os.getenv("WHATSAPP_TOKEN")
 WHATSAPP_APP_SECRET = os.getenv("WHATSAPP_APP_SECRET")
 WHATSAPP_PHONE_ID = os.getenv("WHATSAPP_PHONE_ID")
 WHATSAPP_VERSION = os.getenv("WHATSAPP_VERSION", "v17.0")
+WHATSAPP_NUMBER_FILTER = os.getenv("WHATSAPP_NUMBER_FILTER", "")
 
 # Models for WhatsApp API
 class WhatsAppTextMessage(BaseModel):
@@ -32,6 +35,9 @@ class WhatsAppMessage(BaseModel):
    to: str
    type: str = "text"
    text: WhatsAppTextMessage
+
+class TestWebhookPayload(BaseModel):
+    entry: list = [{"changes": [{"value": {"messages": [{"from": "5551234567", "type": "text", "id": "test123", "text": {"body": "Test message"}}]}}]}]
 
 def is_whatsapp_configured():
    """Check if WhatsApp integration is properly configured"""
@@ -73,6 +79,23 @@ async def verify_signature(request: Request, x_hub_signature_256: Optional[str] 
    
    return True
 
+def is_number_allowed(phone_number):
+    """Check if a phone number is allowed based on filter patterns"""
+    if not WHATSAPP_NUMBER_FILTER:
+        return True  # Allow all numbers if no filter is set
+    
+    # Clean the input phone number
+    phone_number = phone_number.strip().replace(" ", "")
+    
+    # Clean and split filter patterns
+    filter_patterns = [pattern.strip().replace(" ", "") for pattern in WHATSAPP_NUMBER_FILTER.split(',')]
+    
+    for pattern in filter_patterns:
+        if fnmatch.fnmatch(phone_number, pattern):
+            return True
+    
+    return False
+
 @router.get("/webhook")
 async def verify_webhook(
    request: Request,
@@ -99,62 +122,62 @@ async def receive_message(
    db: Session = Depends(get_db),
    _: bool = Depends(verify_whatsapp_config)
 ):
-   """Receive incoming WhatsApp messages"""
-   # Verify request signature
-   await verify_signature(request)
-   
-   # Parse request body
-   body = await request.json()
-   
-   # Log the incoming webhook for debugging
-   logger.debug(f"Received webhook: {json.dumps(body, indent=2)}")
-   
-   try:
-       # Extract message data from the webhook
-       entry = body.get("entry", [{}])[0]
-       changes = entry.get("changes", [{}])[0]
-       value = changes.get("value", {})
-       
-       messages = value.get("messages", [])
-       if not messages:
-           logger.debug("Webhook received but no messages found")
-           return {"status": "no messages"}
-       
-       # Process each message
-       for message in messages:
-           # Only process text messages
-           if message.get("type") != "text":
-               logger.debug(f"Skipping non-text message of type: {message.get('type')}")
-               continue
-           
-           # Extract message data
-           from_number = message.get("from")
-           message_id = message.get("id")
-           text = message.get("text", {}).get("body", "")
-           
-           logger.info(f"Processing WhatsApp message from {from_number}: {text[:50]}...")
-           
-           # Create a session ID based on the phone number
-           session_id = f"whatsapp_{from_number}"
-           
-           # Process the message through RAG system
-           chat_request = ChatRequest(
-               query=text,
-               session_id=session_id
-           )
-           
-           # Get response from RAG system
-           chat_response = await rag_chat(request, chat_request, db)
-           
-           # Send response back to WhatsApp
-           await send_whatsapp_message(from_number, chat_response.answer)
-           logger.info(f"Response sent to {from_number}")
-           
-       return {"status": "success"}
-   
-   except Exception as e:
-       logger.error(f"Error processing WhatsApp message: {str(e)}", exc_info=True)
-       return {"status": "error", "message": str(e)}
+    # Verify signature and parse request body (keep existing code)
+    await verify_signature(request)
+    body = await request.json()
+    logger.debug(f"Received webhook: {json.dumps(body, indent=2)}")
+    
+    try:
+        # Extract message data from the webhook
+        entry = body.get("entry", [{}])[0]
+        changes = entry.get("changes", [{}])[0]
+        value = changes.get("value", {})
+        
+        messages = value.get("messages", [])
+        if not messages:
+            logger.debug("Webhook received but no messages found")
+            return {"status": "no messages"}
+        
+        # Process each message
+        for message in messages:
+            # Only process text messages
+            if message.get("type") != "text":
+                logger.debug(f"Skipping non-text message of type: {message.get('type')}")
+                continue
+            
+            # Extract message data
+            from_number = message.get("from")
+            message_id = message.get("id")
+            text = message.get("text", {}).get("body", "")
+            
+            # Check if this number is allowed
+            if not is_number_allowed(from_number):
+                logger.info(f"Ignoring message from filtered number: {from_number}")
+                continue
+            
+            logger.info(f"Processing WhatsApp message from {from_number}: {text[:50]}...")
+            
+            # Rest of your existing code...
+            session_id = f"whatsapp_{from_number}"
+            
+            # Process the message through RAG system
+            chat_request = ChatRequest(
+                query=text,
+                session_id=session_id
+            )
+            
+            # Get response from RAG system
+            chat_response = await rag_chat(request, chat_request, db)
+            
+            # Send response back to WhatsApp
+            await send_whatsapp_message(from_number, chat_response.answer)
+            logger.info(f"Response sent to {from_number}")
+        
+        return {"status": "success"}
+    
+    except Exception as e:
+        logger.error(f"Error processing WhatsApp message: {str(e)}", exc_info=True)
+        return {"status": "error", "message": str(e)}
 
 async def send_whatsapp_message(to: str, text: str):
    """Send a message to a WhatsApp user"""
@@ -231,3 +254,36 @@ async def whatsapp_status():
        "phone_id_configured": bool(WHATSAPP_PHONE_ID),
        "version": WHATSAPP_VERSION
    }
+
+@router.post("/test-webhook")
+async def test_webhook(
+    payload: TestWebhookPayload,
+    db: Session = Depends(get_db)
+):
+    """Test endpoint with explicit schema for webhook testing"""
+    # Skip signature verification for testing
+    try:
+        # Process the message directly
+        from_number = payload.entry[0]["changes"][0]["value"]["messages"][0]["from"]
+        message_text = payload.entry[0]["changes"][0]["value"]["messages"][0]["text"]["body"]
+        message_id = payload.entry[0]["changes"][0]["value"]["messages"][0]["id"]
+        
+        # Check if number is allowed
+        if not is_number_allowed(from_number):
+            return {"status": "filtered", "reason": f"Number {from_number} not in allowed list"}
+            
+        # Create session ID and process through RAG
+        session_id = f"whatsapp_{from_number}"
+        chat_request = ChatRequest(query=message_text, session_id=session_id)
+        
+        # Get response
+        chat_response = await rag_chat(None, chat_request, db)
+        
+        # Return the response that would be sent
+        return {
+            "status": "success",
+            "would_send_to": from_number,
+            "message": chat_response.answer
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
