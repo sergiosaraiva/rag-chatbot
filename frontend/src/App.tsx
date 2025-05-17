@@ -698,7 +698,7 @@ const handleSubmit = async (e: FormEvent) => {
                           (message.username ? `${message.username} $` : '$')}
                       </div>
                       <div className="message-text">{renderMessageContent(message.content)}</div>
-                      {message.role === 'assistant' && message.confidence_score !== undefined && (
+                      {message.role === 'assistant' && message.confidence_score !== undefined && message.confidence_score !== null && (
                         <div className="confidence-score">
                           Confidence: {message.confidence_score.toFixed(1)}%
                         </div>
