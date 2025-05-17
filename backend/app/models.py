@@ -1,6 +1,11 @@
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
-
+from app.database import Base
+import json
+import datetime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
+from sqlalchemy.orm import relationship
+from app.database import Base
 
 class ChatRequest(BaseModel):
     """

@@ -1,10 +1,8 @@
 import os
-import uuid
 import structlog
-from typing import List, Dict, Optional, Any
+from typing import List
 from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -15,8 +13,6 @@ from app.whatsapp import router as whatsapp_router
 
 from sqlalchemy.orm import Session
 from fastapi import Depends
-import json
-from datetime import datetime
 from app.rag import chat
 
 from app.models import ChatRequest, ChatResponse
@@ -25,9 +21,6 @@ from app.chunk_and_index import index_file, get_chroma_client, get_embeddings
 import logging
 logging.basicConfig(level=logging.INFO)
 from app.whatsapp import router as whatsapp_router, is_whatsapp_configured
-
-from app.database import Base
-import datetime
 
 from app.database import init_db
 init_db()
@@ -195,14 +188,16 @@ async def delete_from_knowledge_base(filename: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+from app.rag import chat as rag_chat
+
 @app.post("/api/chat", response_model=ChatResponse)
 @limiter.limit("30/minute")
-async def chat(
+async def chat_endpoint(  # Rename the function
     request: Request, 
     chat_request: ChatRequest,
     db: Session = Depends(get_db)
 ):
-    return await chat(request, chat_request, db)
+    return await rag_chat(request, chat_request, db)
 
 @app.get("/api/conversations/{session_id}")
 async def get_conversation(session_id: str, db: Session = Depends(get_db)):
